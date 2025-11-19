@@ -5,18 +5,11 @@ public class perso {
     protected static int niveau;
     protected static int degats;
 
-    public perso(String Nom, int pv,int Degats, int Vitesse) {
+    public perso(String Nom, int pv,int Degats) {
         nom = Nom;
         PV = pv;
         niveau = 1;
-        degats = Degats;
-    }
-
-    public perso() {
-        nom = nom;
-        PV = PV;
-        niveau = niveau;
-        degats  =  degats;
+        Degats = degats;
     }
 
     public static void afficherInfo() {
