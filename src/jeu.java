@@ -26,12 +26,6 @@ public class jeu {
         }
         perso.afficherInfo();
 
-/// Combat 1
-
-
-/// Quete 1 - augmenter degats vitesse et pv
-
-
 
 /// choix quete ou combat
 
@@ -42,12 +36,23 @@ public class jeu {
             System.out.println("choix 1: faire une quete ");
             System.out.println("choix 2: combattre le boss ");
             System.out.println("Choisissez 1 ou 2 : ");
+
             int choix2= scanner.nextInt();
+
             if (choix2 == 1) {
-                new quete();
+                LanceQuete lanceQuete;
+
             }
             else if (choix2 == 2) {
-                new boss();
+                /// a completer
+            }
+
+            System.out.println("voulez vous continuer? reponse true / false");
+            boolean choix3 = scanner.nextBoolean();
+            if (choix3) {
+                continuer = true;
+            } else if (!choix3) {
+                continuer = false;
             }
 
         }
