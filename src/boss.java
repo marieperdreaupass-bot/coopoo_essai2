@@ -2,7 +2,7 @@ public class boss extends perso {
 
     public boss() {
         super();
-        nom = "boss";
+        name = "boss";
         PV = 1000;
         degats = 300;
     }
