@@ -1,5 +1,6 @@
 public class perso {
 
+    protected  static String name;
     protected static String nom;
     protected static int PV;
     protected static int niveau;
