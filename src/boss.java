@@ -5,7 +5,6 @@ public class boss extends perso {
         nom = "boss";
         PV = 1000;
         degats = 300;
-        vitesse = 1;
     }
 }
 
