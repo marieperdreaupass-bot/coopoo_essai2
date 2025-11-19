@@ -3,7 +3,7 @@ public class sorcier extends perso {
         private int magie;
 
         public sorcier(String Nom) {
-            super(nom, 800, 500);
+            super(nom, 300, 500);
         }
 
         @Override

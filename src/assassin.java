@@ -2,7 +2,7 @@ public class assassin extends perso{
 
 
     public assassin (){
-        super(nom, 600, 700);
+        super(nom, 450, 700);
     }
 
 }
