@@ -2,7 +2,7 @@ public class guerrier extends perso{
     private int force;
 
     public guerrier(String Nom) {
-        super(nom, 700,300 );
+        super(nom, 700,300, 2 );
     }
 
     @Override
