@@ -16,6 +16,7 @@ public class jeu {
         System.out.print("Choisissez 1 ou 2 : ");
         int choix1 = scanner.nextInt();
 
+
         perso monPerso;
         if (choix1 == 1) {
             monPerso = new guerrier(Nom);
@@ -51,6 +52,7 @@ public class jeu {
             boolean choix3 = scanner.nextBoolean();
             if (choix3) {
                 continuer = true;
+                manche ++;
             } else if (!choix3) {
                 continuer = false;
             }
