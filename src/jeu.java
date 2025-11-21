@@ -46,6 +46,7 @@ public class jeu {
             }
             else if (choix2 == 2) {
                 /// a completer
+
             }
 
             System.out.println("voulez vous continuer? reponse true / false");
