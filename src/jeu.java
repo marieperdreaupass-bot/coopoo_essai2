@@ -1,7 +1,12 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class jeu {
+
+
+    public static String nom;
+
     public void main (String[] args) {
 
         Scanner scanner = new Scanner(System.in);
@@ -9,32 +14,38 @@ public class jeu {
 /// Démarrage du jeu
         System.out.println("Le jeu commence");
         System.out.print("Choisissez votre nom ");
-        String Nom = scanner.next();
+        
+        String nom = scanner.next();;
 
         System.out.println(" Choix du perso ");
         System.out.println("1. guerrier ");
         System.out.println("2. sorcier ");
-        System.out.print("Choisissez 1 ou 2 : ");
+        System.out.println("3. assassin ");
+        System.out.print("Choisissez 1 2 ou 3 : ");
         int choix1 = scanner.nextInt();
 
 
         perso monPerso;
         if (choix1 == 1) {
-            monPerso = new guerrier(perso.nom);
-            System.out.println("guerrier " + perso.nom + " crée");
+            monPerso = new guerrier(nom);
+            System.out.println("guerrier " + nom + " crée");
         } else if (choix1 == 2) {
-            monPerso = new sorcier(perso.nom);
-            System.out.println("sorcier " + perso.nom + " crée");
+            monPerso = new sorcier(nom);
+            System.out.println("sorcier " + nom + " crée");
+        }else if (choix1 == 3) {
+            System.out.println("assassin  "+ nom + " crée");
         }
         perso.afficherInfo();
+        
 
 
 /// choix quete ou combat
+        quete quete = new quete();
 
-        int manche = 1;
+        quete.manche =  0;
         boolean continuer = true;
         while (continuer) {
-            System.out.println("Manche " + manche +" " );
+            System.out.println("Manche " + quete.manche +" " );
             System.out.println("choix 1: faire une quete ");
             System.out.println("choix 2: combattre le boss ");
             System.out.println("Choisissez 1 ou 2 : ");
@@ -42,7 +53,18 @@ public class jeu {
             int choix2= scanner.nextInt();
 
             if (choix2 == 1) {
-                System.out.println(ArrayList.description.get(0)); 
+
+                System.out.println("Répondez à la question");
+                System.out.println("Description: " + quete.getDescription());
+                String reponse = scanner.next();
+                if(Objects.equals(reponse, quete.getBonnneReponse())){
+                    System.out.println("BonnneReponse ");
+                    System.out.println("Vous recevez " + quete.getObjetRecompense());}
+                else {
+                    System.out.println("MauvaiseReponse ");
+                    System.out.println("La bonne rep etait " + quete.getBonnneReponse());
+                    System.out.println("Vous ne recevez rien ");
+                }
 
 
             }
@@ -55,7 +77,7 @@ public class jeu {
             boolean choix3 = scanner.nextBoolean();
             if (choix3) {
                 continuer = true;
-                manche ++;
+                quete.manche ++;
             } else if (!choix3) {
                 continuer = false;
             }
