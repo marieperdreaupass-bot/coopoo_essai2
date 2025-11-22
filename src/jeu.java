@@ -35,7 +35,7 @@ public class jeu {
         }else if (choix1 == 3) {
             System.out.println("assassin  "+ nom + " crée");
         }
-        perso.afficherInfo();
+        ///perso.afficherInfo();
         
 
 

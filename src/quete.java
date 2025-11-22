@@ -26,8 +26,10 @@ private ArrayList<String> bonnneReponse;
 public quete(){
 
     description = new ArrayList<>();
-        description.add("donjon numero 1 : combien font 2+2?");
-        description.add("quete2");
+        description.add("question 1 : combien font 2+2?");
+        description.add(" question 2 : quelle est la capitale de la france?");
+        description.add(" question 3 : tuer c'est mal?");
+        description.add(" question 4 : c'est qui le + bô?");
 
     names = new ArrayList<>();
         names.add("boss1");
@@ -41,7 +43,10 @@ public quete(){
 
     bonnneReponse = new ArrayList<>();
         bonnneReponse.add("4");
-        bonnneReponse.add("rep2");
+        bonnneReponse.add("Paris");
+        bonnneReponse.add("oui");
+        bonnneReponse.add("Nayan");
+
 }
 
     public static int manche ;
