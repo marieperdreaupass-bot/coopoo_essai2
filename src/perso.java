@@ -15,6 +15,9 @@ public class perso {
     }
     public perso(String name, int pv, int niveau, int degats, int vitesse) {}
 
+    public perso() {
+    }
+
 
     public static void afficherInfo() {
         System.out.println("Nom : " + nom);

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class jeu {
@@ -19,11 +20,11 @@ public class jeu {
 
         perso monPerso;
         if (choix1 == 1) {
-            monPerso = new guerrier(Nom);
-            System.out.println("guerrier " + Nom + " crée");
+            monPerso = new guerrier(perso.nom);
+            System.out.println("guerrier " + perso.nom + " crée");
         } else if (choix1 == 2) {
-            monPerso = new sorcier(Nom);
-            System.out.println("sorcier " + Nom + " crée");
+            monPerso = new sorcier(perso.nom);
+            System.out.println("sorcier " + perso.nom + " crée");
         }
         perso.afficherInfo();
 
@@ -41,7 +42,8 @@ public class jeu {
             int choix2= scanner.nextInt();
 
             if (choix2 == 1) {
-                LanceQuete lanceQuete;
+                System.out.println(ArrayList.description.get(0)); 
+
 
             }
             else if (choix2 == 2) {
