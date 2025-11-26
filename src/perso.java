@@ -5,20 +5,23 @@ public class perso {
 
     protected String jeuNom ;
     protected static int PV;
-    protected  static int niveau;
-    protected  static int degatsDeBase;
-    protected  static int vitesse;
+    protected static int niveau;
+    protected static int degatsDeBase;
+    protected static int vitesse;
     protected List<String> inventaire;
     protected int experience;
     protected int experienceRequise;
+    protected int pvMax;
 
-    public perso(String nom, int pv,int DegatsDeBase, int Vitesse, int experience, int experienceRequise) {
+    public perso(String nom, int pv,int degatsDeBase, int vitesse) {
         this.jeuNom = nom;
         this.PV = pv;
+        this.pvMax = PV;
         this.niveau = 1;
-        this.degatsDeBase = DegatsDeBase;
-        this.vitesse = Vitesse;
+        this.degatsDeBase = degatsDeBase;
+        this.vitesse = vitesse;
         this.inventaire = new ArrayList<>();
+
         this.experience = 0;
         this.experienceRequise = 100;
     }
@@ -63,8 +66,17 @@ public class perso {
         public void monterDeNiveau() {
             this.niveau++;
             this.experience -= this.experienceRequise; // On soustrait l'XP utilisée (on garde le surplus)
-            this.experienceRequise = (int) (this.experience = 1.5); // on augmente de 50 %
-            this.PV += 50;
+            this.experienceRequise = (int) (this.experience * 1.5); // on augmente de 50 %
+            this.PV += 200;
+            this.degatsDeBase += 75;
+            this.vitesse += 1;
+            this.pv = this.pvMax; // a definir
+        System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ");
+        System.out.println("Vitesse : " + this.vitesse);
+        System.out.println("PV : " + this.PV);
+        System.out.println("Degats de Base : " + this.degatsDeBase);
+        System.out.println("Experience : " + this.experience);
+
 
         }
     }
@@ -166,17 +178,17 @@ public class perso {
 //}
 //
 //
-//public void afficherInfo() {
-//            System.out.println("Nom : " + jeu.nom);
-//            System.out.println("PointsDeVie : " + perso.PV);
-//            System.out.println("niveau : " + perso.niveau);
-//            System.out.println("degats : " + perso.degats);
-//            System.out.println("vitesse : " + perso.vitesse);
-//    }
-//
-//
-//    public void attaquer(){
-//        System.out.println(jeu.nom  + "attaque " );
-//
-//    }
+public void afficherInfo() {
+            System.out.println("Nom : " + jeu.nom);
+            System.out.println("PointsDeVie : " + perso.PV);
+            System.out.println("niveau : " + perso.niveau);
+            System.out.println("degats : " + perso.degatsDeBase);
+            System.out.println("vitesse : " + perso.vitesse);
+    }
+
+
+    public void attaquer(){
+        System.out.println(jeu.nom  + "attaque " );
+
+    }
 
