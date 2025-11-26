@@ -67,25 +67,38 @@ public class jeu {
                 //perso.afficherInfo();
 
             System.out.println("Le combat commence");
-
-            int PVboss =  boss.pv;
+            boss boss = new boss();
             int PVPerso = monPerso.PV;
             int Vperso= monPerso.vitesse;
             int DegPerso = monPerso.degatsDeBase;
+            System.out.println("pv bboss  " + boss.pv);
+            System.out.println("attaqueboss  " + boss.attaque);
             System.out.println("PVperso = "  +  monPerso.PV);
+            System.out.println("Vperso = "  +  monPerso.vitesse);
+            System.out.println("DegPerso = "+  monPerso.degatsDeBase);
 
-                while(boss.pv>=0  || PVPerso > 0){
-                    if (boss.vitesse < Vperso) {
+                if (boss.pv>0  && PVPerso > 0){
+                    System.out.println("Pour  attaquer tapez 1");
+                    int choix3 = scanner.nextInt();
+                    if (choix3 == 1) {
+                    } else  {
+                        System.out.println("Vous abandonnnez la manche ");
+                        break;
+                    }
+
+                    if (boss.vitesse > Vperso) {
                         System.out.println("Le  boss attaque");
+                        System.out.println("puis");
                       boss.pv = boss.pv -  DegPerso;
                         System.out.println("Vous attaquez");
                         PVPerso = PVPerso    -  boss.attaque;
                         System.out.println("PVperso = "  +  PVPerso);
                         System.out.println("pv boss = "  +  boss.pv);
                      }
-                    else if  (boss.vitesse > Vperso) {
+                    else if  (boss.vitesse < Vperso) {
                        PVPerso = PVPerso    -  boss.attaque;
                        System.out.println("Vous attaquez");
+                        System.out.println("puis");
                        boss.pv = boss.pv -  DegPerso;
                        System.out.println("Le  boss attaque");
                         System.out.println("PVperso = "  +  PVPerso);
@@ -101,6 +114,7 @@ public class jeu {
                                System.out.println("Pas  de chance, le boss attaque en 1er");
                              boss.pv = boss.pv -  DegPerso;
                               System.out.println("Le  boss attaque");
+                              System.out.println("puis");
                              PVPerso = PVPerso    -  boss.attaque;
                               System.out.println("Vous attaquez");
                               System.out.println("PVperso = "  +  PVPerso);
@@ -109,21 +123,17 @@ public class jeu {
                               System.out.println("Vousavez de la chance, vous attaquez en 1er");
                               PVPerso = PVPerso    -  boss.attaque;
                               System.out.println("Le  boss attaque");
+                              System.out.println("puis");
                               boss.pv = boss.pv -  DegPerso;
                              System.out.println("Vous attaquez");
                               System.out.println("PVperso = "  +  PVPerso);
                               System.out.println("pv boss = "  +  boss.pv);
                                  }
-                     }
-                    System.out.println("Pour  continuer a  attaquer tapez 1");
-                    int choix3 = scanner.nextInt();
-                    if (choix3 == 1) {
-                    } else  {
-                        System.out.println("Vous abandonnnez la manche ");
-                        break;
-                    }
-
-
+                     }if (boss.pv<= 0 && PVPerso >=0 ){ System.out.println("Vous avez gagne");
+                        break;}
+                    else if (boss.pv>=0  && PVPerso <= 0){ System.out.println("le boss a gagne");
+                        break;}
+                }
             }
 
             System.out.println("voulez vous continuer? reponse true / false");
@@ -135,4 +145,4 @@ public class jeu {
                 continuer = false;
             }
 
-}}}}
+}}}
