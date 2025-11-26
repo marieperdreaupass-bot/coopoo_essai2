@@ -9,7 +9,7 @@ public class boss {
     protected static int niveau;
 
     private final ArrayList<Objet> objets;
-    private int resistance;
+    private final int resistance;
 
     public boss()
     {name = "Hades";
