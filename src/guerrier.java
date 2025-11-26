@@ -56,4 +56,10 @@ public class guerrier extends perso {
             return esprit.get(index);
         }
         }
+    //Monter de niveau spécifique
+    @Override
+    public void monterDeNiveau(){
+        super.monterDeNiveau();
+        this.rage += 100;
+    }
 }

@@ -54,9 +54,14 @@ public class sorcier extends perso {
             else {
                 return grimoire.get(index);
             }
-            //Récupération du sort sélectionné
-
-
         }
+        //Monter de niveau spécifique
+        @Override
+        public void monterDeNiveau(){
+            super.monterDeNiveau();
+            this.mana += 100;
+        }
+
+
 }
 
