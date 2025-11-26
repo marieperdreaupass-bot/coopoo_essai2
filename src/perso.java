@@ -1,24 +1,46 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class perso {
 
-    protected String name = jeu.nom ;
+    protected String jeuNom ;
     protected  int PV;
     protected  int niveau;
-    protected  int degats;
+    protected  int degatsDeBase;
     protected  int vitesse;
-    protected ArrayList<String> inventaire;
+    protected List<String> inventaire;
 
-    public perso(String Nom, int pv,int Degats, int vitesse) {
-        name = jeu.nom;
-        PV = pv;
-        niveau = 1;
-        Degats = degats;
-        vitesse = vitesse;
+    public perso(String nom, int pv,int DegatsDeBase, int Vitesse) {
+        this.jeuNom = nom;
+        this.PV = pv;
+        this.niveau = 1;
+        this.degatsDeBase = DegatsDeBase;
+        this.vitesse = Vitesse;
         this.inventaire = new ArrayList<>();
-
     }
-    //marie core
+
+    public void afficherInfo(){
+        System.out.println("Info de " + this.jeuNom + " ---");
+        System.out.println("Niveau : " + this.niveau);
+        System.out.println("Points de Vie :" + this.PV);
+        System.out.println("Degats de Base :" + this.degatsDeBase);
+        System.out.println("Vitesse :" + this.vitesse);
+    }
+}
+    public void attaquer() {
+        System.out.println(this.jeuNom + "attaque (Dégats : " + this.degatsDeBase);
+    }
+
+
+
+
+
+
+
+
+
+
+        //marie core
     public Runnable objet1() {
         return null;
     }
