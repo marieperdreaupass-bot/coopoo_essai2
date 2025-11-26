@@ -23,7 +23,7 @@ public class Sort {
         return degatsSort;
     }
 
-    public void lancer(String jeu.nom) {
-        System.out.println(jeu.nom + "lance" + this.nomSort + "!");
+    public void lancer(String jeuNom) {
+        System.out.println(jeuNom + "lance" + this.nomSort + "!");
     }
 }

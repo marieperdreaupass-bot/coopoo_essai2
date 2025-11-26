@@ -5,7 +5,7 @@ public class sorcier extends perso {
 
     //Attribut spécifique au Sorcier :
     protected int mana;
-    private List<Sort> grimoire;
+    private final List<Sort> grimoire;
 
     //Définition des constantes de classe
     private static final int PV_DEFAUT = 300;
@@ -16,21 +16,47 @@ public class sorcier extends perso {
         public sorcier(String Nom) {
             super(jeu.nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
             this.mana = MANA_DEFAUT;
+            //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
             this.grimoire.add(new Sort("Boule de feu", 20, 45));
-            this.inventaire.add()
+            //Remplissage de l'inventaire
+            this.ajouterObjet("Grimoire Radiant");
+            this.ajouterObjet("Potion de mana");
+            this.ajouterObjet("Potion de vie");
         }
 
+        //Afficher les sorts dans le grimoire
+        public void afficherGrimoire(){
+            System.out.println("--- Grimoire de " + this.jeuNom + " ---");
+            if(grimoire.isEmpty()){
+                System.out.println("Le grimoire est vide.");
+                return;
+            }
+        for(int i = 0; i < grimoire.size(); i++){
+            Sort sortActuel = grimoire.get(i);
+            System.out.println("[" + i+1 + "]" + sortActuel.getNom() + "|Mana : " + sortActuel.getCoutMana() + "| Dégâts : " + sortActuel.getDegats());
+        }
+        }
 
-
-
-
-
-
-
+        //Polymorphisme de la méthode attaquer()
         @Override
         public void attaquer() {
-            System.out.println(jeu.nom + "lance un sort");
+            System.out.println(this.jeuNom + "lance un sort simple.");
+            System.out.println("Dégâts infligés : " + this.degatsDeBase);
+        }
+
+        //Lancer un sort
+        public Sort lancerSort(int index) {
+            if(index < 0 || index >= this.grimoire.size()){
+                return null;
+            }
+            //Récupération du sort sélectionné
+            else {
+                return grimoire.get(index);
+            }
+            //Récupération du sort sélectionné
+
+
         }
     }
 
