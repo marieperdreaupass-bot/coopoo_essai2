@@ -58,5 +58,5 @@ public class sorcier extends perso {
 
 
         }
-    }
+}
 
