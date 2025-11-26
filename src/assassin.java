@@ -55,7 +55,11 @@ public class assassin extends perso {
             return technique.get(index);
         }
         //Récupération du sort sélectionné
-
-
+    }
+    //Monter de niveau spécifique
+    @Override
+    public void monterDeNiveau(){
+        super.monterDeNiveau();
+        this.endurance += 100;
     }
 }
