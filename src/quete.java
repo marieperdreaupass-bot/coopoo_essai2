@@ -17,8 +17,6 @@ public class quete<nbQuete> { /// extend perso  pour avoir la variable  niveau  
 ///}
 ///
 private ArrayList<String> description;
-private ArrayList<String> names;
-private ArrayList<String> objetRecompennse;
 private ArrayList<String> bonnneReponse;
 
 
@@ -31,15 +29,8 @@ public quete(){
         description.add(" question 3 : tuer c'est mal?");
         description.add(" question 4 : c'est qui le + bô?");
 
-    names = new ArrayList<>();
-        names.add("boss1");
-        names.add("boss2");
 
-///ArrayList<int> expGagnee = new ArrayList<>();
 
-    objetRecompennse = new ArrayList<>();
-        objetRecompennse.add("objet1");
-        objetRecompennse.add("objet2");
 
     bonnneReponse = new ArrayList<>();
         bonnneReponse.add("4");

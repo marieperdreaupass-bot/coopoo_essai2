@@ -32,13 +32,13 @@ public class jeu {
 
             int choix2= scanner.nextInt();
             if (choix2 == 1) {
-
+                int recompense =5;
                 System.out.println("Répondez à la question");
                 System.out.println("Description: " + quete.getDescription());
                 String reponse = scanner.next();
                 if(Objects.equals(reponse, quete.getBonnneReponse())){
                     System.out.println("BonnneReponse ");
-                    System.out.println("Vous recevez " + quete.getObjetRecompense());}
+                    System.out.println("Vous recevez " + recompense);}
                 else {
                     System.out.println("MauvaiseReponse ");
                     System.out.println("La bonne rep etait " + quete.getBonnneReponse());
@@ -64,7 +64,6 @@ public class jeu {
                     System.out.println("assassin  "+ nom + " crée");
                     monPerso = new assassin(nom);
                 }
-                //perso.afficherInfo();
 
             System.out.println("Le combat commence");
             boss boss = new boss();
@@ -145,4 +144,7 @@ public class jeu {
                 continuer = false;
             }
 
+            /// /10  pv pr  la 1e quete / 20 pv pr la 2e quete
+        /// 5poit attaque1equete/  10 2eme quete
+        ///  nepeut chat : seulement 5questions puius doit faireun miniboss ou unn boss
 }}}
