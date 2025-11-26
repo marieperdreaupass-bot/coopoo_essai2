@@ -4,19 +4,23 @@ import java.util.List;
 public class perso {
 
     protected String jeuNom ;
-    protected  int PV;
-    protected  int niveau;
-    protected  int degatsDeBase;
-    protected  int vitesse;
+    protected static int PV;
+    protected  static int niveau;
+    protected  static int degatsDeBase;
+    protected  static int vitesse;
     protected List<String> inventaire;
+    protected int experience;
+    protected int experienceRequise;
 
-    public perso(String nom, int pv,int DegatsDeBase, int Vitesse) {
+    public perso(String nom, int pv,int DegatsDeBase, int Vitesse, int experience, int experienceRequise) {
         this.jeuNom = nom;
         this.PV = pv;
         this.niveau = 1;
         this.degatsDeBase = DegatsDeBase;
         this.vitesse = Vitesse;
         this.inventaire = new ArrayList<>();
+        this.experience = 0;
+        this.experienceRequise = 100;
     }
 
     public void afficherInfo(){
@@ -48,6 +52,27 @@ public class perso {
         this.inventaire.add(nomObjet);
         System.out.println(this.jeuNom + " a ajouté objet : " + nomObjet + "à son inventaire.");
     }
+
+    public void gagnerExperience(int montant) {
+        this.experience += montant;
+        System.out.println(this.jeuNom + " a gagner experience : " + montant + "XP");
+        while(this.experience >= this.experienceRequise) {
+            monterdeNiveau()
+        }
+
+        public void monterDeNiveau() {
+            this.niveau++;
+            this.experience -= this.experienceRequise; // On soustrait l'XP utilisée (on garde le surplus)
+            this.experienceRequise = (int) (this.experience = 1.5); // on augmente de 50 %
+            this.PV += 50;
+
+        }
+    }
+
+//    public void levelUP(int niveau) {
+//        this.niveau = niveau + 1;
+//        System.out.println(this.jeuNom + " a ajouter level " + niveau + ".");
+//    }  --> PAS SUR
 }
 
 
