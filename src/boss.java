@@ -9,7 +9,7 @@ public class boss {
     protected static int niveau;
 
     private final ArrayList<Objet> objets;
-    private int resistance;
+    private final int resistance;
 
     public boss()
     {name = "Hades";
@@ -80,4 +80,6 @@ public class boss {
         System.out.println("Test terminé !");
     }
 }
+
+/// /ATTENTION BOSS NE DOIT PAAAASSS EXTENDS PERSO
 
