@@ -10,7 +10,14 @@ public class assassin extends perso{
         System.out.println(jeu.nom + "plante sa lame secrete dans l'adversaire");
     }
 
-    public objet();
 
+    public Runnable ojet2() {
+        return null;
+    }
+
+    @Override
+    public void objet(){
+        super.objet();
+        objets.add(ojet2());
     }
 }
