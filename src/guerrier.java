@@ -13,7 +13,7 @@ public class guerrier extends perso {
     private static final int VITESSE_DEFAUT = 5;
     private static final int RAGE_DEFAUT = 500;
 
-    public guerrier(String Nom) {
+        public guerrier(String Nom) {
         super(Nom, 300, 150, 5);
         this.rage = RAGE_DEFAUT;
         //Remplissage de l'esprit
@@ -25,12 +25,37 @@ public class guerrier extends perso {
         this.ajouterObjet("Potion de vie");
     }
 
-    //Afficher les scompétences de l'esprit
-    public void afficherEsprit() {
-        System.out.println("--- Esprit de " + this.jeuNom + " ---");
-        if (esprit.isEmpty()) {
-            System.out.println("Le grimoire est vide.");
-            return;
+        //Afficher les scompétences de l'esprit
+        public void afficherEsprit() {
+            System.out.println("--- Esprit de " + this.jeuNom + " ---");
+            if (esprit.isEmpty()) {
+                System.out.println("Le grimoire est vide.");
+                return;
         }
+            for (int i = 0; i < esprit.size(); i++) {
+                CompRage CompActuel = esprit.get(i);
+                System.out.println("[" + i + 1 + "]" + CompActuel.getNom() + "|Rage : " + CompActuel.getCoutRage() + "| Dégâts : " + CompActuel.getDegats());
+            }
+        }
+
+    //Polymorphisme de la méthode attaquer()
+    @Override
+        public int attaquer() {
+            System.out.println(this.jeuNom + "met un coup de lance.");
+            return this.degatsDeBase;
+}
+
+    //Sélectionner une compétence
+        public CompRage UtiliserCompetence(int index) {
+        if(index < 0 || index >= this.esprit.size()){
+            return null;
     }
+    //Récupération de la compétence sélectionnée
+        else {
+            return esprit.get(index);
+    }
+
+
+
+}
 }

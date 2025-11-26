@@ -12,7 +12,7 @@ public class CompRage {
     }
 
     //Getters pour que guerrier puisse accéder aux valeurs
-    public String getNomRage() {
+    public String getNom() {
         return nomComp;
     }
 
