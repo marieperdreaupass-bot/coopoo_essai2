@@ -1,7 +1,6 @@
-package Mostre;
 import java.util.ArrayList;
-import java.util.Objects;
 
+// Ajoute une liste d'objet avec la fonciton add, le if inde..,
 public class Monstre {
 
     protected String name;
@@ -11,10 +10,11 @@ public class Monstre {
     protected int niveau;
     protected int resistance;
 
-    protected ArrayList<Objects> objets;
+    protected ArrayList<Objet> salle;
 
     public Monstre() {
-        objets = new ArrayList<>();
+        salle = new ArrayList<>();
+        salle.add(new Objet(//ajoute les pqrametres))
     }
 
     public void attaquer() {
@@ -36,10 +36,10 @@ public class Monstre {
     }
 
     public void utiliserObjet(int index) {
-        if (index >= 0 && index < objets.size()) {
-            Objects obj = objets.get(index);
+        if (index >= 0 && index < salle.size()) {
+            Objet obj = salle.get(index);
             System.out.println(name + " utilise " + obj.getNom() + " !");
-            pv += obj.getEffect();
+            pv += obj.getEffet();
             System.out.println("PV actuels : " + pv);
         } else {
             System.out.println(name + " n'a pas cet objet !");
