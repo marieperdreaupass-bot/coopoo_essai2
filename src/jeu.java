@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Random;
 
 public class jeu {
 
@@ -17,27 +18,6 @@ public class jeu {
         
         String nom = scanner.next();;
 
-        System.out.println(" Choix du perso ");
-        System.out.println("1. guerrier ");
-        System.out.println("2. sorcier ");
-        System.out.println("3. assassin ");
-        System.out.print("Choisissez 1 2 ou 3 : ");
-        int choix1 = scanner.nextInt();
-
-
-        perso monPerso;
-        if (choix1 == 1) {
-            monPerso = new guerrier(nom);
-            System.out.println("guerrier " + nom + " crée");
-        } else if (choix1 == 2) {
-            monPerso = new sorcier(nom);
-            System.out.println("sorcier " + nom + " crée");
-        }else if (choix1 == 3) {
-            System.out.println("assassin  "+ nom + " crée");
-        }
-        ///perso.afficherInfo();
-        
-
 
 /// choix quete ou combat
         quete quete = new quete();
@@ -49,6 +29,24 @@ public class jeu {
             System.out.println("choix 1: faire une quete ");
             System.out.println("choix 2: combattre le boss ");
             System.out.println("Choisissez 1 ou 2 : ");
+
+            System.out.println(" Choix du perso ");
+            System.out.println("1. guerrier ");
+            System.out.println("2. sorcier ");
+            System.out.println("3. assassin ");
+            System.out.print("Choisissez 1 2 ou 3 : ");
+            int choix1 = scanner.nextInt();
+            perso monPerso;
+            if (choix1 == 1) {
+                monPerso = new guerrier(nom);
+                System.out.println("guerrier " + nom + " crée");
+            } else if (choix1 == 2) {
+                monPerso = new sorcier(nom);
+                System.out.println("sorcier " + nom + " crée");
+            }else if (choix1 == 3) {
+                System.out.println("assassin  "+ nom + " crée");
+            }
+            perso.afficherInfo();
 
             int choix2= scanner.nextInt();
 
@@ -69,17 +67,33 @@ public class jeu {
 
             }
             else if (choix2 == 2) {
-                /// a completer
             System.out.println("Le combat commence");
-            while(boss.PV>=0  or perso.PV )
-            if (boss.vitesse < perso.vitesse) {
 
+            while(boss.pv>=0  || perso.PV > 0);
+            if (boss.vitesse < perso.vitesse) {
+                boss.pv = boss.pv -  perso.degatsDeBase;
+                perso.PV = perso.PV    -  boss.attaque;
             }
             else if  (boss.vitesse > perso.vitesse) {
+
+                perso.PV = perso.PV    -  boss.attaque;
+                boss.pv = boss.pv -  perso.degatsDeBase;
 
             }
             else if (boss.vitesse == perso.vitesse) {
 
+                Random random = new Random();
+                int nbrandom = random.nextInt(2) ;
+
+                if(nbrandom == 0){
+                    System.out.println("Pasde chance, le boss attaque en 1er");
+                    boss.pv = boss.pv -  perso.degatsDeBase;
+                    perso.PV = perso.PV    -  boss.attaque;
+                } else {
+                    System.out.println("Vousavez de la chance, vous attaquez en 1er");
+                    perso.PV = perso.PV    -  boss.attaque;
+                    boss.pv = boss.pv -  perso.degatsDeBase;
+                }
             }
             }
 
