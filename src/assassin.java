@@ -1,7 +1,7 @@
 public class assassin extends perso{
 
 
-    public assassin (){
+    public assassin (String nom){
         super(jeu.nom, 500, 500, 2);
 
     }
@@ -11,13 +11,13 @@ public class assassin extends perso{
     }
 
 
-    public Runnable ojet2() {
+    public Runnable objet2() {
         return null;
     }
 
     @Override
     public void objet(){
         super.objet();
-        objets.add(ojet2());
+        objets.add(objet2());
     }
 }

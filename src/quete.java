@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.*;
 
-public class quete<manche> extends perso { /// extend perso  pour avoir la variable  niveau  ici
+public class quete<nbQuete> { /// extend perso  pour avoir la variable  niveau  ici
     ///private String[] names;
     ////private String[] choix;idk si on le garde car complique a coder
     ///private String[] bonneReponse;
@@ -49,15 +49,15 @@ public quete(){
 
 }
 
-    public static int manche ;
+    public static int nbQuete ;
     public String getDescription() {
-        return description.get( manche);}
+        return description.get( nbQuete);}
     public String getName() {
-        return names.get( manche);}
+        return names.get( nbQuete);}
     public String getObjetRecompense() {
-        return objetRecompennse.get(manche);}
+        return objetRecompennse.get(nbQuete);}
     public String getBonnneReponse() {
-        return bonnneReponse.get(manche);
+        return bonnneReponse.get(nbQuete);
     }
 
 
