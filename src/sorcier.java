@@ -14,7 +14,7 @@ public class sorcier extends perso {
     private static final int MANA_DEFAUT = 500;
 
         public sorcier(String Nom) {
-            super(jeu.nom, 300, 150, 5);
+            super(Nom,300, 150, 5);
             this.mana = MANA_DEFAUT;
             //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
@@ -40,9 +40,9 @@ public class sorcier extends perso {
 
         //Polymorphisme de la méthode attaquer()
         @Override
-        public void attaquer() {
+        public int attaquer() {
             System.out.println(this.jeuNom + "lance un sort simple.");
-            System.out.println("Dégâts infligés : " + this.degatsDeBase);
+            return this.degatsDeBase;
         }
 
         //Lancer un sort
