@@ -30,31 +30,7 @@ public class jeu {
             System.out.println("choix 2: combattre le boss ");
             System.out.println("Choisissez 1 ou 2 : ");
 
-
-
-            System.out.println(" Choix du perso ");
-            System.out.println("1. guerrier ");
-            System.out.println("2. sorcier ");
-            System.out.println("3. assassin ");
-            System.out.print("Choisissez 1 2 ou 3 : ");
-            int choix1 = scanner.nextInt();
-
-            perso  monPerso = null;
-            if (choix1 == 1) {
-                System.out.println("guerrier " + nom + " crée");
-                monPerso = new guerrier(nom);
-            } else if (choix1 == 2) {
-                System.out.println("sorcier " + nom + " crée");
-                monPerso= new sorcier(nom);
-            }else if (choix1 == 3) {
-                System.out.println("assassin  "+ nom + " crée");
-                monPerso = new assassin(nom);
-            }
-            ///perso.afficherInfo();
-
-
             int choix2= scanner.nextInt();
-
             if (choix2 == 1) {
 
                 System.out.println("Répondez à la question");
@@ -69,52 +45,94 @@ public class jeu {
                     System.out.println("Vous ne recevez rien ");
                 }
 
-
             }
             else if (choix2 == 2) {
+                System.out.println(" Choix du perso ");
+                System.out.println("1. guerrier ");
+                System.out.println("2. sorcier ");
+                System.out.println("3. assassin ");
+                System.out.print("Choisissez 1 2 ou 3 : ");
+                int choix1 = scanner.nextInt();
+                perso  monPerso = null;
+                if (choix1 == 1) {
+                    System.out.println("guerrier " + nom + " crée");
+                    monPerso = new guerrier(nom);
+                } else if (choix1 == 2) {
+                    System.out.println("sorcier " + nom + " crée");
+                    monPerso= new sorcier(nom);
+                }else if (choix1 == 3) {
+                    System.out.println("assassin  "+ nom + " crée");
+                    monPerso = new assassin(nom);
+                }
+                //perso.afficherInfo();
+
             System.out.println("Le combat commence");
 
             int PVboss =  boss.pv;
             int PVPerso = monPerso.PV;
+            int Vperso= monPerso.vitesse;
+            int DegPerso = monPerso.degatsDeBase;
             System.out.println("PVperso = "  +  monPerso.PV);
 
-//            ///
-//
-//                while(boss.pv>=0  || perso.PV > 0);
-//            if (boss.vitesse < perso.vitesse) {
-//                boss.pv = boss.pv -  perso.degatsDeBase;
-//                perso.PV = perso.PV    -  boss.attaque;
-//            }
-//            else if  (boss.vitesse > perso.vitesse) {
-//
-//                perso.PV = perso.PV    -  boss.attaque;
-//                boss.pv = boss.pv -  perso.degatsDeBase;
-//
-//            }
-//            else if (boss.vitesse == perso.vitesse) {
-//
-//                Random random = new Random();
-//                int nbrandom = random.nextInt(2) ;
-//
-//                if(nbrandom == 0){
-//                    System.out.println("Pasde chance, le boss attaque en 1er");
-//                    boss.pv = boss.pv -  perso.degatsDeBase;
-//                    perso.PV = perso.PV    -  boss.attaque;
-//                } else {
-//                    System.out.println("Vousavez de la chance, vous attaquez en 1er");
-//                    perso.PV = perso.PV    -  boss.attaque;
-//                    boss.pv = boss.pv -  perso.degatsDeBase;
-//                }
-//            }
-//            }
-//
-//            System.out.println("voulez vous continuer? reponse true / false");
-//            boolean choix3 = scanner.nextBoolean();
-//            if (choix3) {
-//                continuer = true;
-//                quete.nbQuete ++;
-//            } else if (!choix3) {
-//                continuer = false;
-//            }
-//
+                while(boss.pv>=0  || PVPerso > 0){
+                    if (boss.vitesse < Vperso) {
+                        System.out.println("Le  boss attaque");
+                      boss.pv = boss.pv -  DegPerso;
+                        System.out.println("Vous attaquez");
+                        PVPerso = PVPerso    -  boss.attaque;
+                        System.out.println("PVperso = "  +  PVPerso);
+                        System.out.println("pv boss = "  +  boss.pv);
+                     }
+                    else if  (boss.vitesse > Vperso) {
+                       PVPerso = PVPerso    -  boss.attaque;
+                       System.out.println("Vous attaquez");
+                       boss.pv = boss.pv -  DegPerso;
+                       System.out.println("Le  boss attaque");
+                        System.out.println("PVperso = "  +  PVPerso);
+                        System.out.println("pv boss = "  +  boss.pv);
+
+                    }
+                     else if (boss.vitesse == Vperso) {
+
+                           Random random = new Random();
+                          int nbrandom = random.nextInt(2) ;
+
+                          if(nbrandom == 0){
+                               System.out.println("Pas  de chance, le boss attaque en 1er");
+                             boss.pv = boss.pv -  DegPerso;
+                              System.out.println("Le  boss attaque");
+                             PVPerso = PVPerso    -  boss.attaque;
+                              System.out.println("Vous attaquez");
+                              System.out.println("PVperso = "  +  PVPerso);
+                              System.out.println("pv boss = "  +  boss.pv);
+                          } else {
+                              System.out.println("Vousavez de la chance, vous attaquez en 1er");
+                              PVPerso = PVPerso    -  boss.attaque;
+                              System.out.println("Le  boss attaque");
+                              boss.pv = boss.pv -  DegPerso;
+                             System.out.println("Vous attaquez");
+                              System.out.println("PVperso = "  +  PVPerso);
+                              System.out.println("pv boss = "  +  boss.pv);
+                                 }
+                     }
+                    System.out.println("Pour  continuer a  attaquer tapez 1");
+                    int choix3 = scanner.nextInt();
+                    if (choix3 == 1) {
+                    } else  {
+                        System.out.println("Vous abandonnnez la manche ");
+                        break;
+                    }
+
+
+            }
+
+            System.out.println("voulez vous continuer? reponse true / false");
+            boolean choix3 = scanner.nextBoolean();
+            if (choix3) {
+                continuer = true;
+                quete.nbQuete ++;
+            } else if (!choix3) {
+                continuer = false;
+            }
+
 }}}}
