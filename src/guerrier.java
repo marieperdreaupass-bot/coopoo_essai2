@@ -49,13 +49,11 @@ public class guerrier extends perso {
         public CompRage UtiliserCompetence(int index) {
         if(index < 0 || index >= this.esprit.size()){
             return null;
-    }
+        }
+
     //Récupération de la compétence sélectionnée
         else {
             return esprit.get(index);
-    }
-
-
-
-}
+        }
+        }
 }
