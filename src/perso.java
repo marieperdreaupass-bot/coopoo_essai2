@@ -3,7 +3,7 @@ import java.util.List;
 
 public class perso {
 
-    protected String jeuNom ;
+    protected static String jeuNom ;
     protected static int PV;
     protected static int niveau;
     protected static int degatsDeBase;
@@ -59,9 +59,10 @@ public class perso {
     public void gagnerExperience(int montant) {
         this.experience += montant;
         System.out.println(this.jeuNom + " a gagner experience : " + montant + "XP");
-        while(this.experience >= this.experienceRequise) {
-            monterdeNiveau()
+        while (this.experience >= this.experienceRequise) {
+            monterdeNiveau();
         }
+    }
 
         public void monterDeNiveau() {
             this.niveau++;
