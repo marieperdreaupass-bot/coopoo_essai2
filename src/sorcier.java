@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class sorcier extends Perso {
+public class sorcier extends perso {
 
     //Attribut spécifique au Sorcier :
     protected int mana;
@@ -14,7 +14,7 @@ public class sorcier extends Perso {
     private static final int MANA_DEFAUT = 500;
 
         public sorcier(String Nom) {
-            super(jeu.nom, 300, 150, 5);
+            super(Nom,300, 150, 5);
             this.mana = MANA_DEFAUT;
             //Remplissage du grimoire
             this.grimoire = new ArrayList<>();

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 1. Majuscule ici (Convention Java)
-public class Perso {
+public class perso {
 
     // 2. PLUS DE STATIC ! Chaque perso a ses propres stats.
     protected String jeuNom;
@@ -21,7 +21,7 @@ public class Perso {
     protected int experienceRequise;
 
     // CONSTRUCTEUR
-    public Perso(String nom, int pv, int degatsDeBase, int vitesse) {
+    public perso(String nom, int pv, int degatsDeBase, int vitesse) {
         this.jeuNom = nom;
         this.PV = pv;
         this.pvMax = pv; // Au début, PV max = PV actuels
