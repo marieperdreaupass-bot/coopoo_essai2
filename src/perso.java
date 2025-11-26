@@ -1,19 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.ArrayList;
-import java.util.List;
-
-// 1. Majuscule ici (Convention Java)
 public class perso {
 
-    // 2. PLUS DE STATIC ! Chaque perso a ses propres stats.
     protected String jeuNom;
     protected int PV;
     protected int pvMax;
     protected int niveau;
     protected int degatsDeBase;
     protected int vitesse;
+    protected int chanceCritique;
+
 
     protected List<String> inventaire;
 
@@ -43,8 +40,14 @@ public class perso {
         System.out.println("Vitesse : " + this.vitesse);
     }
 
-    // Changé en 'int' pour retourner les dégâts lors du combat
+
     public int attaquer() {
+        boolean estCritique = Math.random() < this.chanceCritique;
+        int degatsFinaux = this.degatsDeBase;
+        if (estCritique) {
+            degatsFinaux = this.degatsDeBase * 2;
+            System.out.println("⚡️ Degats CRITIQUE ⚡️" + degatsFinaux);
+        }
         System.out.println(this.jeuNom + " attaque ! (Puissance : " + this.degatsDeBase + ")");
         return this.degatsDeBase;
     }
@@ -81,7 +84,7 @@ public class perso {
         this.niveau++;
         this.experience -= this.experienceRequise;
 
-        // CORRECTION MATHÉMATIQUE : On multiplie le 'Requis', pas l'actuel
+
         this.experienceRequise = (int) (this.experienceRequise * 1.5);
 
         // Augmentation des stats
@@ -92,6 +95,22 @@ public class perso {
 
         System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ✨");
         System.out.println("Stats -> PV: " + this.PV + " | Dégâts: " + this.degatsDeBase);
+    }
+
+    public boolean estMort() {
+        return this.PV < 0;
+    }
+
+    public String getNom() {
+        return this.jeuNom;
+    }
+
+    public int getPV() {
+        return this.PV;
+    }
+
+    public int getNiveau() {
+        return this.niveau;
     }
 }
 
