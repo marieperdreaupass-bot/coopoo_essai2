@@ -11,7 +11,7 @@ public class jeu {
 
         Scanner scanner = new Scanner(System.in);
 
-/// Démarrage du jeu
+// Démarrage du jeu
         System.out.println("Le jeu commence");
         System.out.print("Choisissez votre nom ");
         
