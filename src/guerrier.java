@@ -14,7 +14,7 @@ public class guerrier extends perso {
     private static final int RAGE_DEFAUT = 500;
 
     public guerrier(String Nom) {
-        super(Nom,300, 150, 5);
+        super(Nom, 300, 150, 5);
         this.rage = RAGE_DEFAUT;
         //Remplissage de l'esprit
         this.esprit = new ArrayList<>();
@@ -26,9 +26,11 @@ public class guerrier extends perso {
     }
 
     //Afficher les scompétences de l'esprit
-    public void afficherEsprit(){
+    public void afficherEsprit() {
         System.out.println("--- Esprit de " + this.jeuNom + " ---");
-        if(esprit.isEmpty()){
+        if (esprit.isEmpty()) {
             System.out.println("Le grimoire est vide.");
             return;
         }
+    }
+}
