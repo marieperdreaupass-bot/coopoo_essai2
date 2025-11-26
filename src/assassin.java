@@ -9,4 +9,8 @@ public class assassin extends perso{
     public void attaquer() {
         System.out.println(jeu.nom + "plante sa lame secrete dans l'adversaire");
     }
+
+    public objet();
+
+    }
 }

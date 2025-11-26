@@ -70,7 +70,17 @@ public class jeu {
             }
             else if (choix2 == 2) {
                 /// a completer
+            System.out.println("Le combat commence");
+            while(boss.PV>=0  or perso.PV )
+            if (boss.vitesse < perso.vitesse) {
 
+            }
+            else if  (boss.vitesse > perso.vitesse) {
+
+            }
+            else if (boss.vitesse == perso.vitesse) {
+
+            }
             }
 
             System.out.println("voulez vous continuer? reponse true / false");

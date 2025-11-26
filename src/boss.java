@@ -6,3 +6,5 @@ public class boss extends perso {
     }
 }
 
+/// /ATTENTION BOSS NE DOIT PAAAASSS EXTENDS PERSO
+

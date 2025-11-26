@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class perso {
 
     protected  static String name;
@@ -31,5 +33,14 @@ public static void afficherInfo() {
         System.out.println(jeu.nom  + "attaque " );
 
     }
+    public void objet(){
+        ArrayList<String> objets;
+
+    }
+
+
 }
+
+
+
 
