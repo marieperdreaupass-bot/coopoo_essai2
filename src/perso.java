@@ -1,48 +1,59 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class perso {
+import java.util.ArrayList;
+import java.util.List;
 
-    protected static String jeuNom ;
-    protected static int PV;
-    protected static int niveau;
-    protected static int degatsDeBase;
-    protected static int vitesse;
+// 1. Majuscule ici (Convention Java)
+public class Perso {
+
+    // 2. PLUS DE STATIC ! Chaque perso a ses propres stats.
+    protected String jeuNom;
+    protected int PV;
+    protected int pvMax;
+    protected int niveau;
+    protected int degatsDeBase;
+    protected int vitesse;
+
     protected List<String> inventaire;
+
     protected int experience;
     protected int experienceRequise;
-    protected int pvMax;
 
-    public perso(String nom, int pv,int degatsDeBase, int vitesse) {
+    // CONSTRUCTEUR
+    public Perso(String nom, int pv, int degatsDeBase, int vitesse) {
         this.jeuNom = nom;
         this.PV = pv;
-        this.pvMax = PV;
-        this.niveau = 1;
+        this.pvMax = pv; // Au début, PV max = PV actuels
         this.degatsDeBase = degatsDeBase;
         this.vitesse = vitesse;
-        this.inventaire = new ArrayList<>();
 
+        this.niveau = 1;
         this.experience = 0;
         this.experienceRequise = 100;
+
+        this.inventaire = new ArrayList<>();
     }
 
-    public void afficherInfo(){
-        System.out.println("Info de " + this.jeuNom + " ---");
+    public void afficherInfo() {
+        System.out.println("--- Info de " + this.jeuNom + " ---");
         System.out.println("Niveau : " + this.niveau);
-        System.out.println("Points de Vie :" + this.PV);
-        System.out.println("Degats de Base :" + this.degatsDeBase);
-        System.out.println("Vitesse :" + this.vitesse);
+        System.out.println("Points de Vie : " + this.PV + "/" + this.pvMax);
+        System.out.println("Dégâts de Base : " + this.degatsDeBase);
+        System.out.println("Vitesse : " + this.vitesse);
     }
 
-    public void attaquer() {
-        System.out.println(this.jeuNom + "attaque (Dégats : " + this.degatsDeBase);
+    // Changé en 'int' pour retourner les dégâts lors du combat
+    public int attaquer() {
+        System.out.println(this.jeuNom + " attaque ! (Puissance : " + this.degatsDeBase + ")");
+        return this.degatsDeBase;
     }
 
-    //Afficher le contenu de l'inventaire
+    // Gestion de l'inventaire
     public void afficherInventaire() {
         System.out.println("--- Inventaire de " + this.jeuNom + " ---");
         if (inventaire.isEmpty()) {
-            System.out.println("L'inventaire est vide.");
+            System.out.println("(Vide)");
         } else {
             for (String item : inventaire) {
                 System.out.println("- " + item);
@@ -50,43 +61,45 @@ public class perso {
         }
     }
 
-    //Ajout d'un objet à l'inventaire
     public void ajouterObjet(String nomObjet) {
         this.inventaire.add(nomObjet);
-        System.out.println(this.jeuNom + " a ajouté objet : " + nomObjet + "à son inventaire.");
+        System.out.println(this.jeuNom + " a obtenu : " + nomObjet);
     }
 
+    // GESTION NIVEAU
     public void gagnerExperience(int montant) {
         this.experience += montant;
-        System.out.println(this.jeuNom + " a gagner experience : " + montant + "XP");
+        System.out.println(this.jeuNom + " a gagné " + montant + " XP.");
+
+        // Boucle while pour passer plusieurs niveaux d'un coup si besoin
         while (this.experience >= this.experienceRequise) {
-            monterdeNiveau();
+            monterDeNiveau();
         }
     }
 
-        public void monterDeNiveau() {
-            this.niveau++;
-            this.experience -= this.experienceRequise; // On soustrait l'XP utilisée (on garde le surplus)
-            this.experienceRequise = (int) (this.experience * 1.5); // on augmente de 50 %
-            this.PV += 200;
-            this.degatsDeBase += 75;
-            this.vitesse += 1;
-            this.pv = this.pvMax; // a definir
-        System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ");
-        System.out.println("Vitesse : " + this.vitesse);
-        System.out.println("PV : " + this.PV);
-        System.out.println("Degats de Base : " + this.degatsDeBase);
-        System.out.println("Experience : " + this.experience);
+    public void monterDeNiveau() {
+        this.niveau++;
+        this.experience -= this.experienceRequise;
 
+        // CORRECTION MATHÉMATIQUE : On multiplie le 'Requis', pas l'actuel
+        this.experienceRequise = (int) (this.experienceRequise * 1.5);
 
-        }
+        // Augmentation des stats
+        this.pvMax += 200;
+        this.PV = this.pvMax; // Soin complet au level up !
+        this.degatsDeBase += 75;
+        this.vitesse += 1;
+
+        System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ✨");
+        System.out.println("Stats -> PV: " + this.PV + " | Dégâts: " + this.degatsDeBase);
     }
+}
 
 //    public void levelUP(int niveau) {
 //        this.niveau = niveau + 1;
 //        System.out.println(this.jeuNom + " a ajouter level " + niveau + ".");
 //    }  --> PAS SUR
-}
+
 
 
 
@@ -179,17 +192,17 @@ public class perso {
 //}
 //
 //
-public void afficherInfo() {
-            System.out.println("Nom : " + jeu.nom);
-            System.out.println("PointsDeVie : " + perso.PV);
-            System.out.println("niveau : " + perso.niveau);
-            System.out.println("degats : " + perso.degatsDeBase);
-            System.out.println("vitesse : " + perso.vitesse);
-    }
-
-
-    public void attaquer(){
-        System.out.println(jeu.nom  + "attaque " );
-
-    }
+//public void afficherInfo() {
+//            System.out.println("Nom : " + jeu.nom);
+//            System.out.println("PointsDeVie : " + perso.PV);
+//            System.out.println("niveau : " + perso.niveau);
+//            System.out.println("degats : " + perso.degatsDeBase);
+//            System.out.println("vitesse : " + perso.vitesse);
+//    }
+//
+//
+//    public void attaquer(){
+//        System.out.println(jeu.nom  + "attaque " );
+//
+//    }
 
