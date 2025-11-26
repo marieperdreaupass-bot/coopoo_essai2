@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class sorcier extends perso {
+public class sorcier extends Perso {
 
     //Attribut spécifique au Sorcier :
     protected int mana;
