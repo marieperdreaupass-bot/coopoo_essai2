@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class boss {
 
-    protected String name;
-    protected int pv;
-    protected int attaque;
-    protected int vitesse;
-    protected int niveau;
+    protected static String name;
+    protected static int pv;
+    protected static int attaque;
+    protected static int vitesse;
+    protected static int niveau;
 
     private final ArrayList<Objet> objets;
     private int resistance;
