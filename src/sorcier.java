@@ -40,9 +40,9 @@ public class sorcier extends perso {
 
         //Polymorphisme de la méthode attaquer()
         @Override
-        public void attaquer() {
+        public int attaquer() {
             System.out.println(this.jeuNom + "lance un sort simple.");
-            System.out.println("Dégâts infligés : " + this.degatsDeBase);
+            return this.degatsDeBase;
         }
 
         //Lancer un sort

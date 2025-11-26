@@ -1,12 +1,34 @@
-public class guerrier extends perso{
-    private int force;
+import java.util.ArrayList;
+import java.util.List;
+
+public class guerrier extends perso {
+
+    //Attribut spécifique au guerrier :
+    protected int rage;
+    private final List<CompRage> esprit;
+
+    //Définition des constantes de classe
+    private static final int PV_DEFAUT = 300;
+    private static final int DEGATS_DEFAUT = 150;
+    private static final int VITESSE_DEFAUT = 5;
+    private static final int RAGE_DEFAUT = 500;
 
     public guerrier(String Nom) {
-        super(jeu.nom, 700,300, 2 );
+        super(Nom,300, 150, 5);
+        this.rage = RAGE_DEFAUT;
+        //Remplissage de l'esprit
+        this.esprit = new ArrayList<>();
+        this.esprit.add(new CompRage("Coup double", 20, 45));
+        //Remplissage de l'inventaire
+        this.ajouterObjet("Hache d'Artélis");
+        this.ajouterObjet("Potion de soulagement : Calme l'esprit pour le préparer à s'enrager.");
+        this.ajouterObjet("Potion de vie");
     }
 
-    @Override
-    public void attaquer() {
-        System.out.println(jeu.nom + "frappe à l'épée");
-    }
-}
+    //Afficher les scompétences de l'esprit
+    public void afficherEsprit(){
+        System.out.println("--- Esprit de " + this.jeuNom + " ---");
+        if(esprit.isEmpty()){
+            System.out.println("Le grimoire est vide.");
+            return;
+        }
