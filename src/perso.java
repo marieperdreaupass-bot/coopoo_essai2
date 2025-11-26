@@ -26,10 +26,29 @@ public class perso {
         System.out.println("Degats de Base :" + this.degatsDeBase);
         System.out.println("Vitesse :" + this.vitesse);
     }
-}
+
     public void attaquer() {
         System.out.println(this.jeuNom + "attaque (Dégats : " + this.degatsDeBase);
     }
+
+    //Afficher le contenu de l'inventaire
+    public void afficherInventaire() {
+        System.out.println("--- Inventaire de " + this.jeuNom + " ---");
+        if (inventaire.isEmpty()) {
+            System.out.println("L'inventaire est vide.");
+        } else {
+            for (String item : inventaire) {
+                System.out.println("- " + item);
+            }
+        }
+    }
+
+    //Ajout d'un objet à l'inventaire
+    public void ajouterObjet(String nomObjet) {
+        this.inventaire.add(nomObjet);
+        System.out.println(this.jeuNom + " a ajouté objet : " + nomObjet + "à son inventaire.");
+    }
+}
 
 
 
@@ -41,15 +60,15 @@ public class perso {
 
 
         //marie core
-    public Runnable objet1() {
-        return null;
-    }
+ //   public Runnable objet1() {
+   //     return null;
+    //}
 
 
-    ArrayList<Runnable> objets;
-    public void objet(){
-        objets=new ArrayList<>();
-        objets.add(objet1());
+    //ArrayList<Runnable> objets;
+   // public void objet(){
+     //   objets=new ArrayList<>();
+       // objets.add(objet1());
 
 //    protected void gagnerObjet(String nomObjet) {
 //        this.inventaire.add(nomObjet);

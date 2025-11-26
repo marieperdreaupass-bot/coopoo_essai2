@@ -18,7 +18,10 @@ public class sorcier extends perso {
             this.mana = MANA_DEFAUT;
             this.grimoire = new ArrayList<>();
             this.grimoire.add(new Sort("Boule de feu", 20, 45));
+            this.inventaire.add()
         }
+
+
 
 
 
