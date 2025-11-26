@@ -1,62 +1,82 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class sorcier extends perso {
+// Convention : Majuscule au début du nom de la classe
+public class Sorcier extends Perso {
 
-    //Attribut spécifique au Sorcier :
+    // Attributs spécifiques
     protected int mana;
     private final List<Sort> grimoire;
 
-    //Définition des constantes de classe
+    // Constantes (Très bonne pratique !)
     private static final int PV_DEFAUT = 300;
     private static final int DEGATS_DEFAUT = 150;
     private static final int VITESSE_DEFAUT = 5;
     private static final int MANA_DEFAUT = 500;
 
-        public sorcier(String Nom) {
-            super(jeu.nom, 300, 150, 5);
-            this.mana = MANA_DEFAUT;
-            //Remplissage du grimoire
-            this.grimoire = new ArrayList<>();
-            this.grimoire.add(new Sort("Boule de feu", 20, 45));
-            //Remplissage de l'inventaire
-            this.ajouterObjet("Grimoire Radiant");
-            this.ajouterObjet("Potion de mana");
-            this.ajouterObjet("Potion de vie");
+    // CONSTRUCTEUR
+    public Sorcier(String nomDonne) {
+        // CORRECTION ICI : On passe 'nomDonne' au super, pas 'jeu.nom'
+        // On envoie les constantes définies au-dessus
+        super(nomDonne, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
+
+        this.mana = MANA_DEFAUT;
+
+        // Remplissage du grimoire
+        this.grimoire = new ArrayList<>();
+        // (Assure-toi d'avoir une classe "Sort" créée ailleurs)
+        this.grimoire.add(new Sort("Boule de feu", 20, 45));
+        this.grimoire.add(new Sort("Eclair de Givre", 15, 30));
+
+        // Remplissage de l'inventaire (méthodes héritées de Perso)
+        this.ajouterObjet("Grimoire Radiant");
+        this.ajouterObjet("Potion de mana");
+    }
+
+    // Afficher les sorts
+    public void afficherGrimoire() {
+        System.out.println("--- Grimoire de " + this.jeuNom + " --- (Mana: " + this.mana + ")");
+        if (grimoire.isEmpty()) {
+            System.out.println("Le grimoire est vide.");
+            return;
         }
 
-        //Afficher les sorts dans le grimoire
-        public void afficherGrimoire(){
-            System.out.println("--- Grimoire de " + this.jeuNom + " ---");
-            if(grimoire.isEmpty()){
-                System.out.println("Le grimoire est vide.");
-                return;
-            }
-        for(int i = 0; i < grimoire.size(); i++){
+        for (int i = 0; i < grimoire.size(); i++) {
             Sort sortActuel = grimoire.get(i);
-            System.out.println("[" + i+1 + "]" + sortActuel.getNom() + "|Mana : " + sortActuel.getCoutMana() + "| Dégâts : " + sortActuel.getDegats());
-        }
-        }
-
-        //Polymorphisme de la méthode attaquer()
-        @Override
-        public void attaquer() {
-            System.out.println(this.jeuNom + "lance un sort simple.");
-            System.out.println("Dégâts infligés : " + this.degatsDeBase);
-        }
-
-        //Lancer un sort
-        public Sort lancerSort(int index) {
-            if(index < 0 || index >= this.grimoire.size()){
-                return null;
-            }
-            //Récupération du sort sélectionné
-            else {
-                return grimoire.get(index);
-            }
-            //Récupération du sort sélectionné
-
-
+            // J'ai ajouté des parenthèses (i+1) pour que l'affichage soit correct (1, 2, 3...)
+            System.out.println("[" + (i + 1) + "] " + sortActuel.getNom()
+                    + " | Coût: " + sortActuel.getCoutMana()
+                    + " | Dégâts: " + sortActuel.getDegats());
         }
     }
 
+    // On surcharge l'attaque de base (si le sorcier n'a plus de mana, il tape avec son bâton)
+    @Override
+    public void attaquer() {
+        System.out.println(this.jeuNom + " donne un coup de bâton !");
+        // return super.attaquer(); // Si tu veux garder la logique de base
+    }
+
+    // Méthode spécifique pour lancer un sort
+    public Sort choisirSort(int index) {
+        // On ajuste l'index car l'utilisateur tape 1, mais la liste commence à 0
+        int indexReel = index - 1;
+
+        if (indexReel < 0 || indexReel >= this.grimoire.size()) {
+            System.out.println("Ce sort n'existe pas !");
+            return null;
+        }
+
+        Sort sortChoisi = grimoire.get(indexReel);
+
+        // Vérification du Mana
+        if (this.mana >= sortChoisi.getCoutMana()) {
+            this.mana -= sortChoisi.getCoutMana();
+            System.out.println(this.jeuNom + " lance " + sortChoisi.getNom() + " !");
+            return sortChoisi;
+        } else {
+            System.out.println("Pas assez de mana !");
+            return null;
+        }
+    }
+}
