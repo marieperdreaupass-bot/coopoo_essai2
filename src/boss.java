@@ -4,5 +4,6 @@ public class boss extends perso {
         super(name, 50000, 300, 2);
 
     }
-}
+
+
 
