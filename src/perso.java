@@ -38,6 +38,7 @@ public class perso {
         System.out.println("Points de Vie : " + this.PV + "/" + this.pvMax);
         System.out.println("Dégâts de Base : " + this.degatsDeBase);
         System.out.println("Vitesse : " + this.vitesse);
+        System.out.println("Niveau : " + this.niveau);
     }
 
     public int attaquer() {
