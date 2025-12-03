@@ -25,7 +25,7 @@ public class perso {
         this.degatsDeBase = degatsDeBase;
         this.vitesse = vitesse;
         this.chanceCritique = 0.2;
-        this.niveau = 0;
+        this.niveau = 1;
         this.experience = 0;
         this.experienceRequise = 100;
 
@@ -38,7 +38,6 @@ public class perso {
         System.out.println("Points de Vie : " + this.PV + "/" + this.pvMax);
         System.out.println("Dégâts de Base : " + this.degatsDeBase);
         System.out.println("Vitesse : " + this.vitesse);
-        System.out.println("Niveau : " + this.niveau);
     }
 
     public int attaquer() {
