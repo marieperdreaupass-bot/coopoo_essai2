@@ -20,16 +20,16 @@ public class sorcier extends perso {
             this.grimoire = new ArrayList<>();
             this.grimoire.add(new Sort("Boule de feu", 20, 45));
             //Remplissage de l'inventaire
-            this.ajouterObjet("Grimoire Radiant");
-            this.ajouterObjet("Potion de mana");
-            this.ajouterObjet("Potion de vie");
+            this.ajouterObjet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts.");
+            this.ajouterObjet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana.");
+            this.ajouterObjet("Larme de Banshee : renferme un pouvoir étrange. vous sentez que votre prochain sort fera des dégâts ravageurs.");
         }
 
         //Afficher les sorts dans le grimoire
         public void afficherGrimoire(){
             System.out.println("--- Grimoire de " + this.jeuNom + " ---");
             if(grimoire.isEmpty()){
-                System.out.println("Le grimoire est vide.");
+                System.out.println("Le grimoire est dénué de sorts.");
                 return;
             }
         for(int i = 0; i < grimoire.size(); i++){
