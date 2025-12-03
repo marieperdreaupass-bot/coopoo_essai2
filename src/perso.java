@@ -9,7 +9,7 @@ public class perso {
     protected int niveau;
     protected int degatsDeBase;
     protected int vitesse;
-    protected int chanceCritique;
+    protected double chanceCritique; //double nous permet de gerer les pourcentages
 
 
     protected List<String> inventaire;
@@ -24,7 +24,7 @@ public class perso {
         this.pvMax = pv; // Au début, PV max = PV actuels
         this.degatsDeBase = degatsDeBase;
         this.vitesse = vitesse;
-
+        this.chanceCritique = 0.2;
         this.niveau = 1;
         this.experience = 0;
         this.experienceRequise = 100;
@@ -40,16 +40,16 @@ public class perso {
         System.out.println("Vitesse : " + this.vitesse);
     }
 
-
+// Creer un objet
     public int attaquer() {
-        boolean estCritique = Math.random() < this.chanceCritique;
+        boolean estCritique = Math.random() < this.chanceCritique; // Math.random() génère entre 0.0 et 1.0. Si < 0.2, c'est critique
         int degatsFinaux = this.degatsDeBase;
         if (estCritique) {
             degatsFinaux = this.degatsDeBase * 2;
-            System.out.println("⚡️ Degats CRITIQUE ⚡️" + degatsFinaux);
+            System.out.println("⚡️ Dégats CRITIQUE ⚡️" + degatsFinaux);
         }
         System.out.println(this.jeuNom + " attaque ! (Puissance : " + this.degatsDeBase + ")");
-        return this.degatsDeBase;
+        return degatsFinaux;
     }
 
     // Gestion de l'inventaire
@@ -98,7 +98,7 @@ public class perso {
     }
 
     public boolean estMort() {
-        return this.PV < 0;
+        return this.PV <= 0;
     }
 
     public String getNom() {
