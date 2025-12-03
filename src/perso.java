@@ -86,20 +86,19 @@ public class perso {
         if (experience >= this.experienceRequise) {
             this.niveau++;
             this.experience -= this.experienceRequise;
+
+
+            this.experienceRequise = (int) (this.experienceRequise * 1.5);
+
+            // Augmentation des stats
+            this.pvMax += 200;
+            this.PV = this.pvMax; // Soin complet au level up !
+            this.degatsDeBase += 75;
+            this.vitesse += 1;
+
+            System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ✨");
+            System.out.println("Stats -> PV: " + this.PV + " | Dégâts: " + this.degatsDeBase);
         }
-
-
-
-        this.experienceRequise = (int) (this.experienceRequise * 1.5);
-
-        // Augmentation des stats
-        this.pvMax += 200;
-        this.PV = this.pvMax; // Soin complet au level up !
-        this.degatsDeBase += 75;
-        this.vitesse += 1;
-
-        System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ✨");
-        System.out.println("Stats -> PV: " + this.PV + " | Dégâts: " + this.degatsDeBase);
     }
 
     public boolean estMort() {
