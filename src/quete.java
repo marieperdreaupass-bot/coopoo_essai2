@@ -1,25 +1,10 @@
 import java.util.ArrayList;
 import java.util.*;
 
-public class quete<nbQuete> { /// extend perso  pour avoir la variable  niveau  ici
-    ///private String[] names;
-    ////private String[] choix;idk si on le garde car complique a coder
-    ///private String[] bonneReponse;
-   /// private String[] description;
-///    private int[] niveaurequis;
-///    ///private Monstre bossDeLaQuete; /// assure que chaque quête est liée à un ennemi spécifique
-    // que votre méthode de combat devra utiliser.
-///    private int[] experienceGagnee; /// Pour la progression du personnage.
-    ///private String[] objetRecompense; /// gérez des items
-    ///private boolean[] estComplete;
-    /// Initialisé à false, il devient true après avoir vaincu
-    /// le boss et donné la récompense.
-///}
-///
+public class quete<nbQuete> {
+
 private ArrayList<String> description;
 private ArrayList<String> bonnneReponse;
-
-
 
 public quete(){
 
@@ -59,25 +44,25 @@ public quete(){
 
 
     bonnneReponse = new ArrayList<>();
-        bonnneReponse.add("Zeus");
-        bonnneReponse.add("Aphrodite");
-        bonnneReponse.add("Hadès (ou le royaume des Enfers)");
-        bonnneReponse.add("Persée");
-    bonnneReponse.add("La Chouette (ou la chouette chevêche)");
+    bonnneReponse.add("Zeus");
+    bonnneReponse.add("Aphrodite");
+    bonnneReponse.add("Hadès");
+    bonnneReponse.add("Persée");
+    bonnneReponse.add("Chouette");
 
-    bonnneReponse.add("Le Léthé (ou l'Oubli)");
+    bonnneReponse.add("Léthé");
     bonnneReponse.add("Poséidon");
-    bonnneReponse.add("Le Minotaure");
+    bonnneReponse.add("Minotaure");
     bonnneReponse.add("Pégase");
     bonnneReponse.add("Hermès");
 
     bonnneReponse.add("Héphaïstos");
     bonnneReponse.add("Atlas");
-    bonnneReponse.add("Cerbère (ou Kerbéros)");
+    bonnneReponse.add("Cerbère");
     bonnneReponse.add("Artémis");
     bonnneReponse.add("Héraclès");
 
-    bonnneReponse.add("La Boîte de Pandore");
+    bonnneReponse.add("boîte de pandore");
     bonnneReponse.add("Séléné");
     bonnneReponse.add("Héphaïstos");
     bonnneReponse.add("Dionysos");
@@ -86,26 +71,19 @@ public quete(){
     bonnneReponse.add("Gaïa");
     bonnneReponse.add("Cronos");
     bonnneReponse.add("Prométhée");
-    bonnneReponse.add("La Montagne");
+    bonnneReponse.add("Montagne");
     bonnneReponse.add("Niké");
 
 
 
 }
 
-    public static int nbQuete ;
+    public int nbQuete ;
     public String getDescription() {
         return description.get( nbQuete);}
-    public String getName() {
-        return names.get( nbQuete);}
-    public String getObjetRecompense() {
-        return objetRecompennse.get(nbQuete);}
+
     public String getBonnneReponse() {
         return bonnneReponse.get(nbQuete);
-    }
-
-
-}
-
+    }}
 
 
