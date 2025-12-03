@@ -18,11 +18,11 @@ public class sorcier extends perso {
             this.mana = MANA_DEFAUT;
             //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
-            this.grimoire.add(new Sort("Boule de feu", 20, 45));
+            this.grimoire.add(new Sort("Boule de feu : ", 20, 45));
             //Remplissage de l'inventaire
             this.ajouterObjet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts.");
             this.ajouterObjet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana.");
-            this.ajouterObjet("Larme de Banshee : renferme un pouvoir étrange. vous sentez que votre prochain sort fera des dégâts ravageurs.");
+            this.ajouterObjet("Larme de Banshee : renferme un pouvoir mystique. Vous sentez que votre prochain sort fera des dégâts ravageurs.");
         }
 
         //Afficher les sorts dans le grimoire
@@ -60,6 +60,7 @@ public class sorcier extends perso {
         public void monterDeNiveau(){
             super.monterDeNiveau();
             this.mana += 100;
+            System.out.println("Mana : " + this.mana);
         }
 
 
