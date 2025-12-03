@@ -25,7 +25,7 @@ public class perso {
         this.degatsDeBase = degatsDeBase;
         this.vitesse = vitesse;
         this.chanceCritique = 0.2;
-        this.niveau = 1;
+        this.niveau = 0;
         this.experience = 0;
         this.experienceRequise = 100;
 
@@ -57,15 +57,15 @@ public class perso {
         if (inventaire.isEmpty()) {
             System.out.println("(Vide)");
         } else {
-            for (String item : inventaire) {
-                System.out.println("- " + item);
+            for (Objet item : inventaire) {
+                System.out.println("- " + item.getNom());
             }
         }
     }
 
-    public void ajouterObjet(String nomObjet) {
-        this.inventaire.add(String nomObjet);
-        System.out.println(this.jeuNom + " a obtenu : " + nomObjet);
+    public void ajouterObjet(Objet nouvelObjet) {
+        this.inventaire.add(nouvelObjet);
+        System.out.println(this.jeuNom + " a obtenu : " + nouvelObjet.getNom());
     }
 
     // GESTION NIVEAU
@@ -74,8 +74,10 @@ public class perso {
         System.out.println(this.jeuNom + " a gagné " + montant + " XP.");
 
         // Boucle while pour passer plusieurs niveaux d'un coup si besoin
-        while (this.experience >= this.experienceRequise) {
+        while (this.experience >= this.experienceRequise && this.experienceRequise > 0) {
             monterDeNiveau();
+
+
         }
     }
 
