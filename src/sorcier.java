@@ -28,7 +28,12 @@ public class sorcier extends perso {
             this.ajouterObjet("Larme de Banshee : renferme un pouvoir mystique. Vous sentez que votre prochain sort fera des dégâts ravageurs.");
         }
 
-        //Afficher les sorts dans le grimoire
+        @Override
+        public void afficherInfo() {
+            System.out.println("Mana : " + this.mana);
+        }
+
+    //Afficher les sorts dans le grimoire
         public void afficherGrimoire(){
             System.out.println("--- Grimoire de " + this.jeuNom + " ---");
             if(grimoire.isEmpty()){
@@ -63,7 +68,6 @@ public class sorcier extends perso {
         public void monterDeNiveau(){
             super.monterDeNiveau();
             this.mana += 100;
-            System.out.println("Mana : " + this.mana);
         }
 
 
