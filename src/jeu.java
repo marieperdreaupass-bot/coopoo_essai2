@@ -31,10 +31,7 @@ public class jeu {
 
         ///  si possible, monter de niveau:
         int EXP = monPerso.experience;
-
-
-
-
+        monPerso.monterDeNiveau();
 
 /// choix quete ou combat
         quete quete = new quete();
