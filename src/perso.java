@@ -83,8 +83,11 @@ public class perso {
     }
 
     public void monterDeNiveau() {
-        this.niveau++;
-        this.experience -= this.experienceRequise;
+        if (experience >= this.experienceRequise) {
+            this.niveau++;
+            this.experience -= this.experienceRequise;
+        }
+
 
 
         this.experienceRequise = (int) (this.experienceRequise * 1.5);
