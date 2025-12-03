@@ -14,7 +14,7 @@ public class Monstre {
 
     public Monstre() {
         salle = new ArrayList<>();
-        salle.add(new Objet("OWOWOWOW", 120));//ajoute les pqrametres))
+        ////salle.add(new Objet(xxxxxxxxxxxx)) ;
     }
 
     public void attaquer() {
