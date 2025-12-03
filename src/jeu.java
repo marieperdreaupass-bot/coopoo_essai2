@@ -28,6 +28,8 @@ public class jeu {
             System.out.println("assassin  "+ nom + " crée");
             monPerso = new assassin(nom);
         }
+        monPerso.afficherInfo();
+        monPerso.afficherInventaire();
 
         ///  si possible, monter de niveau:
         int EXP = monPerso.experience;
