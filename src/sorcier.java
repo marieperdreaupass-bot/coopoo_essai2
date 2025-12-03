@@ -30,6 +30,7 @@ public class sorcier extends perso {
 
         @Override
         public void afficherInfo() {
+            super.afficherInfo();
             System.out.println("Mana : " + this.mana);
         }
 
