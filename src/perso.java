@@ -12,7 +12,7 @@ public class perso {
     protected double chanceCritique; //double nous permet de gerer les pourcentages
 
 
-    protected List<Objet> inventaire;
+    protected List<String> inventaire;
 
     protected int experience;
     protected int experienceRequise;
@@ -57,16 +57,17 @@ public class perso {
         if (inventaire.isEmpty()) {
             System.out.println("(Vide)");
         } else {
-            for (Objet item : inventaire) {
-                System.out.println("- " + item.getNom());
+                for (String item : inventaire) {
+                System.out.println("- " + item);
             }
         }
     }
 
-    public void ajouterObjet(Objet nouvelObjet) {
+    public void ajouterObjet(String nouvelObjet) {
         this.inventaire.add(nouvelObjet);
-        System.out.println(this.jeuNom + " a obtenu : " + nouvelObjet.getNom());
+        System.out.println(this.jeuNom + " a obtenu : " + nouvelObjet + ".");
     }
+
 
     // GESTION NIVEAU
     public void gagnerExperience(int montant) {
