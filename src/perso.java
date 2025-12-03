@@ -12,7 +12,7 @@ public class perso {
     protected double chanceCritique; //double nous permet de gerer les pourcentages
 
 
-    protected List<String> inventaire;
+    protected List<Objet> inventaire;
 
     protected int experience;
     protected int experienceRequise;
@@ -40,7 +40,6 @@ public class perso {
         System.out.println("Vitesse : " + this.vitesse);
     }
 
-// Creer un objet
     public int attaquer() {
         boolean estCritique = Math.random() < this.chanceCritique; // Math.random() génère entre 0.0 et 1.0. Si < 0.2, c'est critique
         int degatsFinaux = this.degatsDeBase;
@@ -65,7 +64,7 @@ public class perso {
     }
 
     public void ajouterObjet(String nomObjet) {
-        this.inventaire.add(nomObjet);
+        this.inventaire.add(String nomObjet);
         System.out.println(this.jeuNom + " a obtenu : " + nomObjet);
     }
 
@@ -114,114 +113,5 @@ public class perso {
     }
 }
 
-//    public void levelUP(int niveau) {
-//        this.niveau = niveau + 1;
-//        System.out.println(this.jeuNom + " a ajouter level " + niveau + ".");
-//    }  --> PAS SUR
 
-
-
-
-
-
-
-
-
-
-
-        //marie core
- //   public Runnable objet1() {
-   //     return null;
-    //}
-
-
-    //ArrayList<Runnable> objets;
-   // public void objet(){
-     //   objets=new ArrayList<>();
-       // objets.add(objet1());
-
-//    protected void gagnerObjet(String nomObjet) {
-//        this.inventaire.add(nomObjet);
-//        System.out.println(this.nom + " a reçu : " + nomObjet);
-//    }
-//
-//
-//
-//
-//        // Afficher ce qu'il y a dans le sac
-//        public void afficherInventaire() {
-//            System.out.println("Inventaire de " + this.nom + " :");
-//            if (inventaire.isEmpty()) {
-//                System.out.println(" - (Vide)");
-//            } else {
-//                for (String objet : inventaire) {
-//                    System.out.println(" - " + objet);
-//                }
-//            }
-//        }
-//
-//        // --- AUTRES METHODES ---
-//
-//        public void afficherInfo() {
-//            System.out.println("--- Infos Perso ---");
-//            System.out.println("Nom : " + this.nom);
-//            System.out.println("PV : " + this.pv);
-//            // On affiche aussi l'inventaire
-//            afficherInventaire();
-//        }
-//
-//        public void attaquer() {
-//            System.out.println(this.nom + " attaque !");
-//        }
-//    }// Utiliser/Perdre un objet (optionnel)
-//    public void perdreObjet(String nomObjet) {
-//        if (this.inventaire.contains(nomObjet)) {
-//            this.inventaire.remove(nomObjet);
-//            System.out.println(this.nom + " a utilisé/perdu : " + nomObjet);
-//        } else {
-//            System.out.println("Objet introuvable !");
-//        }
-//    }
-//
-//    // Afficher ce qu'il y a dans le sac
-//    public void afficherInventaire() {
-//        System.out.println("Inventaire de " + this.nom + " :");
-//        if (inventaire.isEmpty()) {
-//            System.out.println(" - (Vide)");
-//        } else {
-//            for (String objet : inventaire) {
-//                System.out.println(" - " + objet);
-//            }
-//        }
-//    }
-//
-//    // --- AUTRES METHODES ---
-//
-//    public void afficherInfo() {
-//        System.out.println("--- Infos Perso ---");
-//        System.out.println("Nom : " + this.nom);
-//        System.out.println("PV : " + this.pv);
-//        // On affiche aussi l'inventaire
-//        afficherInventaire();
-//    }
-//
-//    public void attaquer() {
-//        System.out.println(this.nom + " attaque !");
-//    }
-//}
-//
-//
-//public void afficherInfo() {
-//            System.out.println("Nom : " + jeu.nom);
-//            System.out.println("PointsDeVie : " + perso.PV);
-//            System.out.println("niveau : " + perso.niveau);
-//            System.out.println("degats : " + perso.degatsDeBase);
-//            System.out.println("vitesse : " + perso.vitesse);
-//    }
-//
-//
-//    public void attaquer(){
-//        System.out.println(jeu.nom  + "attaque " );
-//
-//    }
 
