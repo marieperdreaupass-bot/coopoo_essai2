@@ -12,7 +12,7 @@ public class perso {
     protected double chanceCritique; //double nous permet de gerer les pourcentages
 
 
-    protected List<Objet> inventaire;
+    protected List<String> inventaire;
 
     protected int experience;
     protected int experienceRequise;
@@ -38,6 +38,7 @@ public class perso {
         System.out.println("Points de Vie : " + this.PV + "/" + this.pvMax);
         System.out.println("Dégâts de Base : " + this.degatsDeBase);
         System.out.println("Vitesse : " + this.vitesse);
+        System.out.println("Niveau : " + this.niveau);
     }
 
     public int attaquer() {
@@ -57,16 +58,17 @@ public class perso {
         if (inventaire.isEmpty()) {
             System.out.println("(Vide)");
         } else {
-            for (Objet item : inventaire) {
-                System.out.println("- " + item.getNom());
+                for (String item : inventaire) {
+                System.out.println("- " + item);
             }
         }
     }
 
-    public void ajouterObjet(Objet nouvelObjet) {
+    public void ajouterObjet(String nouvelObjet) {
         this.inventaire.add(nouvelObjet);
-        System.out.println(this.jeuNom + " a obtenu : " + nouvelObjet.getNom());
+        System.out.println(this.jeuNom + " a obtenu : " + nouvelObjet + ".");
     }
+
 
     // GESTION NIVEAU
     public void gagnerExperience(int montant) {
@@ -82,20 +84,22 @@ public class perso {
     }
 
     public void monterDeNiveau() {
-        this.niveau++;
-        this.experience -= this.experienceRequise;
+        if (experience >= this.experienceRequise) {
+            this.niveau++;
+            this.experience -= this.experienceRequise;
 
 
-        this.experienceRequise = (int) (this.experienceRequise * 1.5);
+            this.experienceRequise = (int) (this.experienceRequise * 1.5);
 
-        // Augmentation des stats
-        this.pvMax += 200;
-        this.PV = this.pvMax; // Soin complet au level up !
-        this.degatsDeBase += 75;
-        this.vitesse += 1;
+            // Augmentation des stats
+            this.pvMax += 200;
+            this.PV = this.pvMax; // Soin complet au level up !
+            this.degatsDeBase += 75;
+            this.vitesse += 1;
 
-        System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ✨");
-        System.out.println("Stats -> PV: " + this.PV + " | Dégâts: " + this.degatsDeBase);
+            System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ✨");
+            System.out.println("Stats -> PV: " + this.PV + " | Dégâts: " + this.degatsDeBase);
+        }
     }
 
     public boolean estMort() {
