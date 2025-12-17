@@ -13,20 +13,23 @@ public class jeu {
         String nom = scanner.next();;
         System.out.println(" Choix du perso ");
         System.out.println("1. guerrier ");
-        System.out.println("2. sorcier ");
+        System.out.println("2. sorcier ");/// tableau chaine caract avec boucle pr afficher a chq tour 1 migne
         System.out.println("3. assassin ");
         System.out.print("Choisissez 1 2 ou 3 : ");
         int choix1 = scanner.nextInt();
-        perso  monPerso = null;
-        if (choix1 == 1) {
-            System.out.println("guerrier " + nom + " crée");
-            monPerso = new guerrier(nom);
-        } else if (choix1 == 2) {
-            System.out.println("sorcier " + nom + " crée");
-            monPerso= new sorcier(nom);
-        }else if (choix1 == 3) {
-            System.out.println("assassin  "+ nom + " crée");
-            monPerso = new assassin(nom);
+        perso monPerso = null;
+        while(choix1 < 1 || choix1 >3) { ///  methode pr le choix
+            if (choix1 == 1) {
+                System.out.println("guerrier " + nom + " crée");
+                monPerso = new guerrier(nom);
+            } else if (choix1 == 2) {
+                System.out.println("sorcier " + nom + " crée");
+                monPerso = new sorcier(nom);
+            } else if (choix1 == 3) {
+                System.out.println("assassin  " + nom + " crée");
+                monPerso = new assassin(nom);
+            } else {System.out.println("choix invalide");}
+
         }
         monPerso.afficherInfo();
         monPerso.afficherInventaire();
