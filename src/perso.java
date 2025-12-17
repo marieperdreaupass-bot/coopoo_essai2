@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class perso {
+public class perso extends outils {
 
-    protected String jeuNom;
+    protected String nom;
     protected int PV;
     protected int pvMax;
     protected int niveau;
@@ -18,42 +18,42 @@ public class perso {
     protected int experienceRequise;
 
     // CONSTRUCTEUR
-    public perso(String nom, int pv, int degatsDeBase, int vitesse) {
-        this.jeuNom = nom;
-        this.PV = pv;
-        this.pvMax = pv; // Au début, PV max = PV actuels
-        this.degatsDeBase = degatsDeBase;
-        this.vitesse = vitesse;
-        this.chanceCritique = 0.2;
-        this.niveau = 1;
-        this.experience = 0;
-        this.experienceRequise = 100;
+    public perso(String Nom, int pv, int degatsDeBase, int vitesse) {
+        Nom = nom;
+        PV = pv;
+        pvMax = pv; // Au début, PV max = PV actuels
+        degatsDeBase = degatsDeBase;
+        vitesse = vitesse;
+        chanceCritique = 0.2;
+        niveau = 1;
+        experience = 0;
+        experienceRequise = 100;
 
-        this.inventaire = new ArrayList<>();
+        inventaire = new ArrayList<>();
     }
 
     public void afficherInfo() {
-        System.out.println("--- Info de " + this.jeuNom + " ---");
-        System.out.println("Niveau : " + this.niveau);
-        System.out.println("Points de Vie : " + this.PV + "/" + this.pvMax);
-        System.out.println("Dégâts de Base : " + this.degatsDeBase);
-        System.out.println("Vitesse : " + this.vitesse);
+        System.out.println("--- Info de " + nom + " ---");
+        System.out.println("Niveau : " + niveau);
+        System.out.println("Points de Vie : " + PV + "/" + pvMax);
+        System.out.println("Dégâts de Base : " + degatsDeBase);
+        System.out.println("Vitesse : " + vitesse);
     }
 
     public int attaquer() {
-        boolean estCritique = Math.random() < this.chanceCritique; // Math.random() génère entre 0.0 et 1.0. Si < 0.2, c'est critique
-        int degatsFinaux = this.degatsDeBase;
+        boolean estCritique = Math.random() < chanceCritique; // Math.random() génère entre 0.0 et 1.0. Si < 0.2, c'est critique
+        int degatsFinaux = degatsDeBase;
         if (estCritique) {
-            degatsFinaux = this.degatsDeBase * 2;
+            degatsFinaux = degatsDeBase * 2;
             System.out.println("⚡️ Dégats CRITIQUE ⚡️" + degatsFinaux);
         }
-        System.out.println(this.jeuNom + " attaque ! (Puissance : " + this.degatsDeBase + ")");
+        System.out.println(nom + " attaque ! (Puissance : " + degatsDeBase + ")");
         return degatsFinaux;
     }
 
     // Gestion de l'inventaire
     public void afficherInventaire() {
-        System.out.println("--- Inventaire de " + this.jeuNom + " ---");
+        System.out.println("--- Inventaire de " + nom + " ---");
         if (inventaire.isEmpty()) {
             System.out.println("(Vide)");
         } else {
@@ -64,18 +64,18 @@ public class perso {
     }
 
     public void ajouterObjet(String nouvelObjet) {
-        this.inventaire.add(nouvelObjet);
-        System.out.println(this.jeuNom + " a obtenu : " + nouvelObjet + ".");
+        inventaire.add(nouvelObjet);
+        System.out.println(nom + " a obtenu : " + nouvelObjet + ".");
     }
 
 
     // GESTION NIVEAU
     public void gagnerExperience(int montant) {
-        this.experience += montant;
-        System.out.println(this.jeuNom + " a gagné " + montant + " XP.");
+        experience += montant;
+        System.out.println(nom + " a gagné " + montant + " XP.");
 
         // Boucle while pour passer plusieurs niveaux d'un coup si besoin
-        while (this.experience >= this.experienceRequise && this.experienceRequise > 0) {
+        while (experience >= experienceRequise && experienceRequise > 0) {
             monterDeNiveau();
 
 
@@ -83,38 +83,38 @@ public class perso {
     }
 
     public void monterDeNiveau() {
-        if (experience >= this.experienceRequise) {
-            this.niveau++;
-            this.experience -= this.experienceRequise;
+        if (experience >= experienceRequise) {
+            niveau++;
+            experience -= experienceRequise;
 
 
-            this.experienceRequise = (int) (this.experienceRequise * 1.5);
+            experienceRequise = (int) (experienceRequise * 1.5);
 
             // Augmentation des stats
-            this.pvMax += 200;
-            this.PV = this.pvMax; // Soin complet au level up !
-            this.degatsDeBase += 75;
-            this.vitesse += 1;
+            pvMax += 200;
+            PV = pvMax; // Soin complet au level up !
+            degatsDeBase += 75;
+            vitesse += 1;
 
-            System.out.println("✨ LEVEL UP ! " + this.jeuNom + " passe au niveau " + this.niveau + " ! ✨");
-            System.out.println("Stats -> PV: " + this.PV + " | Dégâts: " + this.degatsDeBase);
+            System.out.println("✨ LEVEL UP ! " + nom + " passe au niveau " + niveau + " ! ✨");
+            System.out.println("Stats -> PV: " + PV + " | Dégâts: " + degatsDeBase);
         }
     }
 
     public boolean estMort() {
-        return this.PV <= 0;
+        return PV <= 0;
     }
 
     public String getNom() {
-        return this.jeuNom;
+        return nom;
     }
 
     public int getPV() {
-        return this.PV;
+        return PV;
     }
 
     public int getNiveau() {
-        return this.niveau;
+        return niveau;
     }
 }
 

@@ -4,35 +4,16 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class jeu {
-    public static String nom;
+    Scanner scanner = new Scanner(System.in);
     public void main (String[] args) {
-        Scanner scanner = new Scanner(System.in);
-// Démarrage du jeu
-        System.out.println("Le jeu commence");
-        System.out.print("Choisissez votre nom ");
-        String nom = scanner.next();;
-        System.out.println(" Choix du perso ");
-        System.out.println("1. guerrier ");
-        System.out.println("2. sorcier ");/// tableau chaine caract avec boucle pr afficher a chq tour 1 migne
-        System.out.println("3. assassin ");
-        System.out.print("Choisissez 1 2 ou 3 : ");
-        int choix1 = scanner.nextInt();
-        perso monPerso = null;
-        while(choix1 < 1 || choix1 >3) { ///  methode pr le choix
-            if (choix1 == 1) {
-                System.out.println("guerrier " + nom + " crée");
-                monPerso = new guerrier(nom);
-            } else if (choix1 == 2) {
-                System.out.println("sorcier " + nom + " crée");
-                monPerso = new sorcier(nom);
-            } else if (choix1 == 3) {
-                System.out.println("assassin  " + nom + " crée");
-                monPerso = new assassin(nom);
-            } else {System.out.println("choix invalide");}
 
-        }
-        monPerso.afficherInfo();
-        monPerso.afficherInventaire();
+// Démarrage du jeu
+outils.afficherDebut();
+outils.choixPerso();
+
+perso monPerso = new perso;
+monPerso.afficherInfo();
+monPerso.afficherInventaire();
 
         ///  si possible, monter de niveau:
         int EXP = monPerso.experience;
