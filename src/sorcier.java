@@ -36,7 +36,7 @@ public class sorcier extends perso {
 
     //Afficher les sorts dans le grimoire
         public void afficherGrimoire(){
-            System.out.println("--- Grimoire de " + this.jeuNom + " ---");
+            System.out.println("--- Grimoire de " + nom + " ---");
             if(grimoire.isEmpty()){
                 System.out.println("Le grimoire est dénué de sorts.");
                 return;
@@ -50,7 +50,7 @@ public class sorcier extends perso {
         //Polymorphisme de la méthode attaquer()
         @Override
         public int attaquer() {
-            System.out.println(this.jeuNom + "lance un sort simple.");
+            System.out.println(nom + "lance un sort simple.");
             return this.degatsDeBase;
         }
 
