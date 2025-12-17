@@ -18,7 +18,7 @@ public class assassin extends perso {
         this.endurance = ENDURANCE_DEFAUT;
         //Remplissage du grimoire
         this.technique = new ArrayList<>();
-        this.technique.add(new Ruse("Coup sournois", 20, 45));
+        this.technique.add(new Ruse("Coup sournois : vous vous glissez derrière votre ennemi", 20, 45));
         //Remplissage de l'inventaire
         this.ajouterObjet("Dague lacérantes");
         this.ajouterObjet("Potion d'endurance");

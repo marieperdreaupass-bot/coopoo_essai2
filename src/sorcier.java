@@ -18,14 +18,14 @@ public class sorcier extends perso {
             this.mana = MANA_DEFAUT;
             //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
-            this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice.", 20, 45));
-            this.grimoire.add(new Sort("Lumière revigorante: faites appel aux esprits pour soigner vos blessures.", 100, -100));
-            this.grimoire.add(new Sort("Fouet d'épines : faites apparaître un long fouet d'épines pour battre vos ennemis.", 50, 35));
-            this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis.", 300, 500));
+            this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice", 20, 45));
+            this.grimoire.add(new Sort("Lumière revigorante: faites appel aux esprits pour soigner vos blessures", 100, -100));
+            this.grimoire.add(new Sort("Fouet d'épines : faites apparaître un long fouet d'épines pour battre vos ennemis", 50, 35));
+            this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis", 300, 500));
             //Remplissage de l'inventaire
-            this.ajouterObjet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts.");
-            this.ajouterObjet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana.");
-            this.ajouterObjet("Larme de Banshee : renferme un pouvoir mystique. Vous sentez que votre prochain sort fera des dégâts ravageurs.");
+            this.ajouterObjet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts");
+            this.ajouterObjet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana");
+            this.ajouterObjet("Larme de Banshee : renferme un pouvoir mystique. Vous sentez que votre prochain sort fera des dégâts ravageurs");
         }
 
         @Override
