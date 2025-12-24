@@ -2,22 +2,24 @@ import java.util.ArrayList;
 
 public class Monstre {
     // Attributs protégés pour que boss et miniboss y aient accès
+    protected int nbBoss;
     protected String name;
     protected int pv;
     protected int pvMax;
     protected int attaque;
     protected int vitesse;
-    protected int resistance;
+    protected int expDonnee;
     protected ArrayList<Objet> objets;
 
     // Constructeur pour initialiser un monstre
-    public Monstre(String name, int pv, int attaque, int vitesse, int resistance) {
+    public Monstre(int nbBoss, String name, int pv, int attaque, int vitesse, int expDonnee) {
+        this.nbBoss = nbBoss;
         this.name = name;
         this.pv = pv;
         this.pvMax = pv;
         this.attaque = attaque;
         this.vitesse = vitesse;
-        this.resistance = resistance;
+        this.expDonnee = expDonnee;
         this.objets = new ArrayList<>();
     }
 
@@ -49,7 +51,6 @@ public class Monstre {
         System.out.println("PV : " + this.pv + "/" + this.pvMax);
         System.out.println("Attaque : " + this.attaque);
         System.out.println("Vitesse : " + this.vitesse);
-        System.out.println("Résistance : " + this.resistance);
         System.out.println("=====================================");
     }
 
@@ -57,11 +58,37 @@ public class Monstre {
     public String getName() { return name; }
     public int getPv() { return pv; }
     public int getVitesse() { return vitesse; }
+    public int getAttaque() { return attaque; }
+    public int getExpDonnee() { return expDonnee; }
+
+    public static class B1 extends Monstre {
+
+        public B1() {
+            // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
+            super(1, "Squelette", 500, 500, 500, 500);
+        }
+
+    }
+
+    public static class B2 extends Monstre{
+
+        public B2() {
+            // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
+            super(2, "chevalier corrompu", 800, 800, 800, 800);
+        }
+    }
+
+    public static class B3 extends Monstre{
+            public B3() {
+                // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
+                super(3, "Geant cyclope", 1000, 1000, 1000, 1000);
+            }
+        }
 }
 
 //import java.util.ArrayList;
 //
-//// Ajoute une liste d'objet avec la fonciton add, le if inde..,
+// Ajoute une liste d'objet avec la fonciton add, le if inde..,
 //public class Monstre {
 //
 //    protected String name;

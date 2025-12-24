@@ -2,7 +2,7 @@ public class boss extends Monstre {
 
     public boss() {
         // Stats beaucoup plus hautes pour le Boss final
-        super("Hades", 7000, 300, 666, 150);
+        super(4,"Hades", 7000, 300, 666, 15000);
 
         // Objets puissants
         this.objets.add(new Objet("Grande Potion de soin", 2000));

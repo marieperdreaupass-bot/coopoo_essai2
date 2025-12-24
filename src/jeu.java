@@ -4,9 +4,9 @@ public class jeu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String nomHero = outils.demanderNom();
-        perso monPerso = outils.choisirClasse(nomHero);
-        quete maQuete = new quete();
+        String nom = outils.demanderNom();
+        perso monPerso = outils.choisirClasse(nom);
+        Quete maQuete = new Quete();
 
         int nbQuetesFaites = 0;
         boolean continuer = true;
@@ -34,19 +34,19 @@ public class jeu {
                     System.out.println("(!) Vous devez combattre un boss pour vous vider la tête !");
                 }
             }
-            else if (choix == 2) {
-                miniboss boss = new miniboss();
-                outils.gererCombat(monPerso, boss);
-
-                nbQuetesFaites = 0;
-                System.out.println(" vous pouvez de nouveau faire des quêtes.");
-            }
-            else if (choix == 3) {
-                monPerso.afficherInfo();
-            }
-            else {
-                continuer = false;
-            }
+//            else if (choix == 2) {
+//                miniboss B1 = new miniboss();
+//                outils.gererCombat(monPerso, B1);
+//
+//                nbQuetesFaites = 0;
+//                System.out.println(" vous pouvez de nouveau faire des quêtes.");
+//            }
+//            else if (choix == 3) {
+//                monPerso.afficherInfo();
+//            }
+//            else {
+//                continuer = false;
+//            }
         }
     }
 }

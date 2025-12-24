@@ -22,8 +22,8 @@ public class perso  {
         this.nom = nom;
         PV = pv;
         pvMax = pv; // Au début, PV max = PV actuels
-        degatsDeBase = degatsDeBase;
-        vitesse = vitesse;
+        this.degatsDeBase = degatsDeBase;
+        this.vitesse = vitesse;
         chanceCritique = 0.2;
         niveau = 1;
         experience = 0;
