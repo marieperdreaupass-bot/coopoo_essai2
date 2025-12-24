@@ -13,8 +13,8 @@ public class guerrier extends perso {
     private static final int VITESSE_DEFAUT = 5;
     private static final int RAGE_DEFAUT = 500;
 
-        public guerrier(String Nom) {
-        super(Nom, 300, 150, 5);
+    public guerrier(String Nom) {
+        super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
         this.rage = RAGE_DEFAUT;
         //Remplissage de l'esprit
         this.esprit = new ArrayList<>();

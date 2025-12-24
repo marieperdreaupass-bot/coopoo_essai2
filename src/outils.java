@@ -8,9 +8,9 @@ public class outils {
 
     // Affiche l'intro et récupère le nom
     public static String demanderNom() {
-        System.out.println("=== BIENVENUE DANS LE JEU ===");
-        System.out.println("Pour jouer, il faut choisir un héros parmi Sorcier, Assassin et Guerrier.");
-        System.out.println("Chacun possède ses propres capacités.");
+        System.out.println("Le jeu va commencer");
+        System.out.println("Pour jouer, il faut choisir un héros parmi Sorcier, Assassin et Guerrier");
+        System.out.println("Chacun possède des spécificités");
         System.out.print("Choisissez votre nom : ");
         return scanner.nextLine();
     }

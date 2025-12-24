@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.*;
 
-public class quete<nbQuete> {
+public class quete {
 
 private ArrayList<String> description;
 private ArrayList<String> bonnneReponse;

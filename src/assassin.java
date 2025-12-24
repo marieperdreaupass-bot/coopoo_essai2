@@ -14,7 +14,7 @@ public class assassin extends perso {
     private static final int ENDURANCE_DEFAUT = 500;
 
     public assassin(String Nom) {
-        super(Nom,300, 150, 5);
+        super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
         this.endurance = ENDURANCE_DEFAUT;
         //Remplissage du grimoire
         this.technique = new ArrayList<>();

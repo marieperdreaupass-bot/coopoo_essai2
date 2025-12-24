@@ -13,9 +13,9 @@ public class sorcier extends perso {
     private static final int VITESSE_DEFAUT = 5;
     private static final int MANA_DEFAUT = 500;
 
-        public sorcier(String Nom) {
-            super(Nom,300, 150, 5);
-            this.mana = MANA_DEFAUT;
+    public sorcier(String Nom) {
+        super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
+        this.mana = MANA_DEFAUT;
             //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
             this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice", 20, 45));
