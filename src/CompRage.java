@@ -24,8 +24,8 @@ public class CompRage {
         return degatsComp;
     }
 
-    public void utiliser(String jeuNom) {
-        System.out.println(jeuNom + "utilise" + this.nomComp + "!");
+    public void utiliser(String nom) {
+        System.out.println(nom + "utilise" + this.nomComp + "!");
     }
 
 }
