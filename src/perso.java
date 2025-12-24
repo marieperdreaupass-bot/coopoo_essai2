@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class perso extends outils {
+public class perso  {
 
     protected String nom;
     protected int PV;
@@ -18,8 +18,8 @@ public class perso extends outils {
     protected int experienceRequise;
 
     // CONSTRUCTEUR
-    public perso(String Nom, int pv, int degatsDeBase, int vitesse) {
-        Nom = nom;
+    public perso(String nom, int pv, int degatsDeBase, int vitesse) {
+        this.nom = nom;
         PV = pv;
         pvMax = pv; // Au début, PV max = PV actuels
         degatsDeBase = degatsDeBase;
@@ -112,9 +112,17 @@ public class perso extends outils {
     public int getPV() {
         return PV;
     }
-
+    public void setPV(int pv) {
+        this.PV = pv;
+    }
     public int getNiveau() {
         return niveau;
+    }
+    public int getDegatsDeBase() {
+        return degatsDeBase;
+    }
+    public int getVitesse() {
+        return vitesse;
     }
 }
 

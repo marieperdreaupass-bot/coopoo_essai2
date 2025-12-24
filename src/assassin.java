@@ -27,7 +27,7 @@ public class assassin extends perso {
 
     //Afficher les ruses dans les techniques
     public void afficherTechniques(){
-        System.out.println("--- Techniques de " + this.jeuNom + " ---");
+        System.out.println("--- Techniques de " + nom + " ---");
         if(technique.isEmpty()){
             System.out.println("Aucune technique n'est connue.");
             return;
@@ -41,7 +41,7 @@ public class assassin extends perso {
     //Polymorphisme de la méthode attaquer()
     @Override
     public int attaquer() {
-        System.out.println(this.jeuNom + "plante ses dagues dans l'ennemi.");
+        System.out.println(nom + "plante ses dagues dans l'ennemi.");
         return this.degatsDeBase;
     }
 

@@ -27,7 +27,7 @@ public class guerrier extends perso {
 
         //Afficher les scompétences de l'esprit
         public void afficherEsprit() {
-            System.out.println("--- Esprit de " + this.jeuNom + " ---");
+            System.out.println("--- Esprit de " + nom + " ---");
             if (esprit.isEmpty()) {
                 System.out.println("Le grimoire est vide.");
                 return;
@@ -41,7 +41,7 @@ public class guerrier extends perso {
     //Polymorphisme de la méthode attaquer()
     @Override
         public int attaquer() {
-            System.out.println(this.jeuNom + "met un coup de lance.");
+            System.out.println(nom + "met un coup de lance.");
             return this.degatsDeBase;
 }
 
