@@ -1,6 +1,6 @@
-public class boss extends Monstre {
+public class Boss extends Monstre {
 
-    public boss() {
+    public Boss() {
         // Stats beaucoup plus hautes pour le Boss final
         super(4,"Hades", 7000, 300, 666, 15000);
 
@@ -15,7 +15,7 @@ public class boss extends Monstre {
     }
 
     // Attaque dévastatrice
-    public void colereOlympienne(perso cible) {
+    public void colereOlympienne(Personnage cible) {
         System.out.println(this.name + " déchaîne la colère des enfers !");
         int degats = this.attaque * 2;
         cible.PV -= degats;

@@ -5,13 +5,13 @@ public class jeu {
         Scanner scanner = new Scanner(System.in);
 
         String nom = outils.demanderNom();
-        perso monPerso = outils.choisirClasse(nom);
+        Personnage monPersonnage = outils.choisirClasse(nom);
         Quete maQuete = new Quete();
 
         int nbQuetesFaites = 0;
         boolean continuer = true;
 
-        while (continuer && !monPerso.estMort()) {
+        while (continuer && !monPersonnage.estMort()) {
             System.out.println("Quêtes de suite : " + nbQuetesFaites + "/5");
             System.out.println("Que voulez-vous faire ?");
             System.out.println("1. Partir en quête (Quiz)");
@@ -25,8 +25,8 @@ public class jeu {
             if (choix == 1) {
                 // ON VERIFIE LA LIMITE ICI
                 if (nbQuetesFaites < 5) {
-                    int gainExp = outils.gererQuete(maQuete, monPerso.experience);
-                    monPerso.gagnerExperience(gainExp);
+                    int gainExp = outils.gererQuete(maQuete, monPersonnage.experience);
+                    monPersonnage.gagnerExperience(gainExp);
                     maQuete.nbQuete++;
                     nbQuetesFaites++;
                 } else {

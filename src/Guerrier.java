@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class guerrier extends perso {
+public class Guerrier extends Personnage {
 
     //Attribut spécifique au guerrier :
     protected int rage;
@@ -13,7 +13,7 @@ public class guerrier extends perso {
     private static final int VITESSE_DEFAUT = 5;
     private static final int RAGE_DEFAUT = 500;
 
-    public guerrier(String Nom) {
+    public Guerrier(String Nom) {
         super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
         this.rage = RAGE_DEFAUT;
         //Remplissage de l'esprit

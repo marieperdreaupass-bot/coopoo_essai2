@@ -16,7 +16,7 @@ public class outils {
     }
 
     // Gère le choix de la classe et RENVOIE le personnage créé
-    public static perso choisirClasse(String nomJoueur) {
+    public static Personnage choisirClasse(String nomJoueur) {
         System.out.println("--- Choix de la classe ---");
         System.out.println("1. Guerrier (Robuste)");
         System.out.println("2. Sorcier (Puissant)");
@@ -30,13 +30,13 @@ public class outils {
 
         if (choix == 1){
                 System.out.println("Guerrier " + nomJoueur + " créé !");
-                return new guerrier(nomJoueur);}
+                return new Guerrier(nomJoueur);}
         if (choix == 2){
                 System.out.println("Sorcier " + nomJoueur + " créé !");
-                return new sorcier(nomJoueur);}
+                return new Sorcier(nomJoueur);}
         if (choix == 1){
                 System.out.println("Assassin " + nomJoueur + " créé !");
-                return new assassin(nomJoueur);}
+                return new Assassin(nomJoueur);}
         return null;
     }
 
@@ -71,7 +71,7 @@ public class outils {
             return 0;
         }}
 
-        public static void gererCombat(perso p, Monstre m) {
+        public static void gererCombat(Personnage p, Monstre m) {
             System.out.println("⚔️ LE COMBAT COMMENCE CONTRE : " + m.getName().toUpperCase());
 
             Scanner sc = new Scanner(System.in);
@@ -104,13 +104,13 @@ public class outils {
 
 
 
-    private static void joueurAttaque(perso p, Monstre b) {
+    private static void joueurAttaque(Personnage p, Monstre b) {
         int degats = p.attaquer();
         b.pv -= degats;
         System.out.println("Vous infligez " + degats + " dégâts.");
     }
 
-    private static void bossAttaque(Monstre b, perso p) {
+    private static void bossAttaque(Monstre b, Personnage p) {
         System.out.println(b.name + " réplique !");
         p.PV -= b.attaque;
         System.out.println("Il vous inflige " + b.attaque + " dégâts.");

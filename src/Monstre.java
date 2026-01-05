@@ -23,7 +23,7 @@ public class Monstre {
         this.objets = new ArrayList<>();
     }
 
-    public void attaquer(perso cible) {
+    public void attaquer(Personnage cible) {
         System.out.println(this.name + " attaque " + cible.getNom() + " !");
         // Les dégâts pourraient être réduits par une future stat de défense du perso
         cible.PV -= this.attaque;

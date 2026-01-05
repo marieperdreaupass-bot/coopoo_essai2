@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class sorcier extends perso {
+public class Sorcier extends Personnage {
 
     //Attribut spécifique au Sorcier :
     protected int mana;
@@ -13,7 +13,7 @@ public class sorcier extends perso {
     private static final int VITESSE_DEFAUT = 5;
     private static final int MANA_DEFAUT = 500;
 
-    public sorcier(String Nom) {
+    public Sorcier(String Nom) {
         super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
         this.mana = MANA_DEFAUT;
             //Remplissage du grimoire

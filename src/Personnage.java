@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class perso  {
+public class Personnage {
 
     protected String nom;
     protected int PV;
@@ -18,7 +18,7 @@ public class perso  {
     protected int experienceRequise;
 
     // CONSTRUCTEUR
-    public perso(String nom, int pv, int degatsDeBase, int vitesse) {
+    public Personnage(String nom, int pv, int degatsDeBase, int vitesse) {
         this.nom = nom;
         PV = pv;
         pvMax = pv; // Au début, PV max = PV actuels

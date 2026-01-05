@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class assassin extends perso {
+public class Assassin extends Personnage {
 
     //Attribut spécifique a l'assassin
     protected int endurance;
@@ -13,7 +13,7 @@ public class assassin extends perso {
     private static final int VITESSE_DEFAUT = 5;
     private static final int ENDURANCE_DEFAUT = 500;
 
-    public assassin(String Nom) {
+    public Assassin(String Nom) {
         super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
         this.endurance = ENDURANCE_DEFAUT;
         //Remplissage du grimoire
