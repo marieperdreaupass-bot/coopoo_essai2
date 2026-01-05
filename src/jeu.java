@@ -8,7 +8,6 @@ public class jeu {
         Personnage monPersonnage = outils.choisirClasse(nom);
         Quete maQuete = new Quete();
 
-        int nbQuetesFaites = 0;
         boolean continuer = true;
 
         while (continuer && !monPersonnage.estMort()) {
@@ -24,25 +23,16 @@ public class jeu {
             int choix = scanner.nextInt();
 
             if (choix == 1) {
-                // ON VERIFIE LA LIMITE ICI
-                if (nbQuetesFaites < 5) {
-                    int gainExp = outils.gererQuete(maQuete, monPersonnage.experience);
-                    monPersonnage.gagnerExperience(gainExp);
-                    maQuete.nbQuete++;
-                    nbQuetesFaites++;
-                } else {
-                    System.out.println("(!) Vous êtes fatigué de répondre à des questions.");
-                    System.out.println("(!) Vous devez combattre un boss pour vous vider la tête !");
-                }
+                maQuete.partirEnQuete();
             }
 
-//            else if (choix == 2) {
-//                miniboss B1 = new miniboss();
-//                outils.gererCombat(monPerso, B1);
-//
-//                nbQuetesFaites = 0;
-//                System.out.println(" vous pouvez de nouveau faire des quêtes.");
-//            }
+            else if (choix == 2) {
+                miniboss B1 = new miniboss();
+                outils.gererCombat(monPerso, B1);
+
+                nbQuetesFaites = 0;
+                System.out.println(" Vous pouvez de nouveau faire des quêtes.");
+            }
 //            else if (choix == 3) {
 //                monPerso.afficherInfo();
 //            }

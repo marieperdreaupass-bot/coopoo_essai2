@@ -1,10 +1,13 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Quete {
 
+    private static Scanner scanner = new Scanner(System.in);
     private ArrayList<String> description;
     private ArrayList<String> bonneReponse;
-    public int nbQuete = 0; // Initialisé à 0 par défaut
+    public int nbQuete = 0;// Initialisé à 0 par défaut
+    public int nbQueteTotal = 0;
 
     public Quete() {
         description = new ArrayList<>();
@@ -73,8 +76,48 @@ public class Quete {
     }
 
     public String getDescription() {
-        return description.get(nbQuete);
+        return description.get(this.nbQuete);
     }
+
+    public void partirEnQuete() {
+        if (nbQuete < 5) {
+            int gainExp = outils.gererQuete(monPersonnage.experience);
+            monPersonnage.gagnerExperience(gainExp);
+            nbQuete++;
+            nbQueteTotal++;
+
+        }
+        else {
+            System.out.println("(!) Vous êtes fatigué de répondre à des questions.");
+            System.out.println("(!) Vous devez combattre un boss pour vous vider la tête !");
+        }
+    }
+
+    public int gererQuete(int expActuelle) {
+        System.out.println("\n--- QUÊTE ---");
+        System.out.println("Question : " + getDescription());
+        System.out.print("Votre réponse : ");
+        String reponse = scanner.next();
+
+        // Normaliser la réponse du joueur
+        String reponseNormalisee = outils.normaliserReponse(reponse);
+
+        // Normaliser la bonne réponse aussi
+        String bonneReponseNormalisee = outils.normaliserReponse(getBonneReponse());
+
+
+        // Comparer les réponses normalisées
+        if (reponseNormalisee.equals(bonneReponseNormalisee)) {
+            System.out.println("Bonne réponse ! +50 EXP");
+            return 50;
+        } else {
+            System.out.println("Mauvaise réponse... La réponse était : " + getBonneReponse());
+            return 0;
+        }
+    }
+
+
+
 
     public String getBonneReponse() {
         return bonneReponse.get(nbQuete);
