@@ -83,35 +83,15 @@ public class Personnage {
     }
 
     public void monterDeNiveau() {
-        if (experience >= experienceRequise) {
-            niveau++;
-            experience -= experienceRequise;
-            experienceRequise = (int) (experienceRequise * 1.5);
-            pvMax += 200;
-            PV = pvMax;
-            degatsDeBase += 75;
-            vitesse += 1;
-            System.out.println("✨ LEVEL UP ! " + nom + " est niveau " + niveau);
-        }
+        niveau++;
+        experience -= experienceRequise;
+        experienceRequise = (int) (experienceRequise * 1.5);
+        pvMax += 200;
+        PV = pvMax;
+        degatsDeBase += 75;
+        vitesse += 1;
+        System.out.println("✨ LEVEL UP ! " + nom + " est niveau " + niveau);
     }
-//    public void monterDeNiveau() {
-//        if (experience >= experienceRequise) {
-//            niveau++;
-//            experience -= experienceRequise;
-//
-//
-//            experienceRequise = (int) (experienceRequise * 1.5);
-//
-//            // Augmentation des stats
-//            pvMax += 200;
-//            PV = pvMax; // Soin complet au level up !
-//            degatsDeBase += 75;
-//            vitesse += 1;
-//
-//            System.out.println("✨ LEVEL UP ! " + nom + " passe au niveau " + niveau + " ! ✨");
-//            System.out.println("Stats -> PV: " + PV + " | Dégâts: " + degatsDeBase);
-//        }
-//    }
 
     public boolean estMort() {
         return PV <= 0;

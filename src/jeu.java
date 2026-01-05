@@ -17,7 +17,8 @@ public class jeu {
             System.out.println("1. Partir en quête (Quiz)");
             System.out.println("2. Combattre le Mini-Boss");
             System.out.println("3. Afficher mes infos");
-            System.out.println("4. Quitter le jeu");
+            System.out.println("4. Afficher mon inventaire");
+            System.out.println("5. Quitter le jeu");
             System.out.print("Choix : ");
 
             int choix = scanner.nextInt();
@@ -34,6 +35,7 @@ public class jeu {
                     System.out.println("(!) Vous devez combattre un boss pour vous vider la tête !");
                 }
             }
+
 //            else if (choix == 2) {
 //                miniboss B1 = new miniboss();
 //                outils.gererCombat(monPerso, B1);
