@@ -12,7 +12,7 @@ public class Personnage {
     protected double chanceCritique; //double nous permet de gerer les pourcentages
 
 
-    protected List<String> inventaire;
+    protected List<Objet> inventaire;
 
     protected int experience;
     protected int experienceRequise;
@@ -57,17 +57,56 @@ public class Personnage {
         if (inventaire.isEmpty()) {
             System.out.println("(Vide)");
         } else {
-                for (String item : inventaire) {
+                for (Objet item : inventaire) {
                 System.out.println("- " + item);
             }
         }
     }
 
-    public void ajouterObjet(String nouvelObjet) {
+    public void ajouterObjet(Objet nouvelObjet) {
         inventaire.add(nouvelObjet);
         System.out.println(nom + " a obtenu : " + nouvelObjet + ".");
     }
 
+    public List<Objet> getInventaire() {
+        return inventaire;
+    }
+    public void utiliserObjet(int index) {
+        if (index >= 0 && index < inventaire.size()) {
+            Objet objetNom = inventaire.get(index);
+            System.out.println(nom + " utilise : " + objetNom);
+
+            // Logique d'effet selon le nom
+            if (objetNom.getNom().equals("Potion de vie")) {
+                this.PV += 100;
+                if (this.PV > this.pvMax) this.PV = this.pvMax;
+                System.out.println("Soin de 100 PV !");
+            }
+            else if (objetNom.getNom().equals("Potion de mana")) {
+                System.out.println("Le mana remonte !");
+            }
+            else if (objetNom.getNom().equals("Potion d'endurance")) {
+                System.out.println("L'endurance remonte !");
+            }
+            else if (objetNom.getNom().equals("Potion de ruse")) {
+                System.out.println("La ruse remonte !");
+            }
+
+            // On retire l'objet après usage
+            inventaire.remove(index);
+        } else {
+            System.out.println("Choix d'objet invalide.");
+        }
+    }
+
+
+    public void recevoirSoin(int montant) {
+        this.PV += montant;
+        if (this.PV > this.pvMax) {
+            this.PV = this.pvMax;
+        }
+        System.out.println(this.nom + " récupère " + montant + " PV ! (Total : " + this.PV + ")");
+    }
 
     // GESTION NIVEAU
     public void gagnerExperience(int montant) {

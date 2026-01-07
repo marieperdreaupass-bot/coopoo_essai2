@@ -28,15 +28,18 @@ public class outils {
             choix = scanner.nextInt();
         }
 
-        if (choix == 1){
+        if (choix == 1) {
             System.out.println("Guerrier " + nomJoueur + " créé !");
-            return new Guerrier(nomJoueur);}
-        if (choix == 2){
+            return new Guerrier(nomJoueur);
+        }
+        if (choix == 2) {
             System.out.println("Sorcier " + nomJoueur + " créé !");
-            return new Sorcier(nomJoueur);}
-        if (choix == 1){
+            return new Sorcier(nomJoueur);
+        }
+        if (choix == 1) {
             System.out.println("Assassin " + nomJoueur + " créé !");
-            return new Assassin(nomJoueur);}
+            return new Assassin(nomJoueur);
+        }
         return null;
     }
 
@@ -81,7 +84,7 @@ public class outils {
         Scanner sc = new Scanner(System.in);
 
         while (p.PV > 0 && m.getPv() > 0) {
-            System.out.println( p.getNom() + " (" + p.PV + " PV) | " + m.getName() + " (" + m.getPv() + " PV)");
+            System.out.println(p.getNom() + " (" + p.PV + " PV) | " + m.getName() + " (" + m.getPv() + " PV)");
             System.out.println("Appuyez sur Entrée pour attaquer !");
             sc.nextLine();
 
@@ -108,16 +111,16 @@ public class outils {
     }
 
 
+    private static void joueurAttaque(Personnage p, Monstre b) {
+        int degats = p.attaquer();
+        b.pv -= degats;
+        System.out.println("Vous infligez " + degats + " dégâts.");
+    }
 
-private static void joueurAttaque(Personnage p, Monstre b) {
-    int degats = p.attaquer();
-    b.pv -= degats;
-    System.out.println("Vous infligez " + degats + " dégâts.");
-}
-
-private static void bossAttaque(Monstre b, Personnage p) {
-    System.out.println(b.name + " réplique !");
-    p.PV -= b.attaque;
-    System.out.println("Il vous inflige " + b.attaque + " dégâts.");
+    private static void bossAttaque(Monstre b, Personnage p) {
+        System.out.println(b.name + " réplique !");
+        p.PV -= b.attaque;
+        System.out.println("Il vous inflige " + b.attaque + " dégâts.");
+    }
 }
 

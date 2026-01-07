@@ -20,9 +20,9 @@ public class Guerrier extends Personnage {
         this.esprit = new ArrayList<>();
         this.esprit.add(new CompRage("Coup double", 20, 45));
         //Remplissage de l'inventaire
-        this.ajouterObjet("Hache d'Artélis");
-        this.ajouterObjet("Potion de soulagement : Calme l'esprit pour le préparer à s'enrager.");
-        this.ajouterObjet("Potion de vie");
+        this.ajouterObjet(new Objet("Hache d'Artélis", DEGATS_DEFAUT));
+        this.ajouterObjet(new Objet("Potion de soulagement : Calme l'esprit pour le préparer à s'enrager.", 250));
+        this.ajouterObjet(new Objet("Potion de vie", 200));
     }
 
         //Afficher les scompétences de l'esprit
@@ -34,7 +34,7 @@ public class Guerrier extends Personnage {
         }
             for (int i = 0; i < esprit.size(); i++) {
                 CompRage CompActuel = esprit.get(i);
-                System.out.println("[" + i + 1 + "]" + CompActuel.getNom() + "|Rage : " + CompActuel.getCoutRage() + "| Dégâts : " + CompActuel.getDegats());
+                System.out.println("[" + (i + 1) + "]" + CompActuel.getNom() + "|Rage : " + CompActuel.getCoutRage() + "| Dégâts : " + CompActuel.getDegats());
             }
         }
 

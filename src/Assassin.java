@@ -20,9 +20,9 @@ public class Assassin extends Personnage {
         this.technique = new ArrayList<>();
         this.technique.add(new Ruse("Coup sournois : vous vous glissez derrière votre ennemi", 20, 45));
         //Remplissage de l'inventaire
-        this.ajouterObjet("Dague lacérantes");
-        this.ajouterObjet("Potion d'endurance");
-        this.ajouterObjet("Potion de vie");
+        this.ajouterObjet(new Objet("Dague lacérantes", DEGATS_DEFAUT));
+        this.ajouterObjet(new Objet("Potion d'endurance", 200));
+        this.ajouterObjet(new Objet("Potion de vie", 150));
     }
 
     //Afficher les ruses dans les techniques
@@ -34,7 +34,7 @@ public class Assassin extends Personnage {
         }
         for(int i = 0; i < technique.size(); i++){
             Ruse ruseActuelle = technique.get(i);
-            System.out.println("[" + i+1 + "]" + ruseActuelle.getNom() + "|Endurance : " + ruseActuelle.getCoutEndurance() + "| Dégâts : " + ruseActuelle.getDegats());
+            System.out.println("[" + (i+1) + "]" + ruseActuelle.getNom() + "|Endurance : " + ruseActuelle.getCoutEndurance() + "| Dégâts : " + ruseActuelle.getDegats());
         }
     }
 

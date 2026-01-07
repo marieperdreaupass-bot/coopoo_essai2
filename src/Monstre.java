@@ -54,6 +54,11 @@ public class Monstre {
         System.out.println("=====================================");
     }
 
+    public void recevoirDegats(int montant) {
+        this.pv -= montant;
+        if (this.pv < 0) this.pv = 0;
+    }
+
     // Getters utiles pour la classe outils/jeu
     public String getName() { return name; }
     public int getPv() { return pv; }

@@ -81,7 +81,7 @@ public class Quete {
 
     public void partirEnQuete() {
         if (nbQuete < 5) {
-            int gainExp = outils.gererQuete(monPersonnage.experience);
+            int gainExp = gererQuete(monPersonnage.experience);
             monPersonnage.gagnerExperience(gainExp);
             nbQuete++;
             nbQueteTotal++;

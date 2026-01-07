@@ -23,9 +23,9 @@ public class Sorcier extends Personnage {
             this.grimoire.add(new Sort("Fouet d'épines : faites apparaître un long fouet d'épines pour battre vos ennemis", 50, 35));
             this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis", 300, 500));
             //Remplissage de l'inventaire
-            this.ajouterObjet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts");
-            this.ajouterObjet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana");
-            this.ajouterObjet("Larme de Banshee : renferme un pouvoir mystique. Vous sentez que votre prochain sort fera des dégâts ravageurs");
+            this.ajouterObjet(new Objet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts", DEGATS_DEFAUT));
+            this.ajouterObjet(new Objet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana", 200));
+            this.ajouterObjet(new Objet("Larme de Banshee : renferme un pouvoir mystique. L'utiliser infligera des dégats monstrueux (c;) au monstre !", 500));
         }
 
         @Override
@@ -43,7 +43,7 @@ public class Sorcier extends Personnage {
             }
         for(int i = 0; i < grimoire.size(); i++){
             Sort sortActuel = grimoire.get(i);
-            System.out.println("[" + i+1 + "]" + sortActuel.getNom() + "|Mana : " + sortActuel.getCoutMana() + "| Dégâts : " + sortActuel.getDegats());
+            System.out.println("[" + (i+1) + "]" + sortActuel.getNom() + "|Mana : " + sortActuel.getCoutMana() + "| Dégâts : " + sortActuel.getDegats());
         }
         }
 

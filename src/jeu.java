@@ -11,7 +11,7 @@ public class jeu {
         boolean continuer = true;
 
         while (continuer && !monPersonnage.estMort()) {
-            System.out.println("Quêtes de suite : " + nbQuetesFaites + "/5");
+            System.out.println("Quêtes de suite : " + maQuete.nbQuete + "/5");
             System.out.println("Que voulez-vous faire ?");
             System.out.println("1. Partir en quête (Quiz)");
             System.out.println("2. Combattre le Mini-Boss");
@@ -30,7 +30,7 @@ public class jeu {
                 miniboss B1 = new miniboss();
                 outils.gererCombat(monPerso, B1);
 
-                nbQuetesFaites = 0;
+                maQuete.nbQuete = 0;
                 System.out.println(" Vous pouvez de nouveau faire des quêtes.");
             }
 //            else if (choix == 3) {
