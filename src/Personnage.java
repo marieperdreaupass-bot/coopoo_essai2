@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Personnage {
+public abstract class Personnage {
 
     protected String nom;
     protected int PV;
@@ -65,14 +65,16 @@ public class Personnage {
 
     // Gestion de l'inventaire
     public void afficherInventaire() {
-        System.out.println("--- Inventaire de " + nom + " ---");
+        System.out.println("\n--- 📦 Inventaire de " + nom + " ---");
         if (inventaire.isEmpty()) {
-            System.out.println("(Vide)");
+            System.out.println("L'inventaire est vide.");
         } else {
-                for (Objet item : inventaire) {
-                System.out.println("- " + item.getNom());
+            for (int i = 0; i < inventaire.size(); i++) {
+                Objet obj = inventaire.get(i);
+                System.out.println("[" + (i + 1) + "] " + obj.getNom() + " (Effet: " + obj.getEffet() + ")");
             }
         }
+        System.out.println("[0] Retour");
     }
 
     public void ajouterObjet(Objet nouvelObjet) {
@@ -92,9 +94,10 @@ public class Personnage {
             System.out.println("\n--- UTILISATION : " + obj.getNom().toUpperCase() + " ---");
 
 
-            if (obj.getNom().equalsIgnoreCase("Larme de Banshee")) {
+            if (nomObj.contains("larme de banshee")) {
                 this.augmenterChanceCritiquePermanente(0.05);
-                inventaire.remove(index); // L'objet est consommé
+                System.out.println("Vos chances de critique ont sont maintenant de " + chanceCritique*100 + "%");
+                inventaire.remove(index);// L'objet est consommé
                 return 0;
             }
 
@@ -210,13 +213,9 @@ public class Personnage {
     public int getNiveau() {
         return niveau;
     }
-    public int getDegatsDeBase() {
-        return degatsDeBase;
-    }
     public int getVitesse() {
         return vitesse;
     }
 }
-
 
 
