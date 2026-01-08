@@ -8,6 +8,7 @@ public class jeu {
         String nom = outils.demanderNom();
         Personnage monPersonnage = outils.choisirClasse(nom);
         Quete maQuete = new Quete();
+        int nbBossVaincus = 0;
 
         boolean continuer = true;
         System.out.println("\n--- BIENVENUE DANS L'ODYSSÉE ---");
@@ -33,36 +34,62 @@ public class jeu {
                     break;
 
                 case 2:
+                    // 1. Message d'avertissement et rappel de la règle des 5 questions
+                    System.out.println("\n⚠️ ATTENTION : Le gardien est très puissant.");
+                    System.out.println("Vous avez validé " + maQuete.nbQuete + "/5 quêtes sur ce palier.");
+
+                    if (maQuete.nbQuete < 5) {
+                        System.out.println("Il vous reste " + (5 - maQuete.nbQuete) + " questions disponibles pour gagner de l'XP avant le combat.");
+                    }
+
+                    System.out.print("Voulez-vous vraiment engager le combat maintenant ? (O/N) : ");
+                    String confirmation = scanner.next();
+
+                    if (confirmation.equalsIgnoreCase("O")) {
+                        // 2. Génération et combat
+                        Monstre bossActuel = Monstre.genererProchainBoss(nbBossVaincus);
+                        SystemeCombat.lancerCombat(monPersonnage, bossActuel);
+
+                        // 3. Si victoire
+                        if (!monPersonnage.estMort()) {
+                            // On reset le compteur de quêtes car on passe au palier suivant
+                            maQuete.nbQuete = 0;
+                            nbBossVaincus++;
+                            System.out.println("\n✨ Victoire éclatante ! Le palier suivant est débloqué.");
+                        }
+                    } else {
+                        System.out.println("Sagesse... Vous retournez vous préparer.");
+                    }
+                    break;
+
                 case 3:
                     monPersonnage.afficherInfo();
                     break;
 
                 case 4:
+                    monPersonnage.afficherInventaire();
+                    break;
+
+                case 5:
+                    continuer = false;
+                    System.out.println("Fin de l'aventure. À bientôt, héros !");
+                    break;
+
                 default:
                     System.out.println("Choix invalide.");
                     break;
 
             }
-            if (choix == 1) {
-                maQuete.partirEnQuetee();
-            }
-
-            else if (choix == 2) {
-                miniboss B1 = new miniboss();
-                outils.gererCombat(monPerso, B1);
-
-                maQuete.nbQuete = 0;
-                System.out.println(" Vous pouvez de nouveau faire des quêtes.");
-            }
-//            else if (choix == 3) {
-//                monPerso.afficherInfo();
-//            }
-//            else {
-//                continuer = false;
-//            }
         }
+
+        if (monPersonnage.estMort()) {
+            System.out.println("\n💀 Votre légende s'arrête ici... Les Enfers vous attendent.");
+        }
+
+        scanner.close();
     }
 }
+
 
 
 
