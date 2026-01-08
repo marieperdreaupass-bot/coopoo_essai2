@@ -7,6 +7,7 @@ public class SystemeCombat {
     // 1. La méthode principale
     public static void lancerCombat(Personnage personnage, Monstre monstre) {
         System.out.println("\n⚔️ " + personnage.getNom() + " entre en combat contre " + monstre.getName() + " !");
+        monstre.afficherStats();
 
         // On détermine qui commence selon la vitesse
         boolean tourDuJoueur = personnage.getVitesse() >= monstre.getVitesse();

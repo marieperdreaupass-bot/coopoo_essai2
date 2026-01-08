@@ -4,23 +4,18 @@ import java.util.List;
 public class Guerrier extends Personnage {
 
     //Attribut spécifique au guerrier :
-    protected int rage;
+    protected int rage = 500;
     private final List<CompRage> esprit;
 
-    //Définition des constantes de classe
-    private static final int PV_DEFAUT = 300;
-    private static final int DEGATS_DEFAUT = 150;
-    private static final int VITESSE_DEFAUT = 5;
-    private static final int RAGE_DEFAUT = 500;
 
     public Guerrier(String Nom) {
-        super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
-        this.rage = RAGE_DEFAUT;
+        super(Nom, 400, 75, 3);
+
         //Remplissage de l'esprit
         this.esprit = new ArrayList<>();
         this.esprit.add(new CompRage("Coup double", 20, 45));
         //Remplissage de l'inventaire
-        this.ajouterObjet(new Objet("Hache d'Artélis", DEGATS_DEFAUT));
+        this.ajouterObjet(new Objet("Hache d'Artélis", degatsDeBase));
         this.ajouterObjet(new Objet("Potion de soulagement : Calme l'esprit pour le préparer à s'enrager.", 250));
         this.ajouterObjet(new Objet("Potion de vie", 200));
     }

@@ -4,23 +4,18 @@ import java.util.List;
 public class Assassin extends Personnage {
 
     //Attribut spécifique a l'assassin
-    protected int endurance;
+    protected int endurance = 500;
     private final List<Ruse> technique;
 
-    //Définition des constantes de classe
-    private static final int PV_DEFAUT = 300;
-    private static final int DEGATS_DEFAUT = 150;
-    private static final int VITESSE_DEFAUT = 5;
-    private static final int ENDURANCE_DEFAUT = 500;
 
     public Assassin(String Nom) {
-        super(Nom, PV_DEFAUT, DEGATS_DEFAUT, VITESSE_DEFAUT);
-        this.endurance = ENDURANCE_DEFAUT;
+        super(Nom, 300, 50, 8);
+
         //Remplissage du grimoire
         this.technique = new ArrayList<>();
         this.technique.add(new Ruse("Coup sournois : vous vous glissez derrière votre ennemi", 20, 45));
         //Remplissage de l'inventaire
-        this.ajouterObjet(new Objet("Dague lacérantes", DEGATS_DEFAUT));
+        this.ajouterObjet(new Objet("Dague lacérantes", degatsDeBase));
         this.ajouterObjet(new Objet("Potion d'endurance", 200));
         this.ajouterObjet(new Objet("Potion de vie", 150));
     }
