@@ -58,14 +58,14 @@ public class Personnage {
             System.out.println("(Vide)");
         } else {
                 for (Objet item : inventaire) {
-                System.out.println("- " + item);
+                System.out.println("- " + item.getNom());
             }
         }
     }
 
     public void ajouterObjet(Objet nouvelObjet) {
         inventaire.add(nouvelObjet);
-        System.out.println(nom + " a obtenu : " + nouvelObjet + ".");
+        System.out.println(nom + " a obtenu : " + nouvelObjet.getNom() + ".");
     }
 
     public List<Objet> getInventaire() {
@@ -74,7 +74,7 @@ public class Personnage {
     public void utiliserObjet(int index) {
         if (index >= 0 && index < inventaire.size()) {
             Objet objetNom = inventaire.get(index);
-            System.out.println(nom + " utilise : " + objetNom);
+            System.out.println(nom + " utilise : " + objetNom.getNom());
 
             // Logique d'effet selon le nom
             if (objetNom.getNom().equals("Potion de vie")) {
