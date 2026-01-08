@@ -99,6 +99,13 @@ public class Personnage {
         }
     }
 
+    public void recevoirDegats(int montant) {
+        this.PV -= montant;
+        if (this.PV < 0) {
+            this.PV = 0;
+        }
+        System.out.println(this.nom + " a reçu " + montant + " points de dégâts ! (PV restants : " + this.PV + ")");
+    }
 
     public void recevoirSoin(int montant) {
         this.PV += montant;
