@@ -75,9 +75,6 @@ public class Quete {
         bonneReponse.add("Hera");
     }
 
-    public String getDescription() {
-        return description.get(this.nbQueteTotal);
-    }
 
     public void partirEnQuete(Personnage personnage) {
         boolean veutContinuer = true;
@@ -117,28 +114,30 @@ public class Quete {
 
     public int gererQuete() {
         System.out.println("\n--- QUÊTE ---");
-        System.out.println("Question : " + description.get(this.nbQueteTotal));
+
+        // On prend toujours le premier élément (0)
+        String questionActuelle = description.get(0);
+        String laBonneReponse = bonneReponse.get(0);
+
+        System.out.println(questionActuelle);
         System.out.print("Votre réponse : ");
-        String reponse = scanner.next();
+        String reponseJoueur = scanner.next();
 
-        // Normaliser la réponse du joueur
-        String reponseNormalisee = outils.normaliserReponse(reponse);
+        // Normalisation
+        String repJ = outils.normaliserReponse(reponseJoueur);
+        String repC = outils.normaliserReponse(laBonneReponse);
 
-        // Normaliser la bonne réponse aussi
-        String bonneReponseNormalisee = outils.normaliserReponse(getBonneReponse());
+        // SUPPRESSION : On retire la question et sa réponse pour ne plus tomber dessus
+        description.remove(0);
+        bonneReponse.remove(0);
 
-
-        // Comparer les réponses normalisées
-        if (reponseNormalisee.equals(bonneReponseNormalisee)) {
-            System.out.println("Bonne réponse ! +50 EXP");
+        if (repJ.equals(repC)) {
+            System.out.println("✨ Bonne réponse ! +50 EXP");
             return 50;
         } else {
-            System.out.println("Mauvaise réponse... La réponse était : " + getBonneReponse());
+            System.out.println("❌ Mauvaise réponse... La réponse était : " + laBonneReponse);
             return 0;
         }
     }
 
-    public String getBonneReponse() {
-        return bonneReponse.get(nbQueteTotal);
-    }
 }
