@@ -41,7 +41,7 @@ public class Assassin extends Personnage {
     //Polymorphisme de la méthode attaquer()
     @Override
     public int attaquer() {
-        System.out.println(nom + "plante ses dagues dans l'ennemi.");
+        System.out.println(nom + " plante ses dagues dans l'ennemi.");
         return this.degatsDeBase;
     }
 

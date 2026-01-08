@@ -50,7 +50,7 @@ public class Sorcier extends Personnage {
         //Polymorphisme de la méthode attaquer()
         @Override
         public int attaquer() {
-            System.out.println(nom + "lance un sort simple.");
+            System.out.println(nom + " lance un sort simple.");
             return this.degatsDeBase;
         }
 

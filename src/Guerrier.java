@@ -41,7 +41,7 @@ public class Guerrier extends Personnage {
     //Polymorphisme de la méthode attaquer()
     @Override
         public int attaquer() {
-            System.out.println(nom + "met un coup de lance.");
+            System.out.println(nom + "  met un coup de lance.");
             return this.degatsDeBase;
 }
 
