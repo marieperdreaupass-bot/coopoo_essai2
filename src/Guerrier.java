@@ -6,7 +6,6 @@ public class Guerrier extends Personnage {
     //Attribut spécifique au guerrier :
     protected int rage = 500;
     private final List<CompRage> esprit;
-    private boolean competenceUtilisee = false;
 
 
     public Guerrier(String Nom) {

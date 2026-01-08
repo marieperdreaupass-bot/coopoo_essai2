@@ -3,23 +3,21 @@ import java.util.List;
 
 public class Sorcier extends Personnage {
 
-    //Attribut spécifique au Sorcier :
     protected int mana = 500;
     private final List<Sort> grimoire;
 
 
     public Sorcier(String Nom) {
         super(Nom, 200, 40, 5);
-            //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
             this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice", 40, 250));
             this.grimoire.add(new Sort("Lumière revigorante: faites appel aux esprits pour soigner vos blessures", 80, -300));
             this.grimoire.add(new Sort("Fouet d'épines : faites apparaître un long fouet d'épines pour battre vos ennemis", 60, 350));
             this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis", 250, 850));
-            //Remplissage de l'inventaire
+
             this.ajouterObjet(new Objet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts", degatsDeBase));
             this.ajouterObjet(new Objet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana", 200));
-            this.ajouterObjet(new Objet("Larme de Banshee : renferme un pouvoir mystique. L'utiliser infligera des dégats monstrueux (c;) au monstre !", 500));
+            this.ajouterObjet(new Objet("Larme de Banshee : renferme un pouvoir mystique. L'utiliser augmentera vos chances de coup critique de 5% !", 0));
         }
 
     public void afficherGrimoire() {
@@ -30,7 +28,6 @@ public class Sorcier extends Personnage {
         }
         for (int i = 0; i < grimoire.size(); i++) {
             Sort s = grimoire.get(i);
-            // On affiche [ÉPUISÉ] si le sort a déjà servi dans le combat
             String statut = s.isUtilise() ? "[ÉPUISÉ]" : "(Mana: " + s.getCoutMana() + ")";
             System.out.println("[" + (i + 1) + "] " + s.getNom() + " " + statut + " | Puissance: " + s.getDegats());
         }
