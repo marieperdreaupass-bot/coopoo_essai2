@@ -3,6 +3,9 @@ public class CompRage {
     protected String nomComp;
     protected int coutRage;
     protected int degatsComp;
+    private boolean utilise = false;
+    public boolean isUtilise() { return utilise; }
+    public void setUtilise(boolean utilise) { this.utilise = utilise; }
 
     //Constructeur pour initialiser un sort
     public CompRage(String nomComp, int coutRage, int degats) {

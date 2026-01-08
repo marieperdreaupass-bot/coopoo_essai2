@@ -20,16 +20,12 @@ public class Assassin extends Personnage {
         this.ajouterObjet(new Objet("Potion de vie", 150));
     }
 
-    //Afficher les ruses dans les techniques
-    public void afficherTechniques(){
-        System.out.println("--- Techniques de " + nom + " ---");
-        if(technique.isEmpty()){
-            System.out.println("Aucune technique n'est connue.");
-            return;
-        }
-        for(int i = 0; i < technique.size(); i++){
-            Ruse ruseActuelle = technique.get(i);
-            System.out.println("[" + (i+1) + "]" + ruseActuelle.getNom() + "|Endurance : " + ruseActuelle.getCoutEndurance() + "| Dégâts : " + ruseActuelle.getDegats());
+    public void afficherTechniques() {
+        System.out.println("\n--- Techniques de " + nom + " ---");
+        for (int i = 0; i < technique.size(); i++) {
+            Ruse r = technique.get(i);
+            String statut = r.isUtilise() ? "[ÉPUISÉ]" : "(Endurance: " + r.getCoutEndurance() + ")";
+            System.out.println("[" + (i + 1) + "] " + r.getNom() + " " + statut + " | Dégâts: " + r.getDegats());
         }
     }
 
@@ -42,15 +38,29 @@ public class Assassin extends Personnage {
 
     //Utiliser une ruse
     public Ruse utiliserRuse(int index) {
-        if(index < 0 || index >= this.technique.size()){
+        if (index < 0 || index >= this.technique.size()) return null;
+
+        Ruse ruse = technique.get(index);
+
+        if (ruse.isUtilise()) {
+            System.out.println("⚠️ Vous avez déjà utilisé cette ruse ! L'ennemi s'y attend.");
             return null;
         }
-        //Récupération de la ruse sélectionnée
-        else {
-            return technique.get(index);
+
+        if (this.endurance >= ruse.getCoutEndurance()) {
+            this.endurance -= ruse.getCoutEndurance();
+            ruse.setUtilise(true); // Verrouille cette ruse
+            return ruse;
+        } else {
+            System.out.println("❌ Pas assez d'endurance !");
+            return null;
         }
-        //Récupération du sort sélectionné
     }
+
+    public void resetToutesCompetences() {
+        for (Ruse r : technique) r.setUtilise(false);
+    }
+
     //Monter de niveau spécifique
     @Override
     public void monterDeNiveau(){

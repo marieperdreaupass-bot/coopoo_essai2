@@ -6,10 +6,11 @@ public class Guerrier extends Personnage {
     //Attribut spécifique au guerrier :
     protected int rage = 500;
     private final List<CompRage> esprit;
+    private boolean competenceUtilisee = false;
 
 
     public Guerrier(String Nom) {
-        super(Nom, 400, 75, 3);
+        super(Nom, 400, 60, 3);
 
         //Remplissage de l'esprit
         this.esprit = new ArrayList<>();
@@ -20,41 +21,51 @@ public class Guerrier extends Personnage {
         this.ajouterObjet(new Objet("Potion de vie", 200));
     }
 
-        //Afficher les scompétences de l'esprit
-        public void afficherEsprit() {
-            System.out.println("--- Esprit de " + nom + " ---");
-            if (esprit.isEmpty()) {
-                System.out.println("Le grimoire est vide.");
-                return;
+    //Afficher les scompétences de l'esprit
+    public void afficherEsprit() {
+        System.out.println("\n--- Esprit de " + nom + " ---");
+        for (int i = 0; i < esprit.size(); i++) {
+            CompRage c = esprit.get(i);
+            String statut = c.isUtilise() ? "[ÉPUISÉ]" : "(Rage: " + c.getCoutRage() + ")";
+            System.out.println("[" + (i + 1) + "] " + c.getNom() + " " + statut + " | Dégâts: " + c.getDegats());
         }
-            for (int i = 0; i < esprit.size(); i++) {
-                CompRage CompActuel = esprit.get(i);
-                System.out.println("[" + (i + 1) + "]" + CompActuel.getNom() + "|Rage : " + CompActuel.getCoutRage() + "| Dégâts : " + CompActuel.getDegats());
-            }
-        }
+    }
 
     //Polymorphisme de la méthode attaquer()
     @Override
-        public int attaquer() {
-            System.out.println(nom + "   met un coup de lance.");
-            return this.degatsDeBase;
-}
+    public int attaquer() {
+        System.out.println(nom + "   met un coup de lance.");
+        return this.degatsDeBase;
+    }
 
     //Sélectionner une compétence
-        public CompRage UtiliserCompetence(int index) {
-        if(index < 0 || index >= this.esprit.size()){
+    public CompRage UtiliserCompetence(int index) {
+        if (index < 0 || index >= this.esprit.size()) return null;
+
+        CompRage comp = esprit.get(index);
+
+        if (comp.isUtilise()) {
+            System.out.println("⚠️ Cette technique a déjà été utilisée dans ce combat !");
             return null;
         }
 
-    //Récupération de la compétence sélectionnée
-        else {
-            return esprit.get(index);
+        if (this.rage >= comp.getCoutRage()) {
+            this.rage -= comp.getCoutRage();
+            comp.setUtilise(true); // Verrouille cette compétence précise
+            return comp;
+        } else {
+            System.out.println("❌ Pas assez de rage !");
+            return null;
         }
-        }
-    //Monter de niveau spécifique
-    @Override
-    public void monterDeNiveau(){
-        super.monterDeNiveau();
-        this.rage += 100;
     }
+
+    public void resetToutesCompetences() {
+        for (CompRage c : esprit) c.setUtilise(false);}
+
+        //Monter de niveau spécifique
+        @Override
+        public void monterDeNiveau () {
+            super.monterDeNiveau();
+            this.rage += 100;
+        }
 }

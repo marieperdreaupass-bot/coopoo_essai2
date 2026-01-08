@@ -24,11 +24,11 @@ public class Monstre {
     public static Monstre genererProchainBoss(int nbBossVaincus) {
         switch (nbBossVaincus) {
             case 0:
-                return new Miniboss("Le Minotaure", 150, 25, 2, 150, "Labyrinthe");
+                return new Miniboss("Le Minotaure", 500, 70, 2, 150, "Labyrinthe");
             case 1:
-                return new Miniboss("L'Hydre de Lerne", 450, 50, 4, 400, "Marais");
+                return new Miniboss("L'Hydre de Lerne", 1250, 150, 4, 400, "Marais");
             case 2:
-                return new Miniboss("Le Cerbère", 1200, 120, 6, 800, "Portes des Enfers");
+                return new Miniboss("Le Cerbère", 2500, 300, 6, 800, "Portes des Enfers");
             default:
                 return new Boss();
         }

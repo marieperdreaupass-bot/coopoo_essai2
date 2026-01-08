@@ -7,8 +7,9 @@ public class Sorcier extends Personnage {
     protected int mana = 500;
     private final List<Sort> grimoire;
 
+
     public Sorcier(String Nom) {
-        super(Nom, 200, 25, 5);
+        super(Nom, 200, 40, 5);
             //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
             this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice", 20, 45));
@@ -21,24 +22,33 @@ public class Sorcier extends Personnage {
             this.ajouterObjet(new Objet("Larme de Banshee : renferme un pouvoir mystique. L'utiliser infligera des dégats monstrueux (c;) au monstre !", 500));
         }
 
+    public void afficherGrimoire() {
+        System.out.println("\n--- Grimoire de " + nom + " ---");
+        if (grimoire.isEmpty()) {
+            System.out.println("Le grimoire est vide.");
+            return;
+        }
+        for (int i = 0; i < grimoire.size(); i++) {
+            Sort s = grimoire.get(i);
+            // On affiche [ÉPUISÉ] si le sort a déjà servi dans le combat
+            String statut = s.isUtilise() ? "[ÉPUISÉ]" : "(Mana: " + s.getCoutMana() + ")";
+            System.out.println("[" + (i + 1) + "] " + s.getNom() + " " + statut + " | Puissance: " + s.getDegats());
+        }
+    }
+
         @Override
         public void afficherInfo() {
             super.afficherInfo();
             System.out.println("Mana : " + this.mana);
         }
 
-    //Afficher les sorts dans le grimoire
-        public void afficherGrimoire(){
-            System.out.println("--- Grimoire de " + nom + " ---");
-            if(grimoire.isEmpty()){
-                System.out.println("Le grimoire est dénué de sorts.");
-                return;
-            }
-        for(int i = 0; i < grimoire.size(); i++){
-            Sort sortActuel = grimoire.get(i);
-            System.out.println("[" + (i+1) + "]" + sortActuel.getNom() + "|Mana : " + sortActuel.getCoutMana() + "| Dégâts : " + sortActuel.getDegats());
+    // Méthode pour tout débloquer après le combat
+    public void resetToutesCompetences() {
+        for (Sort s : grimoire) {
+            s.setUtilise(false);
         }
-        }
+        System.out.println("✨ Le mana résiduel restaure votre grimoire.");
+    }
 
         //Polymorphisme de la méthode attaquer()
         @Override
@@ -49,12 +59,27 @@ public class Sorcier extends Personnage {
 
         //Lancer un sort
         public Sort lancerSort(int index) {
-            if(index < 0 || index >= this.grimoire.size()){
+            if (index < 0 || index >= this.grimoire.size()) {
                 return null;
             }
-            //Récupération du sort sélectionné
-            else {
-                return grimoire.get(index);
+
+            Sort sortChoisi = grimoire.get(index);
+
+            // 1. Vérifier si le sort a déjà été utilisé
+            if (sortChoisi.isUtilise()) {
+                System.out.println("⚠️ Ce sort est épuisé pour ce combat ! Choisissez-en un autre.");
+                return null;
+            }
+
+            // 2. Vérifier le mana
+            if (this.mana >= sortChoisi.getCoutMana()) {
+                this.mana -= sortChoisi.getCoutMana();
+                sortChoisi.setUtilise(true); // Verrouille ce sort précis
+                System.out.println(nom + " lance " + sortChoisi.getNom() + " !");
+                return sortChoisi;
+            } else {
+                System.out.println("❌ Pas assez de mana pour lancer ce sort.");
+                return null;
             }
         }
         //Monter de niveau spécifique

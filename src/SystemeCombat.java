@@ -3,9 +3,11 @@ import java.util.List;
 
 public class SystemeCombat {
     private static Scanner scanner = new Scanner(System.in);
+    private static boolean competenceUtilisee = false;
 
     // 1. La méthode principale
     public static void lancerCombat(Personnage personnage, Monstre monstre) {
+        competenceUtilisee = false;
         System.out.println("\n⚔️ " + personnage.getNom() + " entre en combat contre " + monstre.getName() + " !");
         monstre.afficherStats();
 
@@ -127,5 +129,9 @@ public class SystemeCombat {
         } else {
             System.out.println("\n💀 Vous avez succombé face à " + monstre.getName() + "...");
         }
+        // RÉINITIALISATION DE CHAQUE SORT/COMPÉTENCE
+        if (personnage instanceof Sorcier) ((Sorcier) personnage).resetToutesCompetences();
+        else if (personnage instanceof Guerrier) ((Guerrier) personnage).resetToutesCompetences();
+        else if (personnage instanceof Assassin) ((Assassin) personnage).resetToutesCompetences();
     }
 }

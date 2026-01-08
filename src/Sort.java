@@ -2,6 +2,9 @@ public class Sort {
     protected String nomSort;
     protected int coutMana;
     protected int degatsSort;
+    private boolean utilise = false;
+    public boolean isUtilise() { return utilise; }
+    public void setUtilise(boolean utilise) { this.utilise = utilise; }
 
     //Constructeur pour initialiser un sort
     public Sort(String nom, int coutMana, int degats) {
