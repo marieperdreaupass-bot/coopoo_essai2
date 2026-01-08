@@ -117,6 +117,10 @@ public class Quete {
                 if (choix.equalsIgnoreCase("N")) {
                     veutContinuer = false;
                     System.out.println("Retour au menu principal...");
+                } else if (choix.equalsIgnoreCase("O")) {
+                    // On ne fait rien, la boucle de vérification s'arrête et le 'while' principal continue
+                } else {
+                    System.out.println("⚠️ Choix invalide. Merci de taper 'O' pour Oui ou 'N' pour Non.");
                 }
             } else {
                 System.out.println("\n✅ 5 questions posées ! Palier terminé. Allez affronter le boss.");
