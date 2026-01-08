@@ -73,29 +73,26 @@ public class Personnage {
     }
     public void utiliserObjet(int index) {
         if (index >= 0 && index < inventaire.size()) {
-            Objet objetNom = inventaire.get(index);
-            System.out.println(nom + " utilise : " + objetNom.getNom());
+            Objet obj = inventaire.get(index);
+            System.out.println("\n" + nom + " utilise : " + obj.getNom());
 
-            // Logique d'effet selon le nom
-            if (objetNom.getNom().equals("Potion de vie")) {
-                this.PV += 100;
-                if (this.PV > this.pvMax) this.PV = this.pvMax;
-                System.out.println("Soin de 100 PV !");
+            // On trie l'effet selon le nom de l'objet
+            if (obj.getNom().contains("Potion de vie") || obj.getNom().contains("soin")) {
+                this.recevoirSoin(obj.getEffet());
             }
-            else if (objetNom.getNom().equals("Potion de mana")) {
-                System.out.println("Le mana remonte !");
+            else if (obj.getNom().contains("Épée") || obj.getNom().contains("Dague") || obj.getNom().contains("Grimoire")) {
+                this.degatsDeBase += obj.getEffet();
+                System.out.println("⚔️ Votre attaque augmente de " + obj.getEffet() + " !");
             }
-            else if (objetNom.getNom().equals("Potion d'endurance")) {
-                System.out.println("L'endurance remonte !");
-            }
-            else if (objetNom.getNom().equals("Potion de ruse")) {
-                System.out.println("La ruse remonte !");
+            else if (obj.getNom().contains("endurance") || obj.getNom().contains("Rage") || obj.getNom().contains("Mana")) {
+                // Ici tu peux ajouter la logique pour rendre de la mana/rage selon la classe
+                System.out.println("✨ Vous récupérez de l'énergie !");
             }
 
             // On retire l'objet après usage
             inventaire.remove(index);
         } else {
-            System.out.println("Choix d'objet invalide.");
+            System.out.println("Action impossible : objet introuvable.");
         }
     }
 

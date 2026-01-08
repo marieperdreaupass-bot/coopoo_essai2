@@ -46,25 +46,12 @@ public class SystemeCombat {
                 gererCompetence(personnage, monstre);
                 break;
             case 3:
-               //Faire une méthode utiliserObjet(inspi Personnage) et ajouter ce code
-                List<Objet> sac = personnage.getInventaire();
-                if (sac.isEmpty()) {
-                    System.out.println("Votre sac est vide !");
-                } else {
-                    personnage.afficherInventaire();
-                    System.out.print("Quel numéro d'objet utiliser ? ");
+                // Afficher l'inventaire et demander lequel utiliser
+                personnage.afficherInventaire();
+                if (!personnage.getInventaire().isEmpty()) {
+                    System.out.print("Quel objet utiliser (numéro) ? ");
                     int index = scanner.nextInt() - 1;
-
-                    if (index >= 0 && index < sac.size()) {
-                        Objet obj = sac.get(index);
-                        // Appliquer l'effet (soin)
-                        // on recoit pas forcément du soin : personnage.recevoirSoin(obj.getEffet());
-                        System.out.println("Vous utilisez " + obj.getNom() + " !");
-                        // Retirer l'objet après usage
-                        sac.remove(index);
-                    } else {
-                        System.out.println("Numéro invalide.");
-                    }
+                    personnage.utiliserObjet(index); // Appelle la méthode de Personnage
                 }
                 break;
         }
