@@ -36,7 +36,7 @@ public class jeu {
                 case 2:
                     // 1. Message d'avertissement et rappel de la règle des 5 questions
                     System.out.println("\n⚠️ ATTENTION : Le gardien est très puissant.");
-                    System.out.println("Vous avez validé " + maQuete.nbQuete + "/5 quêtes sur ce palier.");
+                    System.out.println("Vous avez essayé " + maQuete.nbQuete + "/5 quêtes possibles sur ce palier.");
 
                     if (maQuete.nbQuete < 5) {
                         System.out.println("Il vous reste " + (5 - maQuete.nbQuete) + " questions disponibles pour gagner de l'XP avant le combat.");
