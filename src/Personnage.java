@@ -58,6 +58,10 @@ public class Personnage {
         return degatsFinaux;
     }
 
+    public void augmenterChanceCritiquePermanente(double montant) {
+        this.chanceCritique += montant;
+        System.out.println("✨ " + this.nom + " ressent une puissance occulte... Chance critique augmentée de " + (montant * 100) + "% !");
+    }
 
     // Gestion de l'inventaire
     public void afficherInventaire() {
@@ -86,6 +90,13 @@ public class Personnage {
             int valeurEffet = obj.getEffet();
 
             System.out.println("\n--- UTILISATION : " + obj.getNom().toUpperCase() + " ---");
+
+
+            if (obj.getNom().equalsIgnoreCase("Larme de Banshee")) {
+                this.augmenterChanceCritiquePermanente(0.05);
+                inventaire.remove(index); // L'objet est consommé
+                return 0;
+            }
 
             // 1. CAS DES ARMES (Hache, Dague, Grimoire)
             if (nomObj.contains("hache") || nomObj.contains("dague") || nomObj.contains("grimoire")) {

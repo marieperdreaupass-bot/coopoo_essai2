@@ -28,7 +28,7 @@ public class Monstre {
             case 1:
                 return new Miniboss("L'Hydre de Lerne", 1000, 150, 4, 400, "Marais");
             case 2:
-                return new Miniboss("Le Cerbère", 2500, 300, 6, 800, "Portes des Enfers");
+                return new Miniboss("Le Cerbère", 1900, 300, 6, 800, "Portes des Enfers");
             default:
                 return new Boss();
         }

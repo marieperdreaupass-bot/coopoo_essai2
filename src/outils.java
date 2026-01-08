@@ -4,7 +4,6 @@ import java.text.Normalizer;
 
 public class outils {
     private static Scanner scanner = new Scanner(System.in);
-    private static Random random = new Random();
 
     // Affiche l'intro et récupère le nom
     public static String demanderNom() {
@@ -17,15 +16,32 @@ public class outils {
 
     // Gère le choix de la classe et RENVOIE le personnage créé
     public static Personnage choisirClasse(String nomJoueur) {
-        System.out.println("--- Choix de la classe ---");
+        System.out.println("\n--- Choix de la classe ---");
         System.out.println("1. Guerrier (Robuste)");
         System.out.println("2. Sorcier (Puissant)");
         System.out.println("3. Assassin (Rapide)");
 
         int choix = 0;
-        while (choix < 1 || choix > 3) {
+        boolean saisieValide = false;
+
+        // Boucle tant que le choix n'est pas 1, 2 ou 3
+        while (!saisieValide) {
             System.out.print("Entrez 1, 2 ou 3 : ");
-            choix = scanner.nextInt();
+
+            // Vérification si l'entrée est bien un nombre
+            if (scanner.hasNextInt()) {
+                choix = scanner.nextInt();
+
+                if (choix >= 1 && choix <= 3) {
+                    saisieValide = true; // On sort de la boucle
+                } else {
+                    System.out.println("⚠️ Choix invalide ! Veuillez saisir 1, 2 ou 3.");
+                }
+            } else {
+                // Si l'utilisateur a tapé une lettre ou un symbole
+                System.out.println("⚠️ Erreur : Vous devez entrer un chiffre.");
+                scanner.next(); // "Consomme" la mauvaise saisie pour éviter une boucle infinie
+            }
         }
 
         if (choix == 1) {
