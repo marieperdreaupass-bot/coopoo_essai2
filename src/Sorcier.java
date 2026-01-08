@@ -12,10 +12,10 @@ public class Sorcier extends Personnage {
         super(Nom, 200, 40, 5);
             //Remplissage du grimoire
             this.grimoire = new ArrayList<>();
-            this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice", 20, 45));
-            this.grimoire.add(new Sort("Lumière revigorante: faites appel aux esprits pour soigner vos blessures", 100, -100));
-            this.grimoire.add(new Sort("Fouet d'épines : faites apparaître un long fouet d'épines pour battre vos ennemis", 50, 35));
-            this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis", 300, 500));
+            this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice", 40, 250));
+            this.grimoire.add(new Sort("Lumière revigorante: faites appel aux esprits pour soigner vos blessures", 80, -300));
+            this.grimoire.add(new Sort("Fouet d'épines : faites apparaître un long fouet d'épines pour battre vos ennemis", 60, 350));
+            this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis", 250, 850));
             //Remplissage de l'inventaire
             this.ajouterObjet(new Objet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts", degatsDeBase));
             this.ajouterObjet(new Objet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana", 200));
