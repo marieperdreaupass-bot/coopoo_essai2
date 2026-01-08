@@ -79,35 +79,47 @@ public class Quete {
     public void partirEnQuete(Personnage personnage) {
         boolean veutContinuer = true;
 
-        // La boucle continue tant que le joueur veut, qu'il reste des questions
-        // et qu'il n'a pas atteint la limite du palier (5)
-        while (veutContinuer && nbQuete < 5) {
+        // On vérifie si le palier est déjà fini avant de commencer
+        if (nbQuete >= 5) {
+            System.out.println("(!) Vous avez déjà fait vos 5 quêtes. Battez le boss !");
+            return;
+        }
 
-            if (this.nbQueteTotal >= description.size()) {
-                System.out.println("Il n'y a plus de questions disponibles !");
+        while (veutContinuer && nbQuete < 5) {
+            if (description.isEmpty()) {
+                System.out.println("Plus de questions disponibles !");
                 return;
             }
 
-            // 1. On pose la question actuelle
             int gainExp = gererQuete();
+
+            // On augmente le compteur de quêtes posées QUOI QU'IL ARRIVE
+            nbQuete++;
+            nbQueteTotal++;
 
             if (gainExp > 0) {
                 personnage.gagnerExperience(gainExp);
-                nbQuete++;
-                nbQueteTotal++;
             }
 
-            // 2. Si le palier n'est pas fini, on demande s'il veut continuer
+            // On vérifie s'il reste des chances dans le palier
             if (nbQuete < 5) {
-                System.out.print("\nVoulez-vous répondre à une autre question ? (O/N) : ");
-                String choix = scanner.next();
+                String choix = "";
+                // BOUCLE DE VÉRIFICATION O/N
+                while (!choix.equalsIgnoreCase("O") && !choix.equalsIgnoreCase("N")) {
+                    System.out.print("\nVoulez-vous répondre à une autre question ? (O/N) : ");
+                    choix = scanner.next();
+
+                    if (!choix.equalsIgnoreCase("O") && !choix.equalsIgnoreCase("N")) {
+                        System.out.println("⚠️ Réponse invalide. Veuillez taper 'O' pour Oui ou 'N' pour Non.");
+                    }
+                }
 
                 if (choix.equalsIgnoreCase("N")) {
                     veutContinuer = false;
                     System.out.println("Retour au menu principal...");
                 }
             } else {
-                System.out.println("\n✅ Palier de quêtes terminé ! Vous devez vaincre le boss pour continuer.");
+                System.out.println("\n✅ 5 questions posées ! Palier terminé. Allez affronter le boss.");
             }
         }
     }
