@@ -71,29 +71,65 @@ public class Personnage {
     public List<Objet> getInventaire() {
         return inventaire;
     }
-    public void utiliserObjet(int index) {
+    public int utiliserObjet(int index) {
         if (index >= 0 && index < inventaire.size()) {
             Objet obj = inventaire.get(index);
-            System.out.println("\n" + nom + " utilise : " + obj.getNom());
+            String nomObj = obj.getNom().toLowerCase();
+            int valeurEffet = obj.getEffet();
 
-            // On trie l'effet selon le nom de l'objet
-            if (obj.getNom().contains("Potion de vie") || obj.getNom().contains("soin")) {
-                this.recevoirSoin(obj.getEffet());
-            }
-            else if (obj.getNom().contains("Épée") || obj.getNom().contains("Dague") || obj.getNom().contains("Grimoire")) {
-                this.degatsDeBase += obj.getEffet();
-                System.out.println("⚔️ Votre attaque augmente de " + obj.getEffet() + " !");
-            }
-            else if (obj.getNom().contains("endurance") || obj.getNom().contains("Rage") || obj.getNom().contains("Mana")) {
-                // Ici tu peux ajouter la logique pour rendre de la mana/rage selon la classe
-                System.out.println("✨ Vous récupérez de l'énergie !");
+            System.out.println("\n--- UTILISATION : " + obj.getNom().toUpperCase() + " ---");
+
+            // 1. CAS DES ARMES (Hache, Dague, Grimoire)
+            if (nomObj.contains("hache") || nomObj.contains("dague") || nomObj.contains("grimoire")) {
+                if (nomObj.contains("hache"))
+                    System.out.println("Description : Une arme lourde qui décuple la force brute.");
+                else if (nomObj.contains("dague"))
+                    System.out.println("Description : Des lames rapides pour trancher les points vitaux.");
+                else if (nomObj.contains("grimoire"))
+                    System.out.println("Description : Un livre ancien canalisant l'énergie magique.");
+
+                // On appelle l'attaque spécifique de la classe (Guerrier, Sorcier ou Assassin)
+                // L'arme n'est PAS supprimée de l'inventaire (on ne fait pas remove)
+                return this.attaquer();
             }
 
-            // On retire l'objet après usage
-            inventaire.remove(index);
+            // 2. CAS DU SOIN (Potion de vie)
+            else if (nomObj.contains("vie") || nomObj.contains("soin")) {
+                this.recevoirSoin(valeurEffet);
+                inventaire.remove(index); // On consomme la potion
+                return 0;
+            }
+
+            // 3. CAS DE L'ÉNERGIE (Mana, Rage, Endurance)
+            else if (nomObj.contains("mana") || nomObj.contains("rage") || nomObj.contains("endurance") || nomObj.contains("soulagement")) {
+
+                // On vérifie la classe du personnage pour savoir quelle ressource monter
+                if (this instanceof Sorcier) {
+                    Sorcier s = (Sorcier) this;
+                    s.mana += valeurEffet;
+                    if (s.mana > 500) s.mana = 500; // Cap max par défaut
+                    System.out.println("✨ Votre Mana augmente de " + valeurEffet + " ! (Total : " + s.mana + ")");
+                }
+                else if (this instanceof Guerrier) {
+                    Guerrier g = (Guerrier) this;
+                    g.rage += valeurEffet;
+                    if (g.rage > 500) g.rage = 500;
+                    System.out.println("🔥 Votre Rage augmente de " + valeurEffet + " ! (Total : " + g.rage + ")");
+                }
+                else if (this instanceof Assassin) {
+                    Assassin a = (Assassin) this;
+                    a.endurance += valeurEffet;
+                    if (a.endurance > 500) a.endurance = 500;
+                    System.out.println("⚡ Votre Endurance augmente de " + valeurEffet + " ! (Total : " + a.endurance + ")");
+                }
+
+                inventaire.remove(index); // On consomme la potion
+                return 0;
+            }
         } else {
-            System.out.println("Action impossible : objet introuvable.");
+            System.out.println("⚠️ Index invalide ou objet introuvable.");
         }
+        return 0;
     }
 
     public void recevoirDegats(int montant) {

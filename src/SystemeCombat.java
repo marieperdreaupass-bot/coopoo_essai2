@@ -39,19 +39,18 @@ public class SystemeCombat {
 
         switch (choix) {
             case 1:
-                int degats = personnage.attaquer();
-                monstre.recevoirDegats(degats);
+                monstre.recevoirDegats(personnage.attaquer());
                 break;
             case 2:
                 gererCompetence(personnage, monstre);
                 break;
             case 3:
-                // Afficher l'inventaire et demander lequel utiliser
                 personnage.afficherInventaire();
-                if (!personnage.getInventaire().isEmpty()) {
-                    System.out.print("Quel objet utiliser (numéro) ? ");
-                    int index = scanner.nextInt() - 1;
-                    personnage.utiliserObjet(index); // Appelle la méthode de Personnage
+                System.out.print("Choisissez un objet : ");
+                int idx = scanner.nextInt() - 1;
+                int degats = personnage.utiliserObjet(idx); // Appelle la méthode ci-dessus
+                if (degats > 0) {
+                    monstre.recevoirDegats(degats);
                 }
                 break;
         }
