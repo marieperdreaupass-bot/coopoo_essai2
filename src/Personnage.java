@@ -41,15 +41,23 @@ public class Personnage {
     }
 
     public int attaquer() {
-        boolean estCritique = Math.random() < chanceCritique; // Math.random() génère entre 0.0 et 1.0. Si < 0.2, c'est critique
-        int degatsFinaux = degatsDeBase;
+        // 1. On génère un nombre entre 0.0 et 1.0
+        // 2. Si ce nombre est inférieur à chanceCritique (ex: 0.2), c'est un coup critique
+        boolean estCritique = Math.random() < this.chanceCritique;
+
+        int degatsFinaux = this.degatsDeBase;
+
         if (estCritique) {
-            degatsFinaux = degatsDeBase * 2;
-            System.out.println("⚡️ Dégats CRITIQUE ⚡️" + degatsFinaux);
+            degatsFinaux = this.degatsDeBase * 2; // Les dégâts sont doublés
+            System.out.println("⚡️ COUP CRITIQUE ! ⚡️");
+            System.out.println(nom + " inflige un coup dévastateur de " + degatsFinaux + " dégâts !");
+        } else {
+            System.out.println(nom + " attaque normalement. (Puissance : " + degatsFinaux + ")");
         }
-        System.out.println(nom + " attaque ! (Puissance : " + degatsDeBase + ")");
+
         return degatsFinaux;
     }
+
 
     // Gestion de l'inventaire
     public void afficherInventaire() {
@@ -169,7 +177,9 @@ public class Personnage {
         PV = pvMax;
         degatsDeBase += 75;
         vitesse += 1;
+        this.chanceCritique += 0.02; // +2% de chance critique par niveau
         System.out.println("✨ LEVEL UP ! " + nom + " est niveau " + niveau);
+        afficherInfo();
     }
 
     public boolean estMort() {
