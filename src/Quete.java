@@ -80,22 +80,38 @@ public class Quete {
     }
 
     public void partirEnQuete(Personnage personnage) {
-        if (nbQuete < 5) {
-            if (nbQueteTotal >= description.size()) {
+        boolean veutContinuer = true;
+
+        // La boucle continue tant que le joueur veut, qu'il reste des questions
+        // et qu'il n'a pas atteint la limite du palier (5)
+        while (veutContinuer && nbQuete < 5) {
+
+            if (this.nbQueteTotal >= description.size()) {
                 System.out.println("Il n'y a plus de questions disponibles !");
                 return;
             }
+
+            // 1. On pose la question actuelle
             int gainExp = gererQuete();
+
             if (gainExp > 0) {
-                personnage.gagnerExperience(gainExp);;
+                personnage.gagnerExperience(gainExp);
                 nbQuete++;
                 nbQueteTotal++;
             }
 
-        }
-        else {
-            System.out.println("(!) Vous êtes fatigué de répondre à des questions.");
-            System.out.println("(!) Vous devez combattre un boss pour vous vider la tête !");
+            // 2. Si le palier n'est pas fini, on demande s'il veut continuer
+            if (nbQuete < 5) {
+                System.out.print("\nVoulez-vous répondre à une autre question ? (O/N) : ");
+                String choix = scanner.next();
+
+                if (choix.equalsIgnoreCase("N")) {
+                    veutContinuer = false;
+                    System.out.println("Retour au menu principal...");
+                }
+            } else {
+                System.out.println("\n✅ Palier de quêtes terminé ! Vous devez vaincre le boss pour continuer.");
+            }
         }
     }
 
@@ -121,9 +137,6 @@ public class Quete {
             return 0;
         }
     }
-
-
-
 
     public String getBonneReponse() {
         return bonneReponse.get(nbQueteTotal);

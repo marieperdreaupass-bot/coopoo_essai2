@@ -45,12 +45,41 @@ public class SystemeCombat {
                 gererCompetence(personnage, monstre);
                 break;
             case 3:
-                personnage.afficherInventaire();
-                System.out.print("Choisissez un objet : ");
-                int idx = scanner.nextInt() - 1;
-                int degats = personnage.utiliserObjet(idx); // Appelle la méthode ci-dessus
-                if (degats > 0) {
-                    monstre.recevoirDegats(degats);
+                if (personnage.getInventaire().isEmpty()) {
+                    System.out.println("Votre inventaire est vide !");
+                    tourJoueur(personnage, monstre); // Relance le menu
+                } else {
+                    personnage.afficherInventaire();
+                    System.out.print("Numéro de l'objet à utiliser : ");
+                    int index = scanner.nextInt() - 1;
+
+                    if (index >= 0 && index < personnage.getInventaire().size()) {
+                        Objet objChoisi = personnage.getInventaire().get(index);
+                        String nom = objChoisi.getNom().toLowerCase();
+
+                        // --- VÉRIFICATION POUR L'ARME ---
+                        if (nom.contains("hache") || nom.contains("dague") || nom.contains("grimoire")) {
+                            System.out.println("\n⚠️ ATTENTION : Utiliser l'arme via l'inventaire revient à lancer une attaque de base.");
+                            System.out.print("Êtes-vous sûr ? (O/N) : ");
+                            String confirmation = scanner.next();
+
+                            if (confirmation.equalsIgnoreCase("O")) {
+                                int degats = personnage.utiliserObjet(index);
+                                monstre.recevoirDegats(degats);
+                            } else {
+                                System.out.println("Action annulée.");
+                                tourJoueur(personnage, monstre); // REVIENT AU MENU PRINCIPAL DU COMBAT
+                                return; // Quitte l'exécution actuelle du switch
+                            }
+                        }
+                        // --- UTILISATION DIRECTE POUR LES POTIONS ---
+                        else {
+                            personnage.utiliserObjet(index);
+                        }
+                    } else {
+                        System.out.println("Choix invalide.");
+                        tourJoueur(personnage, monstre);
+                    }
                 }
                 break;
         }
