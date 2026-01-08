@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
 public class Monstre {
-    // Attributs protégés pour que boss et miniboss y aient accès
-    protected int nbBoss;
     protected String name;
     protected int pv;
     protected int pvMax;
@@ -12,8 +10,7 @@ public class Monstre {
     protected ArrayList<Objet> objets;
 
     // Constructeur pour initialiser un monstre
-    public Monstre(int nbBoss, String name, int pv, int attaque, int vitesse, int expDonnee) {
-        this.nbBoss = nbBoss;
+    public Monstre(String name, int pv, int attaque, int vitesse, int expDonnee) {
         this.name = name;
         this.pv = pv;
         this.pvMax = pv;
@@ -23,11 +20,30 @@ public class Monstre {
         this.objets = new ArrayList<>();
     }
 
+    //Méthode de génération des ennemis
+    public static Monstre genererProchainBoss(int nbBossVaincus) {
+        switch (nbBossVaincus) {
+            case 0:
+                return new Miniboss("Le Minotaure", 500, 50, 4, 200, "Labyrinthe");
+            case 1:
+                return new Miniboss("L'Hydre de Lerne", 900, 80, 5, 400, "Marais");
+            case 2:
+                return new Miniboss("Le Cerbère", 1500, 120, 6, 800, "Portes des Enfers");
+            default:
+                return new Boss();
+        }
+    }
+
     public void attaquer(Personnage cible) {
         System.out.println(this.name + " attaque " + cible.getNom() + " !");
-        // Les dégâts pourraient être réduits par une future stat de défense du perso
-        cible.PV -= this.attaque;
+        cible.recevoirDegats(this.attaque);
         System.out.println("Dégâts infligés : " + this.attaque);
+    }
+
+    public void recevoirDegats(int montant) {
+        this.pv -= montant;
+        if (this.pv < 0) this.pv = 0;
+        System.out.println("👾 " + this.name + " subit " + montant + " dégâts. (PV : " + this.pv + ")");
     }
 
     public void seSoigner(int montant) {
@@ -54,42 +70,52 @@ public class Monstre {
         System.out.println("=====================================");
     }
 
-    public void recevoirDegats(int montant) {
-        this.pv -= montant;
-        if (this.pv < 0) this.pv = 0;
-    }
 
     // Getters utiles pour la classe outils/jeu
-    public String getName() { return name; }
-    public int getPv() { return pv; }
-    public int getVitesse() { return vitesse; }
-    public int getAttaque() { return attaque; }
-    public int getExpDonnee() { return expDonnee; }
-
-    public static class B1 extends Monstre {
-
-        public B1() {
-            // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
-            super(1, "Squelette", 500, 500, 500, 500);
-        }
-
+    public String getName() {
+        return name;
     }
 
-    public static class B2 extends Monstre{
-
-        public B2() {
-            // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
-            super(2, "chevalier corrompu", 800, 800, 800, 800);
-        }
+    public int getPv() {
+        return pv;
     }
 
-    public static class B3 extends Monstre{
-            public B3() {
-                // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
-                super(3, "Geant cyclope", 1000, 1000, 1000, 1000);
-            }
-        }
+    public int getVitesse() {
+        return vitesse;
+    }
+
+    public int getAttaque() {
+        return attaque;
+    }
+
+    public int getExpDonnee() {
+        return expDonnee;
+    }
 }
+ //   public static class B1 extends Monstre {
+
+   //     public B1() {
+            // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
+     //       super(1, "Squelette", 500, 500, 500, 500);
+       // }
+
+    //}
+
+    //public static class B2 extends Monstre{
+
+      //  public B2() {
+            // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
+        //    super(2, "chevalier corrompu", 800, 800, 800, 800);
+        //}
+    //}
+
+//    public static class B3 extends Monstre{
+//            public B3() {
+                // On envoie les infos à la classe Monstre (nom, pv, attaque, vitesse, exp donnee)
+//                super(3, "Geant cyclope", 1000, 1000, 1000, 1000);
+//            }
+//        }
+//}
 
 //import java.util.ArrayList;
 //

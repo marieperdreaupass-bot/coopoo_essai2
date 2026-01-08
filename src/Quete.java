@@ -76,15 +76,21 @@ public class Quete {
     }
 
     public String getDescription() {
-        return description.get(this.nbQuete);
+        return description.get(this.nbQueteTotal);
     }
 
-    public void partirEnQuete() {
+    public void partirEnQuete(Personnage personnage) {
         if (nbQuete < 5) {
-            int gainExp = gererQuete(monPersonnage.experience);
-            monPersonnage.gagnerExperience(gainExp);
-            nbQuete++;
-            nbQueteTotal++;
+            if (nbQueteTotal >= description.size()) {
+                System.out.println("Il n'y a plus de questions disponibles !");
+                return;
+            }
+            int gainExp = gererQuete();
+            if (gainExp > 0) {
+                personnage.gagnerExperience(gainExp);;
+                nbQuete++;
+                nbQueteTotal++;
+            }
 
         }
         else {
@@ -93,9 +99,9 @@ public class Quete {
         }
     }
 
-    public int gererQuete(int expActuelle) {
+    public int gererQuete() {
         System.out.println("\n--- QUÊTE ---");
-        System.out.println("Question : " + getDescription());
+        System.out.println("Question : " + description.get(this.nbQueteTotal));
         System.out.print("Votre réponse : ");
         String reponse = scanner.next();
 
@@ -120,6 +126,6 @@ public class Quete {
 
 
     public String getBonneReponse() {
-        return bonneReponse.get(nbQuete);
+        return bonneReponse.get(nbQueteTotal);
     }
 }

@@ -2,7 +2,7 @@ public class Boss extends Monstre {
 
     public Boss() {
         // Stats beaucoup plus hautes pour le Boss final
-        super(4,"Hades", 7000, 300, 666, 15000);
+        super("Hades",15000, 7000, 300, 666);
 
         // Objets puissants
         this.objets.add(new Objet("Grande Potion de soin", 2000));
@@ -17,9 +17,20 @@ public class Boss extends Monstre {
     // Attaque dévastatrice
     public void colereOlympienne(Personnage cible) {
         System.out.println(this.name + " déchaîne la colère des enfers !");
-        int degats = this.attaque * 2;
-        cible.PV -= degats;
-        System.out.println("Dégâts dévastateurs : " + degats);
+        int degatsSpeciaux = this.attaque * 2;
+        cible.recevoirDegats(degatsSpeciaux);
+        System.out.println("Dégâts dévastateurs : " + degatsSpeciaux);
+    }
+
+    @Override
+    public void attaquer(Personnage cible) {
+        // 20% de chance de lancer l'attaque spéciale
+        if (Math.random() < 0.2) {
+            colereOlympienne(cible);
+        } else {
+            System.out.println("\n💀 Hades frappe avec son bident !");
+            super.attaquer(cible);
+        }
     }
 }
 

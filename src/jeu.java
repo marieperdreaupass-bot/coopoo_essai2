@@ -4,26 +4,47 @@ public class jeu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        //Initialisation
         String nom = outils.demanderNom();
         Personnage monPersonnage = outils.choisirClasse(nom);
         Quete maQuete = new Quete();
 
         boolean continuer = true;
+        System.out.println("\n--- BIENVENUE DANS L'ODYSSÉE ---");
 
         while (continuer && !monPersonnage.estMort()) {
-            System.out.println("Quêtes de suite : " + maQuete.nbQuete + "/5");
+            System.out.println("\n------------------------------------");
+            System.out.println("Statut : " + monPersonnage.getNom() + " | Niveau : " + monPersonnage.getNiveau());
+            System.out.println("Progression Quêtes : " + maQuete.nbQuete + "/5");
+            System.out.println("------------------------------------");
             System.out.println("Que voulez-vous faire ?");
             System.out.println("1. Partir en quête (Quiz)");
             System.out.println("2. Combattre le Mini-Boss");
-            System.out.println("3. Afficher mes infos");
+            System.out.println("3. Afficher mes statistiques");
             System.out.println("4. Afficher mon inventaire");
             System.out.println("5. Quitter le jeu");
             System.out.print("Choix : ");
 
             int choix = scanner.nextInt();
 
+            switch (choix) {
+                case 1:
+                    maQuete.partirEnQuete(monPersonnage);
+                    break;
+
+                case 2:
+                case 3:
+                    monPersonnage.afficherInfo();
+                    break;
+
+                case 4:
+                default:
+                    System.out.println("Choix invalide.");
+                    break;
+
+            }
             if (choix == 1) {
-                maQuete.partirEnQuete();
+                maQuete.partirEnQuetee();
             }
 
             else if (choix == 2) {
