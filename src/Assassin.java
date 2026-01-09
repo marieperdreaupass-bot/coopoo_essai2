@@ -19,9 +19,9 @@ public class Assassin extends Personnage {
         this.technique.add(new Ruse("Ombre mouvante : invoquez des clones et attaquez votre ennemi simultanément", 200, 750));
         this.technique.add(new Ruse("Execution de l'ombre : à la vitesse de la lumière, donner des centaines de coup à votre ennemi", 350, 2400));
         //Remplissage de l'inventaire
-        this.ajouterObjet(new Objet("Dague lacérantes", degatsDeBase));
-        this.ajouterObjet(new Objet("Potion d'endurance", 200));
-        this.ajouterObjet(new Objet("Potion de vie", 150));
+        this.ajouterObjet(new Objet("Dague lacérantes : armes transmise de votre maître quand vous étiez enfant. Effet : ", degatsDeBase));
+        this.ajouterObjet(new Objet("Potion d'endurance : vous permet de retrouver 200 points d'endurance. ", 200));
+        this.ajouterObjet(new Objet("Potion de vie : vous permet ", 150));
     }
 
     public void afficherTechniques() {
