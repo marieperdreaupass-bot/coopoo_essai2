@@ -13,7 +13,7 @@ public class Sorcier extends Personnage {
             this.grimoire.add(new Sort("Boule de feu : concentrez votre pouvoir dans votre main et lancez une boule de feu dévastatrice", 40, 250));
             this.grimoire.add(new Sort("Lumière revigorante: faites appel aux esprits pour soigner vos blessures", 80, -300));
             this.grimoire.add(new Sort("Fouet d'épines : faites apparaître un long fouet d'épines pour battre vos ennemis", 70, 550));
-            this.grimoire.add(new Sort("Eclair enchaîné : Appeler la puissance de Zeus pour abbatre votre ennemi", 120, 775));
+            this.grimoire.add(new Sort("Eclair enchaîné : Appeler la puissance de Zeus pour abbatre votre ennemi", 120, 1175));
             this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis", 700, 2200));
 
             this.ajouterObjet(new Objet("grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts", degatsDeBase));

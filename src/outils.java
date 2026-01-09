@@ -8,9 +8,15 @@ public class outils {
     // Affiche l'intro et récupère le nom
     public static String demanderNom() {
         System.out.println("Le jeu va commencer");
-        System.out.println("Pour jouer, il faut choisir un héros parmi Sorcier, Assassin et Guerrier");
-        System.out.println("Chacun possède des spécificités");
-        System.out.print("Choisissez votre nom : ");
+        System.out.println("\n--- BIENVENUE DANS L'ODYSSÉE ---");
+        System.out.println("“ Dans ce jeu vous êtes un personnage que vous choisissez parmi Guerrier, Sorcier et Assassin.\n" +
+                " Ils ont chacun des compétences et des objets différents, utilisables 1 seule fois.\n" +
+                " Les compétences sont de différents niveaux, ainsi on vous conseille de garder et utiliser les plus fortes pour la fin.\n" +
+                " Ces compétences vous coûtent des ressources (rage, mana ou endurance en fonction du personnage choisi) , qu'il faut dépenser prudemment. \n" +
+                "Les objets quant à eux peuvent vous apporter des ressources. Cependant, lorsque vous les utilisez, vous passez votre tour et n’attaquez pas alors veillez à les utiliser au bon moment. \n" +
+                "Attention: parfois, vous mettez des dégâts critiques de manière aléatoire, cependant il se peut que le boss final aussi en mette auquel cas vos chances sont minces… ");
+
+        System.out.print("pour commencer, choisissez le nom de votre personnage : ");
         return scanner.nextLine();
     }
 

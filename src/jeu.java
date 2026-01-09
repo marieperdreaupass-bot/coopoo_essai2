@@ -11,7 +11,6 @@ public class jeu {
         int nbBossVaincus = 0;
 
         boolean continuer = true;
-        System.out.println("\n--- BIENVENUE DANS L'ODYSSÉE ---");
 
         while (continuer && !monPersonnage.estMort()) {
             System.out.println("\n------------------------------------");
