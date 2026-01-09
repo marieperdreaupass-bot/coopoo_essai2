@@ -81,6 +81,7 @@ public class Quete {
 
         // On vérifie si le palier est déjà fini avant de commencer
         if (nbQuete >= 5) {
+            System.out.println(" ");
             System.out.println("(!) Vous avez déjà fait vos 5 quêtes. Battez le boss !");
             return;
         }

@@ -58,7 +58,6 @@ public abstract class Personnage {
                 System.out.println("[" + (i + 1) + "] " + obj.getNom() + " (Effet: " + obj.getEffet() + ")");
             }
         }
-        System.out.println("[0] Retour");
     }
 
     public void ajouterObjet(Objet nouvelObjet) {
