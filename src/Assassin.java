@@ -29,7 +29,7 @@ public class Assassin extends Personnage {
     }
 
     @Override
-    public int attaquer()  {
+    public int attaquer() {
         boolean estCritique = Math.random() < this.chanceCritique;
         int degatsFinaux = this.degatsDeBase;
         if (estCritique) {
@@ -71,7 +71,7 @@ public class Assassin extends Personnage {
     }
 
     @Override
-    public void monterDeNiveau(){
+    public void monterDeNiveau() {
         super.monterDeNiveau();
         this.endurance += 100;
     }

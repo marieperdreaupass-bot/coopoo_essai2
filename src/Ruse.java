@@ -3,10 +3,16 @@ public class Ruse {
     protected int coutEndurance;
     protected int degatsRuse;
     private boolean utilise = false;
-    public boolean isUtilise() { return utilise; }
-    public void setUtilise(boolean utilise) { this.utilise = utilise; } // Par défaut utilisable
 
-    public Ruse (String nom, int coutEndurance, int degatsRuse) {
+    public boolean isUtilise() {
+        return utilise;
+    }
+
+    public void setUtilise(boolean utilise) {
+        this.utilise = utilise;
+    } // Par défaut utilisable
+
+    public Ruse(String nom, int coutEndurance, int degatsRuse) {
         this.nomRuse = nom;
         this.coutEndurance = coutEndurance;
         this.degatsRuse = degatsRuse;

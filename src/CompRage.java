@@ -4,8 +4,14 @@ public class CompRage {
     protected int coutRage;
     protected int degatsComp;
     private boolean utilise = false;
-    public boolean isUtilise() { return utilise; }
-    public void setUtilise(boolean utilise) { this.utilise = utilise; }
+
+    public boolean isUtilise() {
+        return utilise;
+    }
+
+    public void setUtilise(boolean utilise) {
+        this.utilise = utilise;
+    }
 
     public CompRage(String nomComp, int coutRage, int degats) {
         this.nomComp = nomComp;

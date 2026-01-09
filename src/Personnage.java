@@ -63,6 +63,7 @@ public abstract class Personnage {
     public List<Objet> getInventaire() {
         return inventaire;
     }
+
     public int utiliserObjet(int index) {
         if (index >= 0 && index < inventaire.size()) {
             Objet obj = inventaire.get(index);
@@ -74,7 +75,7 @@ public abstract class Personnage {
 
             if (nomObj.contains("larme de banshee")) {
                 this.augmenterChanceCritiquePermanente(0.05);
-                System.out.println("Vos chances de critique ont sont maintenant de " + chanceCritique*100 + "%");
+                System.out.println("Vos chances de critique ont sont maintenant de " + chanceCritique * 100 + "%");
                 inventaire.remove(index);
                 return 0;
             }
@@ -88,13 +89,11 @@ public abstract class Personnage {
                 else if (nomObj.contains("grimoire"))
                     System.out.println("Description : Un livre ancien canalisant l'énergie magique.");
                 return this.attaquer();
-            }
-            else if (nomObj.contains("vie")) {
+            } else if (nomObj.contains("vie")) {
                 this.recevoirSoin(obj.getEffet());
                 inventaire.remove(index);
                 return 0;
-            }
-            else if (nomObj.contains("mana") || nomObj.contains("endurance") || nomObj.contains("soulagement")) {
+            } else if (nomObj.contains("mana") || nomObj.contains("endurance") || nomObj.contains("soulagement")) {
                 restaurerRessourceSpecifique(obj.getEffet());
                 inventaire.remove(index);
             } else {
@@ -157,9 +156,11 @@ public abstract class Personnage {
     public int getPV() {
         return PV;
     }
+
     public int getNiveau() {
         return niveau;
     }
+
     public int getVitesse() {
         return vitesse;
     }

@@ -3,8 +3,14 @@ public class Sort {
     protected int coutMana;
     protected int degatsSort;
     private boolean utilise = false;
-    public boolean isUtilise() { return utilise; }
-    public void setUtilise(boolean utilise) { this.utilise = utilise; }
+
+    public boolean isUtilise() {
+        return utilise;
+    }
+
+    public void setUtilise(boolean utilise) {
+        this.utilise = utilise;
+    }
 
     public Sort(String nom, int coutMana, int degats) {
         this.nomSort = nom;

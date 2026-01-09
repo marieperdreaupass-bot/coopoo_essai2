@@ -29,7 +29,7 @@ public class Guerrier extends Personnage {
     }
 
     @Override
-    public int attaquer()  {
+    public int attaquer() {
         boolean estCritique = Math.random() < this.chanceCritique;
         int degatsFinaux = this.degatsDeBase;
         if (estCritique) {
@@ -60,7 +60,8 @@ public class Guerrier extends Personnage {
     }
 
     public void resetToutesCompetences() {
-        for (CompRage c : esprit) c.setUtilise(false);}
+        for (CompRage c : esprit) c.setUtilise(false);
+    }
 
     @Override
     public void restaurerRessourceSpecifique(int montant) {
@@ -69,7 +70,7 @@ public class Guerrier extends Personnage {
     }
 
     @Override
-    public void monterDeNiveau () {
+    public void monterDeNiveau() {
         super.monterDeNiveau();
         this.rage += 100;
     }

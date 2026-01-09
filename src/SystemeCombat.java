@@ -98,8 +98,7 @@ public class SystemeCombat {
                                     System.out.println("Action annulée.");
                                     return;
                                 }
-                            }
-                            else {
+                            } else {
                                 personnage.utiliserObjet(index);
                                 tourFini = true;
                             }
@@ -112,61 +111,61 @@ public class SystemeCombat {
         }
     }
 
-        private static void tourMonstre (Monstre monstre, Personnage personnage){
-            System.out.println("Tour de " + monstre.getName() + " :");
-            monstre.attaquer(personnage);
-        }
+    private static void tourMonstre(Monstre monstre, Personnage personnage) {
+        System.out.println("Tour de " + monstre.getName() + " :");
+        monstre.attaquer(personnage);
+    }
 
-        private static void afficherUniquement (Personnage personnage){
-            if (personnage instanceof Sorcier) {
-                ((Sorcier) personnage).afficherGrimoire();
-            } else if (personnage instanceof Guerrier) {
-                ((Guerrier) personnage).afficherEsprit();
-            } else if (personnage instanceof Assassin) {
-                ((Assassin) personnage).afficherTechniques();
-            }
-        }
-
-        private static void gererCompetence (Personnage personnage, Monstre monstre){
-            if (personnage instanceof Sorcier) {
-                Sorcier s = (Sorcier) personnage;
-                s.afficherGrimoire();
-                System.out.print("Choisissez un sort : ");
-                int index = scanner.nextInt() - 1;
-                Sort sort = s.lancerSort(index);
-                if (sort != null)
-                    if (sort.getDegats() < 0) {
-                        int montantSoin = Math.abs(sort.getDegats());
-                        personnage.recevoirSoin(montantSoin);
-                    }else{
-                        monstre.recevoirDegats(sort.getDegats());
-                    }
-            } else if (personnage instanceof Guerrier) {
-                Guerrier g = (Guerrier) personnage;
-                g.afficherEsprit();
-                System.out.print("Choisissez une technique : ");
-                int index = scanner.nextInt() - 1;
-                CompRage comp = g.UtiliserCompetence(index);
-                if (comp != null) monstre.recevoirDegats(comp.getDegats());
-            } else if (personnage instanceof Assassin) {
-                Assassin a = (Assassin) personnage;
-                a.afficherTechniques();
-                System.out.print("Choisissez une ruse : ");
-                int index = scanner.nextInt() - 1;
-                Ruse ruse = a.utiliserRuse(index);
-                if (ruse != null) monstre.recevoirDegats(ruse.getDegats());
-            }
-        }
-
-        private static void finaliserCombat (Personnage personnage, Monstre monstre){
-            if (personnage.getPV() > 0) {
-                System.out.println("VICTOIRE ! " + monstre.getName() + " a mordu la poussière.");
-                personnage.gagnerExperience(monstre.getExpDonnee());
-            } else {
-                System.out.println("💀 Vous avez succombé face à " + monstre.getName() + "... 💀");
-            }
-            if (personnage instanceof Sorcier) ((Sorcier) personnage).resetToutesCompetences();
-            else if (personnage instanceof Guerrier) ((Guerrier) personnage).resetToutesCompetences();
-            else if (personnage instanceof Assassin) ((Assassin) personnage).resetToutesCompetences();
+    private static void afficherUniquement(Personnage personnage) {
+        if (personnage instanceof Sorcier) {
+            ((Sorcier) personnage).afficherGrimoire();
+        } else if (personnage instanceof Guerrier) {
+            ((Guerrier) personnage).afficherEsprit();
+        } else if (personnage instanceof Assassin) {
+            ((Assassin) personnage).afficherTechniques();
         }
     }
+
+    private static void gererCompetence(Personnage personnage, Monstre monstre) {
+        if (personnage instanceof Sorcier) {
+            Sorcier s = (Sorcier) personnage;
+            s.afficherGrimoire();
+            System.out.print("Choisissez un sort : ");
+            int index = scanner.nextInt() - 1;
+            Sort sort = s.lancerSort(index);
+            if (sort != null)
+                if (sort.getDegats() < 0) {
+                    int montantSoin = Math.abs(sort.getDegats());
+                    personnage.recevoirSoin(montantSoin);
+                } else {
+                    monstre.recevoirDegats(sort.getDegats());
+                }
+        } else if (personnage instanceof Guerrier) {
+            Guerrier g = (Guerrier) personnage;
+            g.afficherEsprit();
+            System.out.print("Choisissez une technique : ");
+            int index = scanner.nextInt() - 1;
+            CompRage comp = g.UtiliserCompetence(index);
+            if (comp != null) monstre.recevoirDegats(comp.getDegats());
+        } else if (personnage instanceof Assassin) {
+            Assassin a = (Assassin) personnage;
+            a.afficherTechniques();
+            System.out.print("Choisissez une ruse : ");
+            int index = scanner.nextInt() - 1;
+            Ruse ruse = a.utiliserRuse(index);
+            if (ruse != null) monstre.recevoirDegats(ruse.getDegats());
+        }
+    }
+
+    private static void finaliserCombat(Personnage personnage, Monstre monstre) {
+        if (personnage.getPV() > 0) {
+            System.out.println("VICTOIRE ! " + monstre.getName() + " a mordu la poussière.");
+            personnage.gagnerExperience(monstre.getExpDonnee());
+        } else {
+            System.out.println("💀 Vous avez succombé face à " + monstre.getName() + "... 💀");
+        }
+        if (personnage instanceof Sorcier) ((Sorcier) personnage).resetToutesCompetences();
+        else if (personnage instanceof Guerrier) ((Guerrier) personnage).resetToutesCompetences();
+        else if (personnage instanceof Assassin) ((Assassin) personnage).resetToutesCompetences();
+    }
+}

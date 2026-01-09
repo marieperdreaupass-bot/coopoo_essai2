@@ -1,7 +1,7 @@
 public class Boss extends Monstre {
 
     public Boss() {
-        super("Hades",3000, 300, 666, 0);
+        super("Hades", 3000, 300, 666, 0);
     }
 
     public void colereOlympienne(Personnage cible) {
