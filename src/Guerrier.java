@@ -19,7 +19,7 @@ public class Guerrier extends Personnage {
         this.esprit.add(new CompRage("Fracas sismique : sautez en l'air et frappez le sol de toute votre force. ", 180, 800));
         this.esprit.add(new CompRage("Exécution d'Ares : renvoyez votre ennemi en enfer", 300, 1800));
         //Remplissage de l'inventaire
-        this.ajouterObjet(new Objet("Hache d'Artélis", degatsDeBase));
+        this.ajouterObjet(new Objet("hache d'Artémis", degatsDeBase));
         this.ajouterObjet(new Objet("Potion de soulagement : calme votre esprit pour en récupérer 250 points.", 250));
         this.ajouterObjet(new Objet("Potion de vie : vous permet de retrouver 500 PV", 500));
     }

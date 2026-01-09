@@ -16,7 +16,7 @@ public class Sorcier extends Personnage {
             this.grimoire.add(new Sort("Eclair enchaîné : Appeler la puissance de Zeus pour abbatre votre ennemi", 120, 775));
             this.grimoire.add(new Sort("Colère de Bahamut : Lancez un laser puissant pulvérisant vos ennemis", 300, 2200));
 
-            this.ajouterObjet(new Objet("Grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts", degatsDeBase));
+            this.ajouterObjet(new Objet("grimoire Radiant : votre fidèle arme vous permettant de lancer des sorts", degatsDeBase));
             this.ajouterObjet(new Objet("Potion de mana : un liquide au goût étrange vous restorant 200 points de mana", 200));
             this.ajouterObjet(new Objet("Larme de Banshee : renferme un pouvoir mystique. L'utiliser augmentera vos chances de coup critique de 5% !", 0));
         }

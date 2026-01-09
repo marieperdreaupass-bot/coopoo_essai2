@@ -26,7 +26,17 @@ public class jeu {
             System.out.println("5. Quitter le jeu");
             System.out.print("Choix : ");
 
-            int choix = scanner.nextInt();
+            int choix = 0;
+            System.out.print("Choix : ");
+
+            if (scanner.hasNextInt()) {
+                choix = scanner.nextInt();
+                scanner.nextLine(); // Consomme le retour à la ligne
+            } else {
+                System.out.println("⚠️ Erreur : Veuillez entrer un chiffre entre 1 et 5 !");
+                scanner.nextLine(); // Vide la saisie incorrecte (la lettre)
+                continue; // Relance la boucle du menu
+            }
 
             switch (choix) {
                 case 1:

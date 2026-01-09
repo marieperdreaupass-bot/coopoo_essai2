@@ -44,7 +44,16 @@ public class SystemeCombat {
             System.out.println("6. Utiliser un objet de l'inventaire");
             System.out.print("Action : ");
 
-            int choix = scanner.nextInt();
+            int choix = 0;
+            if (scanner.hasNextInt()) {
+                choix = scanner.nextInt();
+                scanner.nextLine(); // Consomme le retour à la ligne
+            } else {
+                System.out.println("⚠️ Erreur : Veuillez entrer un chiffre (1, 2 ou 3) !");
+                scanner.nextLine(); // Vide la mauvaise saisie du tampon
+                tourJoueur(personnage, monstre); // Relance le menu
+                return;
+            }
 
             switch (choix) {
                 case 1:
@@ -70,7 +79,8 @@ public class SystemeCombat {
                     } else {
                         personnage.afficherInventaire();
                         System.out.print("Numéro de l'objet à utiliser : ");
-                        int index = scanner.nextInt() - 1;
+
+                        int index = -1;
 
                         if (scanner.hasNextInt()) {
                             index = scanner.nextInt() - 1;
