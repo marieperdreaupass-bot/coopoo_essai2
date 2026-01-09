@@ -20,8 +20,8 @@ public class Guerrier extends Personnage {
         this.esprit.add(new CompRage("Exécution d'Ares : renvoyez votre ennemi en enfer", 300, 1800));
         //Remplissage de l'inventaire
         this.ajouterObjet(new Objet("Hache d'Artélis", degatsDeBase));
-        this.ajouterObjet(new Objet("Potion de soulagement : Calme l'esprit pour le préparer à s'enrager.", 250));
-        this.ajouterObjet(new Objet("Potion de vie", 200));
+        this.ajouterObjet(new Objet("Potion de soulagement : calme votre esprit pour en récupérer 250 points.", 250));
+        this.ajouterObjet(new Objet("Potion de vie : vous permet de retrouver 500 PV", 500));
     }
 
     //Afficher les scompétences de l'esprit

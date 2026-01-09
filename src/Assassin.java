@@ -21,7 +21,7 @@ public class Assassin extends Personnage {
         //Remplissage de l'inventaire
         this.ajouterObjet(new Objet("Dague lacérantes : armes transmise de votre maître quand vous étiez enfant. Effet : ", degatsDeBase));
         this.ajouterObjet(new Objet("Potion d'endurance : vous permet de retrouver 200 points d'endurance. ", 200));
-        this.ajouterObjet(new Objet("Potion de vie : vous permet ", 150));
+        this.ajouterObjet(new Objet("Potion de vie : vous permet de retrouver 250 PV", 250));
     }
 
     public void afficherTechniques() {
