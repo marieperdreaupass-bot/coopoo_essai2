@@ -9,19 +9,15 @@ public abstract class Personnage {
     protected int niveau;
     protected int degatsDeBase;
     protected int vitesse;
-    protected double chanceCritique; //double nous permet de gerer les pourcentages
-
-
+    protected double chanceCritique;
     protected List<Objet> inventaire;
-
     protected int experience;
     protected int experienceRequise;
 
-    // CONSTRUCTEUR
     public Personnage(String nom, int pv, int degatsDeBase, int vitesse) {
         this.nom = nom;
         PV = pv;
-        pvMax = pv; // Au début, PV max = PV actuels
+        pvMax = pv;
         this.degatsDeBase = degatsDeBase;
         this.vitesse = vitesse;
         chanceCritique = 0.2;
@@ -47,7 +43,6 @@ public abstract class Personnage {
         System.out.println("✨ " + this.nom + " ressent une puissance occulte... Chance critique augmentée de " + (montant * 100) + "% !");
     }
 
-    // Gestion de l'inventaire
     public void afficherInventaire() {
         System.out.println("\n--- 📦 Inventaire de " + nom + " ---");
         if (inventaire.isEmpty()) {
@@ -80,11 +75,11 @@ public abstract class Personnage {
             if (nomObj.contains("larme de banshee")) {
                 this.augmenterChanceCritiquePermanente(0.05);
                 System.out.println("Vos chances de critique ont sont maintenant de " + chanceCritique*100 + "%");
-                inventaire.remove(index);// L'objet est consommé
+                inventaire.remove(index);
                 return 0;
             }
 
-            // 1. CAS DES ARMES (Hache, Dague, Grimoire)
+
             if (nomObj.contains("hache") || nomObj.contains("dague") || nomObj.contains("grimoire")) {
                 if (nomObj.contains("hache"))
                     System.out.println("Description : Une arme lourde qui décuple la force brute.");

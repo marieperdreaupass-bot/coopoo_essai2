@@ -27,7 +27,6 @@ public class jeu {
             System.out.print("Choix : ");
 
             int choix = 0;
-            System.out.print("Choix : ");
 
             if (scanner.hasNextInt()) {
                 choix = scanner.nextInt();
