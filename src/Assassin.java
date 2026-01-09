@@ -13,7 +13,11 @@ public class Assassin extends Personnage {
 
         //Remplissage du grimoire
         this.technique = new ArrayList<>();
-        this.technique.add(new Ruse("Coup sournois : vous vous glissez derrière votre ennemi", 20, 45));
+        this.technique.add(new Ruse("Coup sournois : vous vous glissez derrière votre ennemi", 30, 175));
+        this.technique.add(new Ruse("Lancer de shuriken : saississez vos armes à la vitesse du vent pour les lancer sur les points faibles de votre ennemi", 60, 300));
+        this.technique.add(new Ruse("Lame empoisonné : enduisez votre arme d'un puissant poison et attaquez", 100, 500));
+        this.technique.add(new Ruse("Ombre mouvante : invoquez des clones et attaquez votre ennemi simultanément", 200, 750));
+        this.technique.add(new Ruse("Execution de l'ombre : à la vitesse de la lumière, donner des centaines de coup à votre ennemi", 350, 2400));
         //Remplissage de l'inventaire
         this.ajouterObjet(new Objet("Dague lacérantes", degatsDeBase));
         this.ajouterObjet(new Objet("Potion d'endurance", 200));
