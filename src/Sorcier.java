@@ -93,12 +93,17 @@ public class Sorcier extends Personnage {
                 return null;
             }
         }
-        //Monter de niveau spécifique
-        @Override
-        public void monterDeNiveau(){
-            super.monterDeNiveau();
-            this.mana += 100;
-        }
+    @Override
+    public void restaurerRessourceSpecifique(int montant) {
+        this.mana = Math.min(500, this.mana + montant);
+        System.out.println("✨ Mana restauré ! (Total : " + this.mana + ")");
+    }
+
+    @Override
+    public void monterDeNiveau(){
+        super.monterDeNiveau();
+        this.mana += 100;
+    }
 
 
 }

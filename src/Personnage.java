@@ -99,37 +99,18 @@ public abstract class Personnage {
             }
 
             // 2. CAS DU SOIN (Potion de vie)
-            else if (nomObj.contains("vie") || nomObj.contains("soin")) {
-                this.recevoirSoin(valeurEffet);
+            else if (nomObj.contains("vie")) {
+                this.recevoirSoin(obj.getEffet());
                 inventaire.remove(index); // On consomme la potion
                 return 0;
             }
 
             // 3. CAS DE L'ÉNERGIE (Mana, Rage, Endurance)
-            else if (nomObj.contains("mana") || nomObj.contains("rage") || nomObj.contains("endurance") || nomObj.contains("soulagement")) {
-
-                // On vérifie la classe du personnage pour savoir quelle ressource monter
-                if (this instanceof Sorcier) {
-                    Sorcier s = (Sorcier) this;
-                    s.mana += valeurEffet;
-                    if (s.mana > 500) s.mana = 500; // Cap max par défaut
-                    System.out.println("✨ Votre Mana augmente de " + valeurEffet + " ! (Total : " + s.mana + ")");
-                }
-                else if (this instanceof Guerrier) {
-                    Guerrier g = (Guerrier) this;
-                    g.rage += valeurEffet;
-                    if (g.rage > 500) g.rage = 500;
-                    System.out.println("🔥 Votre Rage augmente de " + valeurEffet + " ! (Total : " + g.rage + ")");
-                }
-                else if (this instanceof Assassin) {
-                    Assassin a = (Assassin) this;
-                    a.endurance += valeurEffet;
-                    if (a.endurance > 500) a.endurance = 500;
-                    System.out.println("⚡ Votre Endurance augmente de " + valeurEffet + " ! (Total : " + a.endurance + ")");
-                }
-
-                inventaire.remove(index); // On consomme la potion
-                return 0;
+            else if (nomObj.contains("mana") || nomObj.contains("endurance") || nomObj.contains("soulagement")) {
+                restaurerRessourceSpecifique(obj.getEffet());
+                inventaire.remove(index);
+            } else {
+                System.out.println("L'objet n'a pas d'effet immédiat.");
             }
         } else {
             System.out.println("⚠️ Index invalide ou objet introuvable.");
@@ -152,6 +133,8 @@ public abstract class Personnage {
         }
         System.out.println(this.nom + " récupère " + montant + " PV ! (Total : " + this.PV + ")");
     }
+    // Dans Personnage.java (méthode vide par défaut)
+    public abstract void restaurerRessourceSpecifique(int montant);
 
     // GESTION NIVEAU
     public void gagnerExperience(int montant) {
