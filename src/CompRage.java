@@ -7,14 +7,12 @@ public class CompRage {
     public boolean isUtilise() { return utilise; }
     public void setUtilise(boolean utilise) { this.utilise = utilise; }
 
-    //Constructeur pour initialiser un sort
     public CompRage(String nomComp, int coutRage, int degats) {
         this.nomComp = nomComp;
         this.coutRage = coutRage;
         this.degatsComp = degats;
     }
 
-    //Getters pour que guerrier puisse accéder aux valeurs
     public String getNom() {
         return nomComp;
     }
@@ -26,9 +24,4 @@ public class CompRage {
     public int getDegats() {
         return degatsComp;
     }
-
-    public void utiliser(String nom) {
-        System.out.println(nom + "utilise" + this.nomComp + "!");
-    }
-
 }

@@ -3,8 +3,6 @@ import java.util.Scanner;
 public class jeu {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        //Initialisation
         String nom = outils.demanderNom();
         Personnage monPersonnage = outils.choisirClasse(nom);
         Quete maQuete = new Quete();
@@ -32,7 +30,7 @@ public class jeu {
                 choix = scanner.nextInt();
                 scanner.nextLine(); // Consomme le retour à la ligne
             } else {
-                System.out.println("⚠️ Erreur : Veuillez entrer un chiffre entre 1 et 5 !");
+                System.out.println("⚠️ Erreur : Veuillez entrer un chiffre entre 1 et 5 ! ⚠️");
                 scanner.nextLine(); // Vide la saisie incorrecte (la lettre)
                 continue; // Relance la boucle du menu
             }
@@ -45,8 +43,7 @@ public class jeu {
                 case 2:
                     boolean correct = false;
                     while (!correct) {
-                        // 1. Message d'avertissement et rappel de la règle des 5 questions
-                        System.out.println("\n⚠️ ATTENTION : Le gardien est très puissant.");
+                        System.out.println("⚠️ ATTENTION : Le gardien est très puissant. ⚠️");
                         System.out.println("Vous avez essayé " + maQuete.nbQuete + "/5 quêtes possibles sur ce palier.");
 
                         if (maQuete.nbQuete < 5) {
@@ -57,17 +54,14 @@ public class jeu {
                         String confirmation = scanner.next();
 
                         if (confirmation.equalsIgnoreCase("O")) {
-                            // 2. Génération et combat
                             correct = true;
                             Monstre bossActuel = Monstre.genererProchainBoss(nbBossVaincus);
                             SystemeCombat.lancerCombat(monPersonnage, bossActuel);
 
-                            // 3. Si victoire
                             if (!monPersonnage.estMort()) {
-                                // On reset le compteur de quêtes car on passe au palier suivant
                                 maQuete.nbQuete = 0;
                                 nbBossVaincus++;
-                                System.out.println("\n✨ Victoire éclatante ! Le palier suivant est débloqué.");
+                                System.out.println("Victoire éclatante ! Le palier suivant est débloqué.");
                             }
                         } else if (confirmation.equalsIgnoreCase("N")) {
                             System.out.println("Sagesse... Vous retournez vous préparer.");
@@ -99,9 +93,8 @@ public class jeu {
         }
 
         if (monPersonnage.estMort()) {
-            System.out.println("\n💀 Votre légende s'arrête ici... Les Enfers vous attendent.");
+            System.out.println("\n💀 Votre légende s'arrête ici... Les Enfers vous attendent. 💀");
         }
-
         scanner.close();
     }
 }

@@ -40,63 +40,51 @@ public class Sorcier extends Personnage {
             System.out.println("Mana : " + this.mana);
         }
 
-    // Méthode pour tout débloquer après le combat
     public void resetToutesCompetences() {
         for (Sort s : grimoire) {
             s.setUtilise(false);
         }
-        System.out.println("✨ Le mana résiduel restaure votre grimoire.");
+        System.out.println("Le mana résiduel restaure votre grimoire.");
     }
 
-        //Polymorphisme de la méthode attaquer()
         @Override
         public int attaquer()  {
-            // 1. On génère un nombre entre 0.0 et 1.0
-            // 2. Si ce nombre est inférieur à chanceCritique (ex: 0.2), c'est un coup critique
             boolean estCritique = Math.random() < this.chanceCritique;
-
             int degatsFinaux = this.degatsDeBase;
-
             if (estCritique) {
-                degatsFinaux = this.degatsDeBase * 2; // Les dégâts sont doublés
+                degatsFinaux = this.degatsDeBase * 2;
                 System.out.println("⚡️ COUP CRITIQUE ! ⚡️");
                 System.out.println(nom + " puisse dans l'éther pour infliger " + degatsFinaux + " dégâts à l'ennemi !");
             } else {
                 System.out.println(nom + " lance un sort. (Puissance : " + degatsFinaux + ")");
             }
-
             return degatsFinaux;
         }
 
-        //Lancer un sort
         public Sort lancerSort(int index) {
             if (index < 0 || index >= this.grimoire.size()) {
                 return null;
             }
-
             Sort sortChoisi = grimoire.get(index);
 
-            // 1. Vérifier si le sort a déjà été utilisé
             if (sortChoisi.isUtilise()) {
-                System.out.println("⚠️ Ce sort est épuisé pour ce combat ! Choisissez-en un autre.");
+                System.out.println("Ce sort est épuisé pour ce combat ! Choisissez-en un autre.");
                 return null;
             }
-
-            // 2. Vérifier le mana
             if (this.mana >= sortChoisi.getCoutMana()) {
                 this.mana -= sortChoisi.getCoutMana();
-                sortChoisi.setUtilise(true); // Verrouille ce sort précis
+                sortChoisi.setUtilise(true);
                 System.out.println(nom + " lance " + sortChoisi.getNom() + " !");
                 return sortChoisi;
             } else {
-                System.out.println("❌ Pas assez de mana pour lancer ce sort.");
+                System.out.println("❌ Pas assez de mana pour lancer ce sort.❌");
                 return null;
             }
         }
     @Override
     public void restaurerRessourceSpecifique(int montant) {
         this.mana = Math.min(500, this.mana + montant);
-        System.out.println("✨ Mana restauré ! (Total : " + this.mana + ")");
+        System.out.println("Mana restauré ! (Total : " + this.mana + ")");
     }
 
     @Override
@@ -104,7 +92,5 @@ public class Sorcier extends Personnage {
         super.monterDeNiveau();
         this.mana += 100;
     }
-
-
 }
 
