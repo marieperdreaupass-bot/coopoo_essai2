@@ -139,7 +139,15 @@ public class SystemeCombat {
                 System.out.print("Choisissez un sort : ");
                 int index = scanner.nextInt() - 1;
                 Sort sort = s.lancerSort(index);
-                if (sort != null) monstre.recevoirDegats(sort.getDegats());
+                if (sort != null)
+                    if (sort.getDegats() < 0) {
+                        // Si les dégâts sont négatifs, on soigne le joueur
+                        // On utilise Math.abs pour transformer -300 en +300
+                        int montantSoin = Math.abs(sort.getDegats());
+                        personnage.recevoirSoin(montantSoin);
+                    }else{
+                        monstre.recevoirDegats(sort.getDegats());
+                    }
             } else if (personnage instanceof Guerrier) {
                 Guerrier g = (Guerrier) personnage;
                 g.afficherEsprit();
