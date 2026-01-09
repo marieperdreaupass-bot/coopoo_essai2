@@ -152,11 +152,10 @@ public abstract class Personnage {
     public void monterDeNiveau() {
         niveau++;
         experience -= experienceRequise;
-        experienceRequise = (int) (experienceRequise * 1.5);
+        experienceRequise = (int) (experienceRequise * 1.15);
         pvMax += 200;
         PV = pvMax;
         degatsDeBase += 75;
-        vitesse += 1;
         this.chanceCritique += 0.02; // +2% de chance critique par niveau
         System.out.println("✨ LEVEL UP ! " + nom + " est niveau " + niveau);
         afficherInfo();
