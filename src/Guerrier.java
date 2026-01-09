@@ -16,7 +16,7 @@ public class Guerrier extends Personnage {
         this.esprit.add(new CompRage("Coup de paume : utilise la paume de votre hache pour frapper l'ennemi. ", 20, 120));
         this.esprit.add(new CompRage("Lame acérée : plantez votre lame dans votre enemi et touner la pour causer un maximum de souffrance. ", 250, 1200));
         this.esprit.add(new CompRage("Brise armure : viser les points faibles de votre ennemi pour briser son armure. ", 100, 350));
-        this.esprit.add(new CompRage("Fracas sismique : sautez en l'air et frappez le sol de toute votre force. ", 380, 800));
+        this.esprit.add(new CompRage("Fracas sismique : sautez en l'air et frappez le sol de toute votre force. ", 380, 1100));
         this.esprit.add(new CompRage("Exécution d'Ares : renvoyez votre ennemi en enfer", 700, 1800));
         //Remplissage de l'inventaire
         this.ajouterObjet(new Objet("Hache d'Artélis", degatsDeBase));
