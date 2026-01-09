@@ -27,7 +27,7 @@ public class jeu {
 
             if (scanner.hasNextInt()) {
                 choix = scanner.nextInt();
-                scanner.nextLine(); // Consomme le retour à la ligne
+                scanner.nextLine();
             } else {
                 System.out.println("⚠️ Erreur : Veuillez entrer un chiffre entre 1 et 5 ! ⚠️");
                 scanner.nextLine(); // Vide la saisie incorrecte (la lettre)
