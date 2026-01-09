@@ -49,9 +49,22 @@ public class Sorcier extends Personnage {
 
         //Polymorphisme de la méthode attaquer()
         @Override
-        public int attaquer() {
-            System.out.println(nom + " lance un sort simple.");
-            return this.degatsDeBase;
+        public int attaquer()  {
+            // 1. On génère un nombre entre 0.0 et 1.0
+            // 2. Si ce nombre est inférieur à chanceCritique (ex: 0.2), c'est un coup critique
+            boolean estCritique = Math.random() < this.chanceCritique;
+
+            int degatsFinaux = this.degatsDeBase;
+
+            if (estCritique) {
+                degatsFinaux = this.degatsDeBase * 2; // Les dégâts sont doublés
+                System.out.println("⚡️ COUP CRITIQUE ! ⚡️");
+                System.out.println(nom + " puisse dans l'éther pour infliger " + degatsFinaux + " dégâts à l'ennemi !");
+            } else {
+                System.out.println(nom + " lance un sort. (Puissance : " + degatsFinaux + ")");
+            }
+
+            return degatsFinaux;
         }
 
         //Lancer un sort

@@ -13,7 +13,11 @@ public class Guerrier extends Personnage {
 
         //Remplissage de l'esprit
         this.esprit = new ArrayList<>();
-        this.esprit.add(new CompRage("Coup double", 20, 45));
+        this.esprit.add(new CompRage("Coup de paume : utilise la paume de votre hache pour frapper l'ennemi. ", 20, 120));
+        this.esprit.add(new CompRage("Coup double : inflige deux fois plus de dégats. ", 20, degatsDeBase*2));
+        this.esprit.add(new CompRage("Brise armure : viser les points faibles de votre ennemi pour briser son armure. ", 100, 350));
+        this.esprit.add(new CompRage("Fracas sismique : sautez en l'air et frappez le sol de toute votre force. ", 180, 800));
+        this.esprit.add(new CompRage("Exécution d'Ares : renvoyez votre ennemi en enfer", 300, 1800));
         //Remplissage de l'inventaire
         this.ajouterObjet(new Objet("Hache d'Artélis", degatsDeBase));
         this.ajouterObjet(new Objet("Potion de soulagement : Calme l'esprit pour le préparer à s'enrager.", 250));
@@ -32,9 +36,22 @@ public class Guerrier extends Personnage {
 
     //Polymorphisme de la méthode attaquer()
     @Override
-    public int attaquer() {
-        System.out.println(nom + "   met un coup de lance.");
-        return this.degatsDeBase;
+    public int attaquer()  {
+        // 1. On génère un nombre entre 0.0 et 1.0
+        // 2. Si ce nombre est inférieur à chanceCritique (ex: 0.2), c'est un coup critique
+        boolean estCritique = Math.random() < this.chanceCritique;
+
+        int degatsFinaux = this.degatsDeBase;
+
+        if (estCritique) {
+            degatsFinaux = this.degatsDeBase * 2; // Les dégâts sont doublés
+            System.out.println("⚡️ COUP CRITIQUE ! ⚡️");
+            System.out.println(nom + " inflige un coup dévastateur de " + degatsFinaux + " dégâts avec sa hache !");
+        } else {
+            System.out.println(nom + " donne un coup de hache. (Puissance : " + degatsFinaux + ")");
+        }
+
+        return degatsFinaux;
     }
 
     //Sélectionner une compétence

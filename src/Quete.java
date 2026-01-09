@@ -148,8 +148,8 @@ public class Quete {
         bonneReponse.remove(0);
 
         if (repJ.equals(repC)) {
-            System.out.println("✨ Bonne réponse ! +20 EXP");
-            return 20;
+            System.out.println("✨ Bonne réponse ! +30 EXP");
+            return 30;
         } else {
             System.out.println("❌ Mauvaise réponse... La réponse était : " + laBonneReponse);
             return 0;

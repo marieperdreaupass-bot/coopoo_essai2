@@ -40,23 +40,7 @@ public abstract class Personnage {
         System.out.println("Vitesse : " + vitesse);
     }
 
-    public int attaquer() {
-        // 1. On génère un nombre entre 0.0 et 1.0
-        // 2. Si ce nombre est inférieur à chanceCritique (ex: 0.2), c'est un coup critique
-        boolean estCritique = Math.random() < this.chanceCritique;
-
-        int degatsFinaux = this.degatsDeBase;
-
-        if (estCritique) {
-            degatsFinaux = this.degatsDeBase * 2; // Les dégâts sont doublés
-            System.out.println("⚡️ COUP CRITIQUE ! ⚡️");
-            System.out.println(nom + " inflige un coup dévastateur de " + degatsFinaux + " dégâts !");
-        } else {
-            System.out.println(nom + " attaque normalement. (Puissance : " + degatsFinaux + ")");
-        }
-
-        return degatsFinaux;
-    }
+    public abstract int attaquer();
 
     public void augmenterChanceCritiquePermanente(double montant) {
         this.chanceCritique += montant;
