@@ -14,7 +14,7 @@ public class Guerrier extends Personnage {
         //Remplissage de l'esprit
         this.esprit = new ArrayList<>();
         this.esprit.add(new CompRage("Coup de paume : utilise la paume de votre hache pour frapper l'ennemi. ", 20, 120));
-        this.esprit.add(new CompRage("Coup double : inflige deux fois plus de dégats. ", 20, degatsDeBase*2));
+        this.esprit.add(new CompRage("Lame acérée : plantez votre lame dans votre enemi et touner la pour causer un maximum de souffrance. ", 250, 1200));
         this.esprit.add(new CompRage("Brise armure : viser les points faibles de votre ennemi pour briser son armure. ", 100, 350));
         this.esprit.add(new CompRage("Fracas sismique : sautez en l'air et frappez le sol de toute votre force. ", 380, 800));
         this.esprit.add(new CompRage("Exécution d'Ares : renvoyez votre ennemi en enfer", 700, 1800));
@@ -78,10 +78,15 @@ public class Guerrier extends Personnage {
     public void resetToutesCompetences() {
         for (CompRage c : esprit) c.setUtilise(false);}
 
-        //Monter de niveau spécifique
-        @Override
-        public void monterDeNiveau () {
-            super.monterDeNiveau();
-            this.rage += 100;
-        }
+    @Override
+    public void restaurerRessourceSpecifique(int montant) {
+        this.rage = Math.min(500, this.rage + montant);
+        System.out.println("🔥 Votre rage bouillonne à nouveau ! (Total : " + this.rage + ")");
+    }
+
+    @Override
+    public void monterDeNiveau () {
+        super.monterDeNiveau();
+        this.rage += 100;
+    }
 }

@@ -78,6 +78,12 @@ public class Assassin extends Personnage {
         for (Ruse r : technique) r.setUtilise(false);
     }
 
+    @Override
+    public void restaurerRessourceSpecifique(int montant) {
+        this.endurance = Math.min(500, this.endurance + montant);
+        System.out.println("⚡ Endurance restaurée ! (Total : " + this.endurance + ")");
+    }
+
     //Monter de niveau spécifique
     @Override
     public void monterDeNiveau(){
