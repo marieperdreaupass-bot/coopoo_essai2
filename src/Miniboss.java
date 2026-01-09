@@ -11,8 +11,4 @@ public class Miniboss extends Monstre {
         System.out.println("\n🔱 Le gardien du " + zone + " se déchaîne !");
         super.attaquer(cible);
     }
-
-    public void menace() {
-        System.out.println(this.name + " vous barre la route du " + zone + " !");
-    }
 }

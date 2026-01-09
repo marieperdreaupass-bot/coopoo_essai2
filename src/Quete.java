@@ -11,7 +11,6 @@ public class Quete {
 
     public Quete() {
         description = new ArrayList<>();
-        // --- Questions simplifiées ---
         description.add("Question 1 : Qui est le roi des dieux et le dieu de la foudre ?");
         description.add("Question 2 : Qui est le dieu de la mer avec un trident ?");
         description.add("Question 3 : Quelle déesse est la plus belle et représente l'amour ?");
@@ -43,7 +42,6 @@ public class Quete {
         description.add("Question 25 : Qui est la reine des dieux et la femme de Zeus ?");
 
         bonneReponse = new ArrayList<>();
-        // --- Réponses correspondantes ---
         bonneReponse.add("Zeus");
         bonneReponse.add("Poseidon");
         bonneReponse.add("Aphrodite");
@@ -75,76 +73,55 @@ public class Quete {
         bonneReponse.add("Hera");
     }
 
-
     public void partirEnQuete(Personnage personnage) {
         boolean veutContinuer = true;
-
-        // On vérifie si le palier est déjà fini avant de commencer
         if (nbQuete >= 5) {
             System.out.println(" ");
             System.out.println("(!) Vous avez déjà fait vos 5 quêtes. Battez le boss !");
             return;
         }
-
         while (veutContinuer && nbQuete < 5) {
             if (description.isEmpty()) {
                 System.out.println("Plus de questions disponibles !");
                 return;
             }
-
             int gainExp = gererQuete();
-
-            // On augmente le compteur de quêtes posées QUOI QU'IL ARRIVE
             nbQuete++;
             nbQueteTotal++;
-
             if (gainExp > 0) {
                 personnage.gagnerExperience(gainExp);
             }
-
-            // On vérifie s'il reste des chances dans le palier
             if (nbQuete < 5) {
                 String choix = "";
-                // BOUCLE DE VÉRIFICATION O/N
                 while (!choix.equalsIgnoreCase("O") && !choix.equalsIgnoreCase("N")) {
-                    System.out.print("\nVoulez-vous répondre à une autre question ? (O/N) : ");
+                    System.out.print("Voulez-vous répondre à une autre question ? (O/N) : ");
                     choix = scanner.next();
-
                     if (!choix.equalsIgnoreCase("O") && !choix.equalsIgnoreCase("N")) {
-                        System.out.println("⚠️ Réponse invalide. Veuillez taper 'O' pour Oui ou 'N' pour Non.");
+                        System.out.println("⚠️ Réponse invalide. Veuillez taper 'O' pour Oui ou 'N' pour Non. ⚠️");
                     }
                 }
-
                 if (choix.equalsIgnoreCase("N")) {
                     veutContinuer = false;
                     System.out.println("Retour au menu principal...");
                 } else if (choix.equalsIgnoreCase("O")) {
-                    // On ne fait rien, la boucle de vérification s'arrête et le 'while' principal continue
                 } else {
-                    System.out.println("⚠️ Choix invalide. Merci de taper 'O' pour Oui ou 'N' pour Non.");
+                    System.out.println("⚠️ Choix invalide. Merci de taper 'O' pour Oui ou 'N' pour Non. ⚠️");
                 }
             } else {
-                System.out.println("\n✅ 5 questions posées ! Palier terminé. Allez affronter le boss.");
+                System.out.println("5 questions posées ! Palier terminé. Allez affronter le boss.");
             }
         }
     }
 
     public int gererQuete() {
         System.out.println("\n--- QUÊTE ---");
-
-        // On prend toujours le premier élément (0)
         String questionActuelle = description.get(0);
         String laBonneReponse = bonneReponse.get(0);
-
         System.out.println(questionActuelle);
         System.out.print("Votre réponse : ");
         String reponseJoueur = scanner.next();
-
-        // Normalisation
         String repJ = outils.normaliserReponse(reponseJoueur);
         String repC = outils.normaliserReponse(laBonneReponse);
-
-        // SUPPRESSION : On retire la question et sa réponse pour ne plus tomber dessus
         description.remove(0);
         bonneReponse.remove(0);
 
@@ -156,5 +133,4 @@ public class Quete {
             return 0;
         }
     }
-
 }

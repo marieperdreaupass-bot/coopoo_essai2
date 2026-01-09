@@ -44,7 +44,7 @@ public abstract class Personnage {
     }
 
     public void afficherInventaire() {
-        System.out.println("\n--- 📦 Inventaire de " + nom + " ---");
+        System.out.println("\n--- Inventaire de " + nom + " ---");
         if (inventaire.isEmpty()) {
             System.out.println("L'inventaire est vide.");
         } else {
@@ -87,20 +87,13 @@ public abstract class Personnage {
                     System.out.println("Description : Des lames rapides pour trancher les points vitaux.");
                 else if (nomObj.contains("grimoire"))
                     System.out.println("Description : Un livre ancien canalisant l'énergie magique.");
-
-                // On appelle l'attaque spécifique de la classe (Guerrier, Sorcier ou Assassin)
-                // L'arme n'est PAS supprimée de l'inventaire (on ne fait pas remove)
                 return this.attaquer();
             }
-
-            // 2. CAS DU SOIN (Potion de vie)
             else if (nomObj.contains("vie")) {
                 this.recevoirSoin(obj.getEffet());
-                inventaire.remove(index); // On consomme la potion
+                inventaire.remove(index);
                 return 0;
             }
-
-            // 3. CAS DE L'ÉNERGIE (Mana, Rage, Endurance)
             else if (nomObj.contains("mana") || nomObj.contains("endurance") || nomObj.contains("soulagement")) {
                 restaurerRessourceSpecifique(obj.getEffet());
                 inventaire.remove(index);
@@ -108,7 +101,7 @@ public abstract class Personnage {
                 System.out.println("L'objet n'a pas d'effet immédiat.");
             }
         } else {
-            System.out.println("⚠️ Index invalide ou objet introuvable.");
+            System.out.println("Index invalide ou objet introuvable.");
         }
         return 0;
     }
@@ -128,15 +121,12 @@ public abstract class Personnage {
         }
         System.out.println(this.nom + " récupère " + montant + " PV ! (Total : " + this.PV + ")");
     }
-    // Dans Personnage.java (méthode vide par défaut)
+
     public abstract void restaurerRessourceSpecifique(int montant);
 
-    // GESTION NIVEAU
     public void gagnerExperience(int montant) {
         experience += montant;
         System.out.println(nom + " a gagné " + montant + " XP.");
-
-        // Boucle while pour passer plusieurs niveaux d'un coup si besoin
         while (experience >= experienceRequise && experienceRequise > 0) {
             monterDeNiveau();
 
@@ -151,7 +141,7 @@ public abstract class Personnage {
         pvMax += 200;
         PV = pvMax;
         degatsDeBase += 75;
-        this.chanceCritique += 0.02; // +2% de chance critique par niveau
+        this.chanceCritique += 0.02;
         System.out.println("✨ LEVEL UP ! " + nom + " est niveau " + niveau);
         afficherInfo();
     }
@@ -166,9 +156,6 @@ public abstract class Personnage {
 
     public int getPV() {
         return PV;
-    }
-    public void setPV(int pv) {
-        this.PV = pv;
     }
     public int getNiveau() {
         return niveau;

@@ -1,16 +1,15 @@
 public class TestUnitaire {
 
     public static void main(String[] args) {
-        System.out.println("--- DÉBUT DES TESTS UNITAIRES ---\n");
+        System.out.println("--- DÉBUT DES TESTS UNITAIRES ---");
 
         testSoinCapPlafond();
         testMortPersonnage();
         testUtilisationObjet();
 
-        System.out.println("\n--- FIN DES TESTS ---");
+        System.out.println("--- FIN DES TESTS ---");
     }
 
-    // Test 1 : Vérifier que le soin ne dépasse pas le max
     public static void testSoinCapPlafond() {
         System.out.print("Test 1 (Soin Max) : ");
         Guerrier g = new Guerrier("TestMan");
@@ -25,7 +24,6 @@ public class TestUnitaire {
         }
     }
 
-    // Test 2 : Vérifier la mort
     public static void testMortPersonnage() {
         System.out.print("Test 2 (Mort) : ");
         Sorcier s = new Sorcier("Gandalf");
@@ -38,7 +36,6 @@ public class TestUnitaire {
         }
     }
 
-    // Test 3 : Vérifier l'inventaire
     public static void testUtilisationObjet() {
         System.out.print("Test 3 (Inventaire) : ");
         Assassin a = new Assassin("Altair");

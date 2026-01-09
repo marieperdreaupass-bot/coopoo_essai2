@@ -6,14 +6,12 @@ public class Sort {
     public boolean isUtilise() { return utilise; }
     public void setUtilise(boolean utilise) { this.utilise = utilise; }
 
-    //Constructeur pour initialiser un sort
     public Sort(String nom, int coutMana, int degats) {
         this.nomSort = nom;
         this.coutMana = coutMana;
         this.degatsSort = degats;
     }
 
-    //Getters pour que Sorcier puisse accéder aux valeurs
     public String getNom() {
         return nomSort;
     }
@@ -26,7 +24,4 @@ public class Sort {
         return degatsSort;
     }
 
-    public void lancer(String jeuNom) {
-        System.out.println(jeuNom + "lance" + this.nomSort + "!");
-    }
 }
