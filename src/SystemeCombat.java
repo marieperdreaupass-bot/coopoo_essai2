@@ -72,6 +72,16 @@ public class SystemeCombat {
                         System.out.print("Numéro de l'objet à utiliser : ");
                         int index = scanner.nextInt() - 1;
 
+                        if (scanner.hasNextInt()) {
+                            index = scanner.nextInt() - 1;
+                            scanner.nextLine(); // Consomme le retour à la ligne
+                        } else {
+                            System.out.println("⚠️ Erreur : Vous devez entrer un nombre !");
+                            scanner.nextLine(); // Vide la saisie incorrecte (la lettre) pour éviter le crash
+                            tourJoueur(personnage, monstre); // Relance le choix du menu
+                            return;
+                        }
+
                         if (index >= 0 && index < personnage.getInventaire().size()) {
                             Objet objChoisi = personnage.getInventaire().get(index);
                             String nom = objChoisi.getNom().toLowerCase();
